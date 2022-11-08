@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.tree {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../imgs/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.tree .sphere-wrapper {
+  position: absolute;
+  opacity: 1;
+  transition-duration: 1s;
+  transform: translateY(0);
+}
+.tree .sphere-wrapper.hidden {
+  opacity: 0;
+  transform: translateY(-200px);
+}
+.tree .sphere-wrapper .sphere {
+  position: relative;
+}
+.tree .sphere-wrapper .sphere.s {
+  width: 10vw;
+}
+.tree .sphere-wrapper .sphere.m {
+  width: 13vw;
+}
+.tree .sphere-wrapper .sphere.l {
+  width: 16vw;
+}
+.tree .sphere-wrapper .sphere.xl {
+  width: 20vw;
+}
+.tree .sphere-wrapper .sphere img.donor {
+  width: 90%;
+  position: absolute;
+  bottom: 4.5%;
+  left: 6%;
+  z-index: 1;
+  border-radius: 50%;
+}
+.tree .sphere-wrapper .sphere img.sphere {
+  width: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */

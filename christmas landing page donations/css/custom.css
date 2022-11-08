@@ -1,0 +1,75 @@
+.spheres-line-wrapper {
+  width: 30vh;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 20vw;
+  transition-duration: 150000s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spheres-line-wrapper.animate {
+  transform: translateY(-1000000000px);
+}
+.spheres-line-wrapper .spheres {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  gap: 2vh;
+  width: 30vh;
+  height: 100vh;
+}
+.spheres-line-wrapper .spheres .sphere {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url("../imgs/sphere.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  transition-timing-function: linear;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(32vh);
+}
+.spheres-line-wrapper .spheres .sphere.large {
+  width: 30vh;
+  height: 32vh;
+}
+.spheres-line-wrapper .spheres .sphere.large span {
+  font-size: 4vh;
+}
+.spheres-line-wrapper .spheres .sphere.medium {
+  width: 24vh;
+  height: 25.6vh;
+}
+.spheres-line-wrapper .spheres .sphere.medium span {
+  font-size: 3vh;
+}
+.spheres-line-wrapper .spheres .sphere.small {
+  width: 18vh;
+  height: 19.2vh;
+}
+.spheres-line-wrapper .spheres .sphere.small span {
+  font-size: 2vh;
+}
+.spheres-line-wrapper .spheres span {
+  margin-top: 4vh;
+  color: #1f7bac;
+  font-family: "Parisienne", cursive;
+  width: 75%;
+}
+.spheres-line-wrapper .line {
+  height: 100%;
+  width: 4px;
+  background-color: white;
+}
+
+/*# sourceMappingURL=custom.css.map */

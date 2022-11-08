@@ -1,0 +1,77 @@
+.spheres-line-wrapper
+    width: 30vh
+    height: 100vh
+    position: absolute
+    top: 0 
+    left: 20vw
+    transition-duration: 150000s
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &.animate
+        transform: translateY(-1000000000px)
+
+    .spheres
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: flex-end
+        position: absolute
+        top: 0
+        left: 0
+        gap: 2vh
+        width: 30vh 
+        height: 100vh
+
+        .sphere
+            display: flex
+            align-items: center
+            justify-content: center
+            text-align: center
+            background-image: url("../imgs/sphere.png")
+            background-repeat: no-repeat
+            background-position: center
+            background-size: 100% 100%
+            margin: 0 auto
+            transition-timing-function: linear
+            position: absolute
+            bottom: 0
+            transform: translateY(32vh)
+
+
+            &.large
+                width: 30vh * 1
+                height: 32vh * 1
+
+                span
+                    font-size: 4vh
+
+            &.medium
+                width: 30vh * 0.8
+                height: 32vh * 0.8
+
+                span
+                    font-size: 3vh
+
+            &.small
+                width: 30vh * 0.6
+                height: 32vh * 0.6
+
+                span
+                    font-size: 2vh
+
+
+        span
+            margin-top: 4vh
+            color: #1f7bac
+            font-family: 'Parisienne', cursive
+            width: 75%
+
+
+    .line
+        height: 100%
+        width: 4px
+        background-color: white
+
+

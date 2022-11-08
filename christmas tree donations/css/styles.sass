@@ -1,0 +1,49 @@
+body
+    margin: 0
+    padding: 0
+    
+.tree
+    width: 100vw
+    height: 100vh
+    background-image: url("../imgs/bg.png")
+    background-repeat: no-repeat
+    background-size: cover
+    overflow: hidden
+
+    .sphere-wrapper
+        position: absolute
+        opacity: 1
+        transition-duration: 1s
+        transform: translateY(0)
+
+        &.hidden
+            opacity: 0
+            transform: translateY(-200px)
+
+        .sphere
+            position: relative
+
+            &.s
+                width: 10vw
+
+            &.m
+                width: 13vw
+
+            &.l
+                width: 16vw
+
+            &.xl
+                width: 20vw
+
+            img.donor
+                width: 90%
+                position: absolute
+                bottom: 4.5%
+                left: 6%
+                z-index: 1
+                border-radius: 50%
+
+            img.sphere
+                width: 100%
+
+                
