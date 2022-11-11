@@ -1,30 +1,16 @@
-.spheres-line-wrapper {
-  width: 30vh;
+.spheres {
+  width: 90vw;
   height: 100vh;
   position: absolute;
   top: 0;
-  left: 20vw;
-  transition-duration: 150000s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.spheres-line-wrapper.animate {
-  transform: translateY(-1000000000px);
-}
-.spheres-line-wrapper .spheres {
+  left: 5vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  position: absolute;
-  top: 0;
-  left: 0;
+  align-items: flex-start;
+  justify-content: center;
   gap: 2vh;
-  width: 30vh;
-  height: 100vh;
 }
-.spheres-line-wrapper .spheres .sphere {
+.spheres .sphere {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,38 +24,48 @@
   position: absolute;
   bottom: 0;
   transform: translateY(32vh);
+  z-index: 2;
+  margin-top: -10vw;
 }
-.spheres-line-wrapper .spheres .sphere.large {
+.spheres .sphere.large {
   width: 30vh;
   height: 32vh;
 }
-.spheres-line-wrapper .spheres .sphere.large span {
-  font-size: 4vh;
+.spheres .sphere.large span {
+  bottom: -20px;
 }
-.spheres-line-wrapper .spheres .sphere.medium {
+.spheres .sphere.medium {
   width: 24vh;
   height: 25.6vh;
 }
-.spheres-line-wrapper .spheres .sphere.medium span {
-  font-size: 3vh;
+.spheres .sphere.medium span {
+  bottom: -25px;
 }
-.spheres-line-wrapper .spheres .sphere.small {
+.spheres .sphere.small {
   width: 18vh;
   height: 19.2vh;
 }
-.spheres-line-wrapper .spheres .sphere.small span {
-  font-size: 2vh;
+.spheres .sphere.small span {
+  bottom: -45px;
 }
-.spheres-line-wrapper .spheres span {
-  margin-top: 4vh;
-  color: #1f7bac;
+.spheres .sphere span {
+  font-size: 4vh;
+  position: absolute;
+  color: white;
   font-family: "Parisienne", cursive;
-  width: 75%;
+  width: 150%;
+  text-shadow: 1px 1px 4px #1f7bac;
+  font-weight: bold;
+  line-height: 2vw;
 }
-.spheres-line-wrapper .line {
-  height: 100%;
-  width: 4px;
-  background-color: white;
+.spheres .sphere img {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=custom.css.map */
