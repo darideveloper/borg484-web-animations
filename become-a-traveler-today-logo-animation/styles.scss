@@ -48,15 +48,28 @@ body {
       position: absolute;
       bottom: 100%;
     }
+
+    span {
+      font-size: 1.2vw;
+    }
   }
 }
 
 // Positionate logo
 .logo {
   position: absolute;
-  left: 34%;
-  top: 33.5vw;
-  width: 32%;
+  left: 37.5vw;
+  top: 41vw;
+  width: 25vw;
+  height: 27vw;
+}
+
+// Positionate main text
+.main-message {
+  font-size: 4vw;
+  position: absolute;
+  left: 38vw;
+  top: 32vw;
 }
 
 
