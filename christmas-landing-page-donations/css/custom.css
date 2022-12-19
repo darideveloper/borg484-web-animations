@@ -22,28 +22,28 @@
   margin: 0 auto;
   transition-timing-function: linear;
   position: absolute;
-  bottom: 0;
+  bottom: -100px;
   transform: translateY(32vh);
   z-index: 2;
   margin-top: -10vw;
 }
 .spheres .sphere.large {
-  width: 30vh;
-  height: 32vh;
+  width: 36vh;
+  height: 38.4vh;
 }
 .spheres .sphere.large span {
   bottom: -20px;
 }
 .spheres .sphere.medium {
-  width: 24vh;
-  height: 25.6vh;
+  width: 30vh;
+  height: 32vh;
 }
 .spheres .sphere.medium span {
   bottom: -25px;
 }
 .spheres .sphere.small {
-  width: 18vh;
-  height: 19.2vh;
+  width: 24vh;
+  height: 25.6vh;
 }
 .spheres .sphere.small span {
   bottom: -45px;
