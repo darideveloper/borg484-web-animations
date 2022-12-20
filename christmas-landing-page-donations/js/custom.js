@@ -69,7 +69,7 @@ async function remove_spheres() {
   while (true) {
     let last_sphere = spheres_wrapper.querySelector(".sphere:first-child")
     spheres_wrapper.removeChild(last_sphere)
-    await sleep(animation_time)
+    await sleep(animation_time / 3)
   }
 
 }

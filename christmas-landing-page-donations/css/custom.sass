@@ -1,6 +1,13 @@
+#container.parallax-container
+    width: 100vw
+    height: 100vh
+    background-image: url("../imgs/bg.png")
+    background-repeat: repeat
+    max-width: none
+
 .spheres
     width: 90vw
-    height: 100vh
+    height: 110vh
     position: absolute
     top: 0 
     left: 5vw
@@ -9,6 +16,7 @@
     align-items: flex-start
     justify-content: center
     gap: 2vh
+    margin-top: -200px
 
     .sphere
         display: flex
@@ -22,7 +30,7 @@
         margin: 0 auto
         transition-timing-function: linear
         position: absolute
-        bottom: -100px
+        bottom: -200px
         transform: translateY(32vh)
         z-index: 2
         margin-top: -10vw
