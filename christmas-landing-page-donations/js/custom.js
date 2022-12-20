@@ -1,7 +1,9 @@
-animation_time = 15
-
-// Get spheres wrapper
+const animation_time = 15
+const screen_space = 70
+const screen_parts = 6
+let positions_used = []
 let spheres_wrapper = document.querySelector('.spheres')
+
 
 function sleep(s) {
   return new Promise(resolve => setTimeout(resolve, s * 1000))
@@ -39,9 +41,26 @@ async function create_sphere(size, text, photo) {
   // Animate sphere
   sphere.style.transform = 'translateY(-120vh)'
 
-  // Calculate and set random margin
-  const spheres_area = 70
-  let margin = Math.random() * (80 - 10 + 1)
+  // Calculate position of the sphere
+  let position
+  while (true) {
+
+    // validate if positions are full
+    if (positions_used.length == screen_parts) {
+      // Restart positions used
+      positions_used = []
+    }
+
+    // Get random position without repetitions
+    position = Math.floor(Math.random() * screen_parts)
+    if (!positions_used.includes(position)) {
+      positions_used.push(position)
+      break
+    }
+  }
+
+  // Calculate margin left of the sphere
+  const margin = 7 + (position * screen_space / screen_parts)
   sphere.style.marginLeft = `${margin}vw`
 }
 
@@ -73,7 +92,6 @@ async function remove_spheres() {
   }
 
 }
-
 
 // Auto create and remove spheres
 create_spheres()
