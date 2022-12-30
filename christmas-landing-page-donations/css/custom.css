@@ -8,8 +8,8 @@
 
 .spheres {
   width: 90vw;
-  height: 110vh;
-  position: absolute;
+  height: 200vh;
+  position: relative;
   top: 0;
   left: 5vw;
   display: flex;
@@ -17,7 +17,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 2vh;
-  margin-top: -200px;
+  margin-top: -30vw;
 }
 .spheres .sphere {
   display: flex;
@@ -31,33 +31,29 @@
   margin: 0 auto;
   transition-timing-function: linear;
   position: absolute;
-  bottom: -200px;
-  transform: translateY(32vh);
+  top: 180vh;
   z-index: 2;
   margin-top: -10vw;
+  animation: antigravity 5s infinite alternate ease-in-out;
+  transition-duration: 15s;
+}
+.spheres .sphere.animate {
+  top: 0;
 }
 .spheres .sphere.large {
   width: 36vh;
   height: 38.4vh;
 }
-.spheres .sphere.large span {
-  bottom: -20px;
-}
 .spheres .sphere.medium {
   width: 30vh;
   height: 32vh;
-}
-.spheres .sphere.medium span {
-  bottom: -25px;
 }
 .spheres .sphere.small {
   width: 24vh;
   height: 25.6vh;
 }
-.spheres .sphere.small span {
-  bottom: -45px;
-}
 .spheres .sphere span {
+  bottom: -2.1vw;
   font-size: 4vh;
   position: absolute;
   color: white;
@@ -75,6 +71,18 @@
   top: 50%;
   transform: translate(-50%, -40%);
   border-radius: 50%;
+}
+
+@keyframes antigravity {
+  0% {
+    transform: translateX(0vw);
+  }
+  50% {
+    transform: translateX(-10vw);
+  }
+  100% {
+    transform: translateX(10vw);
+  }
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -39,7 +39,8 @@ async function create_sphere(size, text, photo) {
   }
 
   // Animate sphere
-  sphere.style.transform = 'translateY(-120vh)'
+  sphere.classList.add('animate')
+  // sphere.style.transform = 'translateY(-120vh)'
 
   // Calculate position of the sphere
   let position
