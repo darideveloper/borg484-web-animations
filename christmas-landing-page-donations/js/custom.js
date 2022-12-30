@@ -1,3 +1,5 @@
+import anime from './anime.js'
+
 const animation_time = 15
 const screen_space = 70
 const screen_parts = 6
@@ -23,9 +25,6 @@ async function create_sphere(size, text, photo) {
   sphere.appendChild(sphere_text)
   sphere.appendChild(sphere_photo)
 
-  // Add transsition
-  sphere.style.transitionDuration = `${animation_time}s`
-
   // Add sphere to wrapper
   spheres_wrapper.appendChild(sphere)
 
@@ -38,9 +37,22 @@ async function create_sphere(size, text, photo) {
     await sleep(animation_time / 3.5)
   }
 
-  // Animate sphere
-  sphere.classList.add('animate')
-  // sphere.style.transform = 'translateY(-120vh)'
+  // Animate sphere with animejs
+  anime({
+    targets: sphere,
+    keyframes: [
+      {translateY: "-20vh", translateX: "-5vw"},
+      {translateY: "-40vh", translateX: "5vw"},
+      {translateY: "-60vh", translateX: "-5vw"},
+      {translateY: "-80vh", translateX: "5vw"},
+      {translateY: "-100vh", translateX: "-5vw"},
+      {translateY: "-120vh", translateX: "5vw"},
+      {translateY: "-140vh", translateX: "-5vw"},
+      {translateY: "-160vh", translateX: "5vw"},
+    ],
+    duration: animation_time*1000,
+    easing: 'cubicBezier(.31,0,.62,.96)'	
+  });
 
   // Calculate position of the sphere
   let position

@@ -32,16 +32,17 @@
         margin: 0 auto
         transition-timing-function: linear
         position: absolute
-        top: 180vh
+        // top: 180vh
+        bottom: 0
         // transform: translate(0, 32vh)
         z-index: 2
         margin-top: -10vw
-        animation: antigravity 5s infinite alternate ease-in-out
-        transition-duration: 15s
+        // animation: antigravity 5s infinite alternate ease-in-out
+        // transition-duration: 15s
 
-        &.animate
-            // transform: translate(0, -120vh)
-            top: 0
+        // &.animate
+        //     // transform: translate(0, -120vh)
+        //     top: 0
 
 
         &.large
@@ -77,10 +78,10 @@
             transform: translate(-50%, -40%)
             border-radius: 50%
 
-@keyframes antigravity
-    0%
-        transform: translateX(0vw)
-    50%
-        transform: translateX(-10vw)
-    100%
-        transform: translateX(10vw)
+// @keyframes antigravity
+//     0%
+//         transform: translateX(0vw)
+//     50%
+//         transform: translateX(-10vw)
+//     100%
+//         transform: translateX(10vw)

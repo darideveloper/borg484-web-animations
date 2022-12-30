@@ -31,14 +31,9 @@
   margin: 0 auto;
   transition-timing-function: linear;
   position: absolute;
-  top: 180vh;
+  bottom: 0;
   z-index: 2;
   margin-top: -10vw;
-  animation: antigravity 5s infinite alternate ease-in-out;
-  transition-duration: 15s;
-}
-.spheres .sphere.animate {
-  top: 0;
 }
 .spheres .sphere.large {
   width: 36vh;
@@ -71,18 +66,6 @@
   top: 50%;
   transform: translate(-50%, -40%);
   border-radius: 50%;
-}
-
-@keyframes antigravity {
-  0% {
-    transform: translateX(0vw);
-  }
-  50% {
-    transform: translateX(-10vw);
-  }
-  100% {
-    transform: translateX(10vw);
-  }
 }
 
 /*# sourceMappingURL=custom.css.map */
