@@ -1,0 +1,26 @@
+body {
+  font-family: "Rubik", sans-serif;
+  overflow: hidden;
+}
+
+.text-wrapper {
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+.text-wrapper .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+text {
+  font-weight: bold;
+  fill: white;
+}
+
+.used path {
+  stroke: black !important;
+}
+
+/*# sourceMappingURL=custom.css.map */
