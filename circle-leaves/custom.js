@@ -1,20 +1,44 @@
 const donnors = [
   "Dari Developer",
-  // "Sample donnor 1",
-  // "Sample donnor 2",
-  // "Sample donnor 3",
-  // "Sample donnor 4",
-  // "Sample donnor 5",
-  // "Sample donnor 6",
-  // "Sample donnor 7",
+  "Sample donnor 1",
+  "Sample donnor 2",
+  "Sample donnor 3",
+  "Sample donnor 4",
+  "Sample donnor 5",
+  "Sample donnor 6",
+  "Sample donnor 7",
+  "Sample donnor 8",
+  "Sample donnor 9",
+  "Sample donnor 10",
+  "Sample donnor 11",
+  "Sample donnor 12",
+  "Sample donnor 13",
+  "Sample donnor 14",
+  "Sample donnor 15",
+  "Sample donnor 16",
+  "Sample donnor 17",
+  "Sample donnor 18",
+  "Sample donnor 19",
+  "Sample donnor 20",
+  "Sample donnor 21",
+  "Sample donnor 22",
+  "Sample donnor 23",
+  "Sample donnor 24",
+  "Sample donnor 25",
+  "Sample donnor 26",
+  "Sample donnor 27",
+  "Sample donnor 28",
+  "Sample donnor 29",
+  "Sample donnor 30",
 ]
 
-// Find a random leaf that hasn't been used yet
-let leaves = document.querySelectorAll('.leaf')
 
 // Loop each donnor to wriote name over leaf
 let used_laves = []
 function write_donors() {
+
+  // Find a random leaf that hasn't been used yet
+  let leaves = document.querySelectorAll('#svg-group .leaf:not(.used)')
 
   // Get size of the svg
   let svg_elem = document.querySelector('svg')
@@ -27,7 +51,6 @@ function write_donors() {
   let text_wrapper_content = text_wrapper.querySelector('.content')
   text_wrapper.style.width = svg_width
   text_wrapper.style.height = svg_height
-  console.log ({svg_width, svg_height})
 
   for (const donnor of donnors) {
   
@@ -50,7 +73,6 @@ function write_donors() {
     let leaf_width = leaf_content.getBBox().height
     let leaf_transform_rotation = leaf_content.style.transform.split('(')[1].split(')')[0].split(',')[3].replace('deg', '')
     // const leaf_box_x = parseInt(leaf.getBBox().x)
-    console.log ({leaf_width})
     // const leaf_box_y = leaf.getBBox().y
 
     // Convert styles to int

@@ -15,12 +15,7 @@ body {
 }
 
 text {
-  font-weight: bold;
-  fill: white;
-}
-
-.used path {
-  stroke: black !important;
+  fill: black;
 }
 
 /*# sourceMappingURL=custom.css.map */
