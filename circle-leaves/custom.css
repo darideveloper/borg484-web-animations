@@ -16,6 +16,16 @@ body {
 
 text {
   fill: black;
+  opacity: 0;
+  transition-duration: 2s;
+}
+text.visible {
+  opacity: 1;
+}
+
+.used path {
+  fill: #ff7a03 !important;
+  stroke: #ae5405 !important;
 }
 
 /*# sourceMappingURL=custom.css.map */

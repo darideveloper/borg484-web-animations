@@ -36,21 +36,13 @@ const donnors = [
 // Loop each donnor to wriote name over leaf
 let used_laves = []
 function write_donors() {
+  // Add donnors names to random leaves
 
   // Find a random leaf that hasn't been used yet
   let leaves = document.querySelectorAll('#svg-group .leaf:not(.used)')
 
   // Get size of the svg
   let svg_elem = document.querySelector('svg')
-  let svg_style = window.getComputedStyle(svg_elem)
-  let svg_width = svg_style.width
-  let svg_height = svg_style.height
-
-  // Get wrapper of texts
-  let text_wrapper = document.querySelector('.text-wrapper')
-  let text_wrapper_content = text_wrapper.querySelector('.content')
-  text_wrapper.style.width = svg_width
-  text_wrapper.style.height = svg_height
 
   for (const donnor of donnors) {
   
@@ -61,39 +53,31 @@ function write_donors() {
     }
 
     leaf.classList.add('used')
-
-    // Get styles from leaf
-    // let leaf_transform_x = leaf.style.transform.split('(')[1].split(')')[0].split(',')[0].replace('px', '')
-    // let leaf_transform_y = leaf.style.transform.split('(')[1].split(')')[0].split(',')[1].replace('px', '')
-    // let leaf_styles = window.getComputedStyle(leaf)
     let leaf_content = leaf.querySelector("g")
-    // let leaf_height = leaf_styles.height.replace('px', '')
-    // let leaf_width = leaf_styles.width.replace('px', '')
-    // let leaf_height = leaf_content.getBBox().width
     let leaf_width = leaf_content.getBBox().height
     let leaf_transform_rotation = leaf_content.style.transform.split('(')[1].split(')')[0].split(',')[3].replace('deg', '')
-    // const leaf_box_x = parseInt(leaf.getBBox().x)
-    // const leaf_box_y = leaf.getBBox().y
-
-    // Convert styles to int
-    // leaf_transform_x = parseInt(leaf_transform_x)
-    // leaf_transform_y = parseInt(leaf_transform_y)
     leaf_transform_rotation = parseInt(leaf_transform_rotation)
 
     // Fix styles
     leaf_transform_rotation = 90 + leaf_transform_rotation
-    // leaf_transform_x = leaf_transform_x + leaf_box_x
-    // leaf_transform_y = leaf_transform_y + leaf_box_y
-  
+
     // add new text and get it
     leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/5.6}px, ${leaf_width/22}px);">${donnor}</text>`
-    let text = text_wrapper_content.lastElementChild
-
   }
+}
+
+function show_donnors () {
+  // DIsplay donnors names already addeed
+
+  let text_wrapper = document.querySelectorAll('text')
+  text_wrapper.forEach((text) => {
+    text.classList.add('visible')
+  })
 }
 
 // Set names when load
 setTimeout(write_donors, 3000)
+setTimeout(show_donnors, 3100)
 
 // Refresh when resize
 window.addEventListener('resize', () => {
