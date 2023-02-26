@@ -1,19 +1,48 @@
-import {create_stars} from "./stars.js"
+import {create_empty_stars, write_donnor, sleep} from "./stars.js"
 
-async function render_stars () {
-    
+let last_donnors = []
+let donnors = []
+let max_stars = 0
+
+async function update_data () {
   // Get data from remote json file
   const res = await fetch("https://raw.githubusercontent.com/darideveloper/borg484-web-animations/master/flip-stars/donnors.json")
   const json_data = await res.json()
-  console.log (json_data)
   
   // Get data from json
-  const donnors = json_data.donnors
-  const max_stars = json_data.max_stars
-
-  create_stars (max_stars, donnors)
+  donnors = json_data.donnors
+  max_stars = json_data.max_stars
 }
 
-// Render stars each 5 seconds
-render_stars ()
-setInterval (render_stars, 10000)
+async function render_empty_stars () {
+  // render empty stars
+  await update_data ()
+  await create_empty_stars (max_stars)
+}
+
+async function render_new_stars () {
+
+  await update_data ()
+    
+  // Filter new donnors
+  const new_donnors = donnors.filter (donnor => !last_donnors.includes(donnor))
+  for (const donnor of new_donnors) {
+
+    // Write donnor in star
+    await write_donnor (donnor)
+    last_donnors.push(donnor)
+  }
+  
+  // Render again new stars, after 1 second
+  await sleep (1000)
+  render_new_stars ()
+}
+
+async function init () {
+  // Initial function for firsts runs
+  await render_empty_stars () 
+  await render_new_stars ()
+}
+
+// Run init function
+init ()
