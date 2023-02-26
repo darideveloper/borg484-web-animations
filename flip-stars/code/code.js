@@ -26,6 +26,11 @@ async function render_new_stars () {
     
   // Filter new donnors
   const new_donnors = donnors.filter (donnor => !last_donnors.includes(donnor))
+  if (new_donnors.length > 0) {
+    console.log (`New donnors: ${new_donnors.join(", ")}`)
+  } else {
+    console.log ("No new donnors")
+  }
   for (const donnor of new_donnors) {
 
     // Write donnor in star
@@ -34,7 +39,7 @@ async function render_new_stars () {
   }
   
   // Render again new stars, after 1 second
-  await sleep (1000)
+  await sleep (5000)
   render_new_stars ()
 }
 
