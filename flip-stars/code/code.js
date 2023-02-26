@@ -1,16 +1,16 @@
-import {create_empty_stars, write_donnor, sleep} from "./stars.js"
+import {create_empty_stars, write_donor, sleep} from "./stars.js"
 
-let last_donnors = []
-let donnors = []
+let last_donors = []
+let donors = []
 let max_stars = 0
 
 async function update_data () {
   // Get data from remote json file
-  const res = await fetch("https://raw.githubusercontent.com/darideveloper/borg484-web-animations/master/flip-stars/donnors.json")
+  const res = await fetch("https://raw.githubusercontent.com/darideveloper/borg484-web-animations/master/flip-stars/donors.json")
   const json_data = await res.json()
   
   // Get data from json
-  donnors = json_data.donnors
+  donors = json_data.donors
   max_stars = json_data.max_stars
 }
 
@@ -24,18 +24,18 @@ async function render_new_stars () {
 
   await update_data ()
     
-  // Filter new donnors
-  const new_donnors = donnors.filter (donnor => !last_donnors.includes(donnor))
-  if (new_donnors.length > 0) {
-    console.log (`New donnors: ${new_donnors.join(", ")}`)
+  // Filter new donors
+  const new_donors = donors.filter (donor => !last_donors.includes(donor))
+  if (new_donors.length > 0) {
+    console.log (`New donors: ${new_donors.join(", ")}`)
   } else {
-    console.log ("No new donnors")
+    console.log ("No new donors")
   }
-  for (const donnor of new_donnors) {
+  for (const donor of new_donors) {
 
-    // Write donnor in star
-    await write_donnor (donnor)
-    last_donnors.push(donnor)
+    // Write donor in star
+    await write_donor (donor)
+    last_donors.push(donor)
   }
   
   // Render again new stars, after 1 second

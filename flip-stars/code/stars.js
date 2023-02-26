@@ -27,10 +27,10 @@ export async function create_empty_stars (max_stars) {
   await sleep (1000)
 }
 
-export async function write_donnor (donnor) {  
-  // insert new donnor in already created star
+export async function write_donor (donor) {  
+  // insert new donor in already created star
   const current_star = document.querySelector(".star.empty")
-  const span_name = `<span class="name">${donnor}</span>`
+  const span_name = `<span class="name">${donor}</span>`
   current_star.classList.remove("empty")
   current_star.innerHTML = span_name + svg + svg_blur
 
