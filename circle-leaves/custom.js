@@ -52,14 +52,22 @@ function write_donors() {
       leaf = leaves[Math.floor(Math.random() * leaves.length)]
     }
 
-    leaf.classList.add('used')
+    // Get properties
     let leaf_content = leaf.querySelector("g")
+    let leaf_path = leaf.querySelector("path")
     let leaf_width = leaf_content.getBBox().height
     let leaf_transform_rotation = leaf_content.style.transform.split('(')[1].split(')')[0].split(',')[3].replace('deg', '')
     leaf_transform_rotation = parseInt(leaf_transform_rotation)
 
     // Fix styles
     leaf_transform_rotation = 90 + leaf_transform_rotation
+
+    // Remove leaf styles from html
+    leaf.classList.add('pre-used')
+    leaf_path.removeAttribute('style')
+
+    // Set used class
+    setTimeout(() => leaf.classList.add('used'), 100)
 
     // add new text and get it
     leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/5.6}px, ${leaf_width/22}px);">${donnor}</text>`
@@ -76,8 +84,8 @@ function show_donnors () {
 }
 
 // Set names when load
-setTimeout(write_donors, 3000)
-setTimeout(show_donnors, 3100)
+setTimeout(write_donors, 4000)
+setTimeout(show_donnors, 4100)
 
 // Refresh when resize
 window.addEventListener('resize', () => {

@@ -23,9 +23,16 @@ text.visible {
   opacity: 1;
 }
 
-.used path {
-  fill: #ff7a03 !important;
-  stroke: #ae5405 !important;
+g.leaf.pre-used path {
+  transition-duration: 2s;
+  stroke: rgb(125, 141, 35);
+  stroke-dasharray: 101.336;
+  stroke-dashoffset: 0;
+  fill: rgba(145, 180, 60, 0.5);
+}
+g.leaf.pre-used.used path {
+  fill: #ff7a03;
+  stroke: #b55500;
 }
 
 /*# sourceMappingURL=custom.css.map */
