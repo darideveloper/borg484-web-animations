@@ -52,6 +52,9 @@ function write_donors() {
       leaf = leaves[Math.floor(Math.random() * leaves.length)]
     }
 
+    // Save used leaf
+    used_laves.push(leaf)
+
     // Get properties
     let leaf_content = leaf.querySelector("g")
     let leaf_path = leaf.querySelector("path")
