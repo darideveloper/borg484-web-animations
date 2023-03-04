@@ -23,23 +23,19 @@ text
         opacity: 1
 
 g.leaf.pre-used
+    transform: scale(1.0)
+    transition-duration: 2s
+
     path
         transition-duration: 2s
-
-        // filter: hue-rotate(0deg)
-
-        // fill: rgba(160, 190, 86, 0.867) !important
-        // stroke: rgb(125, 141, 35) !important
-
         stroke: rgb(125, 141, 35) 
         stroke-dasharray: 101.336 
         stroke-dashoffset: 0 
         fill: rgb(145, 180, 60, 0.5)
+        transform: scale(1) !important
 
     &.used
         path
-            // filter: hue-rotate(325deg) saturate(3) brightness(0.9)
-            // fill: rgba(159, 190, 86) !important
-
             fill: #ff7a03
             stroke: #b55500
+            transform: scale(1.8) !important

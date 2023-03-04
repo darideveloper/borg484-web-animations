@@ -73,7 +73,11 @@ function write_donors() {
     setTimeout(() => leaf.classList.add('used'), 100)
 
     // add new text and get it
-    leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/5.6}px, ${leaf_width/22}px);">${donnor}</text>`
+    leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12*1.8}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/5.6}px, ${leaf_width/22}px)">${donnor}</text>`
+
+    // Update size of svg
+    leaf_transform = leaf.style.transform += " scale(0.8)"
+    leaf.style.transform = leaf_transform
   }
 }
 
