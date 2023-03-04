@@ -1,42 +1,42 @@
-const donnors = [
-  "Dari Developer",
-  "Sample donnor 1",
-  "Sample donnor 2",
-  "Sample donnor 3",
-  "Sample donnor 4",
-  "Sample donnor 5",
-  "Sample donnor 6",
-  "Sample donnor 7",
-  "Sample donnor 8",
-  "Sample donnor 9",
-  "Sample donnor 10",
-  "Sample donnor 11",
-  "Sample donnor 12",
-  "Sample donnor 13",
-  "Sample donnor 14",
-  "Sample donnor 15",
-  "Sample donnor 16",
-  "Sample donnor 17",
-  "Sample donnor 18",
-  "Sample donnor 19",
-  "Sample donnor 20",
-  "Sample donnor 21",
-  "Sample donnor 22",
-  "Sample donnor 23",
-  "Sample donnor 24",
-  "Sample donnor 25",
-  "Sample donnor 26",
-  "Sample donnor 27",
-  "Sample donnor 28",
-  "Sample donnor 29",
-  "Sample donnor 30",
+const donors = [
+  "Dari-Developer",
+  "Sample-donor 1",
+  "Sample-donor 2",
+  "Sample-donor 3",
+  "Sample-donor 4",
+  "Sample-donor 5",
+  "Sample-donor 6",
+  "Sample-donor 7",
+  "Sample-donor 8",
+  "Sample-donor 9",
+  "Sample-donor 10",
+  "Sample-donor 11",
+  "Sample-donor 12",
+  "Sample-donor 13",
+  "Sample-donor 14",
+  "Sample-donor 15",
+  "Sample-donor 16",
+  "Sample-donor 17",
+  "Sample-donor 18",
+  "Sample-donor 19",
+  "Sample-donor 20",
+  "Sample-donor 21",
+  "Sample-donor 22",
+  "Sample-donor 23",
+  "Sample-donor 24",
+  "Sample-donor 25",
+  "Sample-donor 26",
+  "Sample-donor 27",
+  "Sample-donor 28",
+  "Sample-donor 29",
+  "Sample-donor 30",
 ]
 
 
-// Loop each donnor to wriote name over leaf
+// Loop each donor to wriote name over leaf
 let used_laves = []
 function write_donors() {
-  // Add donnors names to random leaves
+  // Add donors names to random leaves
 
   // Find a random leaf that hasn't been used yet
   let leaves = document.querySelectorAll('#svg-group .leaf:not(.used)')
@@ -44,7 +44,7 @@ function write_donors() {
   // Get size of the svg
   let svg_elem = document.querySelector('svg')
 
-  for (const donnor of donnors) {
+  for (const donor of donors) {
   
     // Find free leaf
     let leaf = leaves[Math.floor(Math.random() * leaves.length)]
@@ -73,7 +73,11 @@ function write_donors() {
     setTimeout(() => leaf.classList.add('used'), 100)
 
     // add new text and get it
-    leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12*1.8}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/5.6}px, ${leaf_width/22}px)">${donnor}</text>`
+    donor_lines = donor.split('-')
+
+    leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12*1.8}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/2}px, -${leaf_width/12}px);">${donor_lines[0]}</text>`
+
+    leaf.innerHTML += `<text x="0" y="0" style="font-size: ${leaf_width/12*1.8}px; transform: rotate3d(0, 0, 1, ${leaf_transform_rotation}deg) translate(${leaf_width/2}px, ${leaf_width/12}px);">${donor_lines[1]}</text>`
 
     // Update size of svg
     leaf_transform = leaf.style.transform += " scale(0.8)"
@@ -81,8 +85,8 @@ function write_donors() {
   }
 }
 
-function show_donnors () {
-  // DIsplay donnors names already addeed
+function show_donors () {
+  // DIsplay donors names already addeed
 
   let text_wrapper = document.querySelectorAll('text')
   text_wrapper.forEach((text) => {
@@ -92,7 +96,7 @@ function show_donnors () {
 
 // Set names when load
 setTimeout(write_donors, 4000)
-setTimeout(show_donnors, 4100)
+setTimeout(show_donors, 4100)
 
 // Refresh when resize
 window.addEventListener('resize', () => {
