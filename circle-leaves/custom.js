@@ -32,14 +32,13 @@ const donors = [
   "Sample-donor 30",
 ]
 
+// Find a random leaf that hasn't been used yet
+let leaves = document.querySelectorAll('#svg-group .leaf:not(.used)')
 
 // Loop each donor to wriote name over leaf
 let used_laves = []
 function write_donors() {
   // Add donors names to random leaves
-
-  // Find a random leaf that hasn't been used yet
-  let leaves = document.querySelectorAll('#svg-group .leaf:not(.used)')
 
   // Get size of the svg
   let svg_elem = document.querySelector('svg')

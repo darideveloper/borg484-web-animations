@@ -7,12 +7,10 @@ const line = d3.line().curve(d3.curveBasis);
 
 const colors = chroma.scale(['#91B43C', '#C86B28', '#FFC501', '#CB2228']);//.mode('lch');
 
-const fill_color = "#91B43C"
-const stroke_color = "#7d8d23"
-
 function init() {
   onResize();
-  
+  window.addEventListener('resize', onResize, false);
+
   initStartAnim();
 
   const inputHandler = new InputHandler({
@@ -33,7 +31,7 @@ function init() {
         let h = w + rnd(w * 2);
         let rz = (this.rad + rnd(Math.PI / 3, true)) * 180 / Math.PI;
         let fill = chroma(this.path.stroke).set('hsl.l', 0.2 + rnd(0.4)).hex();
-        new Leaf(svgGroup, this.x, this.y, w, h, 3 + Math.round(rnd(5)), rz, stroke_color, fill_color);
+        new Leaf(svgGroup, this.x, this.y, w, h, 3 + Math.round(rnd(5)), rz, this.path.stroke, fill);
       }
       else {
         points[points.length - 1] = [this.x, this.y];
@@ -45,7 +43,7 @@ function init() {
         let w = 10 + rnd(10);
         let h = w + rnd(w * 2);
         let fill = chroma(this.path.stroke).set('hsl.l', 0.2 + rnd(0.4)).hex();
-        new Leaf(svgGroup, this.x, this.y, w, h, 3 + Math.round(rnd(5)), this.rad * 180 / Math.PI, stroke_color, fill_color);
+        new Leaf(svgGroup, this.x, this.y, w, h, 3 + Math.round(rnd(5)), this.rad * 180 / Math.PI, this.path.stroke, fill);
       }
     },
     updateInputCoords(e) {
@@ -86,7 +84,7 @@ function createRing(rx, ry, r, n) {
     h = w + rnd(w * 2);
     rz = a * 180 / Math.PI - 90;
     fill = chroma(stroke).set('hsl.l', 0.2 + rnd(0.4)).hex();
-    new Leaf(svgGroup, x, y, w, h, 3 + Math.round(rnd(5)), rz, stroke_color, fill_color);
+    new Leaf(svgGroup, x, y, w, h, 3 + Math.round(rnd(5)), rz, stroke, fill);
   }
 }
 
@@ -160,11 +158,10 @@ class Leaf {
     this.group.classList.add('leaf');
     this.group.style.transform = `translate(${this.x}px, ${this.y}px)`;
     this.elt.appendChild(this.group);
-    
+
     let innerGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     innerGroup.style.transform = `rotate3d(0, 0, 1, ${this.rz}deg)`;
     this.group.appendChild(innerGroup);
-
 
     this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     this.path.setAttributeNS(null, 'd', this.pathD());
