@@ -4,6 +4,7 @@ body {
   height: 100%;
   background: #fff;
   zoom: 200%;
+  font-family: 'Quicksand', sans-serif;
 }
 
 #svg {
@@ -16,4 +17,18 @@ body {
 .leaf path {
   stroke-width: 1px;
   opacity: 0.8;
+}
+
+text {
+  fill: #ffffff;
+  transition-duration: 1s;
+  font-weight: bold;
+}
+
+text.animated {
+  fill: #223c50;
+}
+
+g.no-word {
+  opacity: 0.6;
 }

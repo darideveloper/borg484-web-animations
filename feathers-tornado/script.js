@@ -1,6 +1,6 @@
 let width, height, cx, cy;
 const svg = document.getElementById('svg'),leaves = document.getElementById('leaves');
-const nbLeaves = 750;
+const nbLeaves = donors.length;
 
 const simplex = new SimplexNoise();
 // let colors = chroma.scale([chroma.random(), chroma.random(), chroma.random()]).mode('lch');
@@ -10,44 +10,32 @@ const simplex = new SimplexNoise();
 let colors = chroma.scale(['#e8f4ff', '#e0f0ff', '#d2e7fa', '#c2e1fc', '#b6dcfc', '#a2cff5']);
 let count = 0,timeout;
 
-function init() {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function init() {
   onResize();
   window.addEventListener('resize', onResize, false);
 
-  createLeaves();
-
-  svg.addEventListener('mouseup', e => {
-    count = 0;
-    if (timeout) clearTimeout(timeout);
-    while (leaves.firstChild) {
-      leaves.removeChild(leaves.firstChild);
-    }
-    colors = chroma.scale([chroma.random(), chroma.random(), chroma.random()]).mode('lch');
-    createLeaves();
-  });
-}
-
-function createLeaves() {
-  if (count++ < nbLeaves) {
-    createLeaf();
-    timeout = setTimeout(() => {
-      createLeaves();
-    }, rnd(50));
+  for (donor of donors) {
+    createLeaf(donor)
+    await sleep(rnd(500))
   }
 }
 
-function createLeaf() {
+function createLeaf(donor) {
   let size = 30 // min size (width)
   let w = size + rnd(20); 
   let h = w + rnd(w * 2);
   let x = rnd(cx - cx / 5, true);
   let y = rnd(cy - cy / 5, true);
   let l = new Leaf(x, y, w, h, 3 + Math.round(rnd(5)));
-  l.create(leaves);
+  l.create(leaves, donor);
 }
 
 class Leaf {
-  constructor(x, y, w, h, n) {
+  constructor(x, y, w, h, n, donor) {
     this.x = x;this.y = y;
     this.w = w;this.h = h;
     this.n = n;
@@ -74,9 +62,8 @@ class Leaf {
     { x: rnd(w / 20, true), y: h / 3 + rnd(h / 20, true) },
     { x: rnd(w / 20, true), y: 2 * h / 3 + rnd(h / 20, true) },
     this.ep);
-
   }
-  create(elt) {
+  create(elt, donor) {
     this.group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     this.group.style.transform = `translate(${this.x}px, ${this.y}px) rotate3d(0, 0, 1, ${this.rz}deg)`;
     elt.appendChild(this.group);
@@ -93,6 +80,41 @@ class Leaf {
     this.path.style.strokeDasharray = length;
     this.path.style.strokeDashoffset = length;
     TweenMax.to(this.path, 3 + rnd(5), { strokeDashoffset: 0, fill: this.fill });
+
+
+    const leaf_height = this.group.getBBox().height.toFixed(2);
+    const leaf_width = this.group.getBBox().width.toFixed(2);
+    let first_part = false
+    donor.split(" ").forEach((word) => {
+      let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttributeNS(null, 'x', 0);
+      text.setAttributeNS(null, 'y', 0);
+      text.setAttributeNS(null, 'text-anchor', 'middle');
+      text.setAttributeNS(null, 'dominant-baseline', 'middle');
+      text.setAttributeNS(null, 'font-size', `${leaf_height/12}px`);
+      text.setAttributeNS(null, 'font-family', 'sans-serif');
+      text.setAttributeNS(null, 'fill', this.stroke);
+
+      if (first_part) {
+        text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${leaf_width/6}px)`;
+      } else {
+        text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${-leaf_width/6}px)`;
+      }
+
+      text.innerHTML = word;
+      this.group.appendChild(text);
+
+      first_part = true
+
+      text = this.group.querySelector('text:last-child');
+      setTimeout(() => {
+        text.classList.add('animated');
+      }, 2500);
+
+      if (! word) {
+        this.group.classList.add('no-word');
+      }
+    })
   }
   pathD() {
     let d = [];
