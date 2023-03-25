@@ -43,6 +43,8 @@ body {
   height: 100%;
   right: 8vw;
   top: 0;
+  overflow-y: hidden;
+  padding: 0 1vw;
 }
 .thanks h2 {
   font-size: 5vw;
@@ -55,33 +57,29 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  height: 80%;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  height: 80vh;
+  overflow-y: hidden;
 }
-.thanks .donations::-webkit-scrollbar {
-  display: none;
-}
-.thanks .donations .donation {
+.thanks .donations .content .donation {
   text-align: center;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 3vw 0;
 }
-.thanks .donations .donation span {
+.thanks .donations .content .donation span {
   border-radius: 100px;
   padding: 0.1vw 4vw;
   margin: 0.5vw 0;
 }
-.thanks .donations .donation span.name {
+.thanks .donations .content .donation span.name {
   border: 3px solid red;
   font-size: 1.5vw;
   background-color: rgb(255, 255, 253);
 }
-.thanks .donations .donation span.amount {
+.thanks .donations .content .donation span.amount {
   border: 2px solid black;
   font-size: 1.3vw;
   background-color: #deff1f;
