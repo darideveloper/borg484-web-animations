@@ -1,0 +1,90 @@
+body {
+  background: rgb(255, 255, 253);
+  background: linear-gradient(90deg, rgb(255, 255, 253) 0%, rgb(229, 255, 77) 93%, rgb(223, 255, 36) 100%);
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.main-text {
+  transform: rotate(-30deg);
+  position: absolute;
+  top: 10vw;
+}
+.main-text h1 {
+  font-size: 7vw;
+  font-weight: normal;
+  letter-spacing: 2.7vw;
+}
+.main-text h1 span.bg {
+  position: absolute;
+  top: 6vw;
+  left: 0.3vw;
+  color: #ddff1f;
+  z-index: -1;
+}
+
+.small-wrapper {
+  margin-top: -6vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-wrapper p {
+  text-align: center;
+  border: 2px solid #ddff1f;
+  display: inline-block;
+  padding: 3px 30px;
+  background: rgb(255, 255, 253);
+  font-weight: bold;
+  font-size: 1vw;
+}
+
+.thanks {
+  position: absolute;
+  height: 100%;
+  right: 8vw;
+  top: 0;
+}
+.thanks h2 {
+  font-size: 5vw;
+  font-style: italic;
+  margin: 0;
+  margin-top: 2vw;
+}
+.thanks .donations {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 80%;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.thanks .donations::-webkit-scrollbar {
+  display: none;
+}
+.thanks .donations .donation {
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.thanks .donations .donation span {
+  border-radius: 100px;
+  padding: 0.1vw 4vw;
+  margin: 0.5vw 0;
+}
+.thanks .donations .donation span.name {
+  border: 3px solid red;
+  font-size: 1.5vw;
+  background-color: rgb(255, 255, 253);
+}
+.thanks .donations .donation span.amount {
+  border: 2px solid black;
+  font-size: 1.3vw;
+  background-color: #deff1f;
+}
+
+/*# sourceMappingURL=style.css.map */

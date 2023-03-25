@@ -1,0 +1,88 @@
+body
+    // background: rgb(255,255,253)
+    // background: linear-gradient(90deg, rgba(255,255,253,1) 0%, rgba(223,255,36,1) 100%)
+    background: rgb(255,255,253)
+    background: linear-gradient(90deg, rgba(255,255,253,1) 0%, rgba(229,255,77,1) 93%, rgba(223,255,36,1) 100%)
+    font-family: 'Noto Sans JP', sans-serif
+
+.main-text
+    transform: rotate(-30deg)
+    position: absolute
+    top: 10vw
+
+    h1
+        font-size: 7vw
+        font-weight: normal
+        letter-spacing: 2.7vw
+
+        span.bg
+            position: absolute
+            top: 6vw
+            left: 0.3vw
+            color: #ddff1f
+            z-index: -1
+
+.small-wrapper
+    margin-top: -6vw
+    display: flex
+    align-items: center
+    justify-content: center
+
+    p
+        text-align: center
+        border: 2px solid #ddff1f
+        display: inline-block
+        padding: 3px 30px
+        background: rgb(255,255,253)
+        font-weight: bold
+        font-size: 1vw
+
+.thanks
+    position: absolute
+    height: 100%
+    right: 8vw
+    top: 0
+
+    h2
+        font-size: 5vw
+        font-style: italic
+        margin: 0
+        margin-top: 2vw
+
+    .donations
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        flex-direction: column
+        height: 80%
+        overflow: scroll
+
+        // Siable scroll bars
+        -ms-overflow-style: none
+        scrollbar-width: none
+
+        &::-webkit-scrollbar
+            display: none
+
+        .donation
+            text-align: center
+            font-weight: bold
+            display: flex
+            align-items: center
+            justify-content: center
+            flex-direction: column
+
+            span
+                border-radius: 100px
+                padding: 0.1vw 4vw
+                margin: 0.5vw 0
+
+                &.name
+                    border: 3px solid red
+                    font-size: 1.5vw
+                    background-color: rgb(255,255,253)
+
+                &.amount
+                    border: 2px solid black
+                    font-size: 1.3vw
+                    background-color: #deff1f
