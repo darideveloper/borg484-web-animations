@@ -22,20 +22,31 @@ body
             color: #ddff1f
             z-index: -1
 
-.small-wrapper
-    margin-top: -6vw
-    display: flex
-    align-items: center
-    justify-content: center
+    .small-wrapper
+        margin-top: -6vw
+        display: flex
+        align-items: center
+        justify-content: center
 
-    p
-        text-align: center
-        border: 2px solid #ddff1f
-        display: inline-block
-        padding: 3px 30px
-        background: rgb(255,255,253)
-        font-weight: bold
-        font-size: 1vw
+        p
+            text-align: center
+            border: 2px solid #ddff1f
+            display: inline-block
+            padding: 3px 30px
+            background: rgb(255,255,253)
+            font-weight: bold
+            font-size: 1vw
+
+.bg-image
+    width: 40vw
+    height: 100vh
+    background: red
+    opacity: 0.5
+    position: absolute
+    top: 0
+    left: 8vw
+    z-index: -1
+
 
 .thanks
     position: absolute
@@ -84,10 +95,3 @@ body
                         border: 2px solid black
                         font-size: 1.3vw
                         background-color: #deff1f
-
-// @keyframes scroll
-//     from
-//         margin-top: 1000px
-
-//     to
-//         margin-top: -1000px

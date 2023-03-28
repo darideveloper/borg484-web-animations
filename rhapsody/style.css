@@ -21,14 +21,13 @@ body {
   color: #ddff1f;
   z-index: -1;
 }
-
-.small-wrapper {
+.main-text .small-wrapper {
   margin-top: -6vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.small-wrapper p {
+.main-text .small-wrapper p {
   text-align: center;
   border: 2px solid #ddff1f;
   display: inline-block;
@@ -36,6 +35,17 @@ body {
   background: rgb(255, 255, 253);
   font-weight: bold;
   font-size: 1vw;
+}
+
+.bg-image {
+  width: 40vw;
+  height: 100vh;
+  background: red;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 8vw;
+  z-index: -1;
 }
 
 .thanks {
