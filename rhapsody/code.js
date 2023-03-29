@@ -33,7 +33,7 @@ async function init () {
   anime({
     targets: selector_content,
     translateY:-(content_height - wrapper_height + 100),
-    duration: 800 * content_donations_count,
+    duration: 1500 * content_donations_count,
     loop: true,
     direction: 'alternate',
     easing: 'easeInOutQuad'
