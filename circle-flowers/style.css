@@ -1,0 +1,27 @@
+body {
+  background-color: #fa4616;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.circle {
+  border: 2px solid #ffffff;
+  width: 30vw;
+  height: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.flower {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/*# sourceMappingURL=style.css.map */
