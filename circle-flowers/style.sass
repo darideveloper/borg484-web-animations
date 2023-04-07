@@ -6,21 +6,33 @@ body
     color: $color-text
     overflow: hidden
 
-.circle
-    border: 2px solid $color-text
-    width: 30vw
-    height: 30vw
+.content
     position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    border-radius: 50% 
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    animation: rotatation 100s linear infinite
 
-.flower
-    margin: 0
-    padding: 0
-    position: absolute 
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%) rotate(180deg)
-    
+    .circle
+        border: 2px solid $color-text
+        width: 30vw
+        height: 30vw
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        border-radius: 50% 
+
+    .flower
+        margin: 0
+        padding: 0
+        position: absolute 
+        top: 50%
+        left: 50%
+        
+    @keyframes rotatation
+        0%
+            transform: rotate(0deg)
+        100%
+            transform: rotate(360deg)
