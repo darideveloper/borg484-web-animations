@@ -9,19 +9,14 @@ body {
     display: block;
     position: relative;
     animation: wind 4s infinite;
-    margin-top: -15vw;
+    margin-top: -10vw;
+    transform: scale(0.5)
   }
-  
-  @keyframes wind {
-    0%, 100% {transform:scaleY(1)}
-    50% {transform:scaleY(0.9)}
-  
-  }
-  
+
   /* STEM */
   .stem {
-    height: 0px;
-    width: 5px;
+    height: 0;
+    width: 0.4vw;
     background: white;
     animation: 1s grow-flower forwards;
     position: absolute;
@@ -30,32 +25,32 @@ body {
   
   .stem::before {
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 2vw;
+    height: 2.5vw;
     border-radius: 50%;
     background: none;
-    border-left: 5px solid white;
+    border-left: 0.5vw solid white;
     display: block;
     position: absolute;
     transform: rotate(40deg);
-    bottom: -10px;
+    bottom: -0.5vw;
     left: 0;
     animation: 1s grow-side forwards;
   }
   
   .stem::after {
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 2vw;
+    height: 2.5vw;
     border-radius: 50%;
     background: none;
-    border-right: 5px solid white;
+    border-right:0.5vw solid white;
     display: block;
     position: absolute;
     transform: rotate(-40deg);
-    bottom: -10px;
+    bottom: -0.5vw;
     right: 0;
-     animation: 1s grow-side forwards;
+    animation: 1s grow-side forwards;
   }
   
   @keyframes grow-side {
@@ -65,8 +60,8 @@ body {
     
     
   @keyframes grow-flower {
-    from {height: 0px;}
-    to {height: 90px;}
+    from {height: 0;}
+    to {height: 5vw;}
   }
   
   
@@ -74,8 +69,8 @@ body {
   
   .petals {
     position: absolute;
-    margin-top: -95px;
-    margin-left: -11px;
+    margin-top: -7vw;
+    margin-left: -0.8vw;
     z-index: 999;
     animation: bloom 1s forwards;
   }
@@ -86,51 +81,51 @@ body {
   
   }
   .petal-center {
-    width: 25px;
-    height: 25px;
+    width: 2vw;
+    height: 2vw;
     background: #f84516;
-    border: 3px solid white;
+    border: 0.3vw solid white;
     border-radius: 50%;
-    margin-left:-2px;
+    margin-left:-0.1vw;
     z-index: 9999999!important;
   }
   
   .petal-leaf {
-    width: 15px;
-    height: 20px;
+    width: 1.1vw;
+    height: 1.5vw;
     background: #f84516;
     position: absolute;
     border-radius: 50% 50% 0px 0px;
-    border: 3px solid white;
+    border: 0.3vw solid white;
     z-index: -1;
   }
   
   .petal-leaf:nth-of-type(1) {
-    margin-top: -20px;
-    margin-left: 4px;
+    margin-top: -1.5vw;
+    margin-left: 0.2vw;
   }
   
   .petal-leaf:nth-of-type(2) {
-    margin-top: -8px;
-    margin-left: 18px;
+    margin-top: -0.8vw;
+    margin-left: 1.4vw;
     transform: rotate(60deg);
   }
   
   .petal-leaf:nth-of-type(3) {
-    margin-top: -8px;
-    margin-left: -12px;
+    margin-top: -0.6vw;
+    margin-left: -1vw;
     transform: rotate(-60deg);
   }
   
   .petal-leaf:nth-of-type(4) {
-    margin-top: 22px;
-    margin-left: 3px;
+    margin-top: 1.6vw;
+    margin-left: 0.3vw;
     transform: rotate(180deg);
   }
   
   .petal-leaf:nth-of-type(5) {
-    margin-top: 12px;
-    margin-left: 18px;
+    margin-top: 0.8vw;
+    margin-left: 1.5vw;
     transform: rotate(120deg);
   }
   
@@ -147,30 +142,7 @@ body {
   
   }
   .petal-leaf:nth-of-type(6) {
-    margin-top: 12px;
-    margin-left: -12px;
+    margin-top: 1vw;
+    margin-left: -1vw;
     transform: rotate(240deg);
   }  
-  
-  #reflection{ 
-  transform: rotate(180deg);
-  margin-top:-180px;
-    margin-left:10px;
-    opacity: 0.5;
-    position: relative;
-    text-align: center;
-  }
-  
-  #reflection::after {
-    content: "";
-    height:120px;
-    width: 100px;
-    background: linear-gradient(to bottom, #f84516, rgba(255, 255, 255, 0));
-    position: absolute;
-  /*   top: 0; */
-    margin: 0 auto;
-    right: 0;
-    left: 0;
-    margin-top:-340px;
-  
-  }

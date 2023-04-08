@@ -1,6 +1,6 @@
 import { donors } from './api.js'
 
-const content = document.querySelector('.content')
+const content = document.querySelector('.content-circle')
 
 // Render a flower per donor
 const angle = 360 / donors.length

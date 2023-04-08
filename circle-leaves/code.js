@@ -55,11 +55,11 @@ function init() {
 
 function initStartAnim() {
   const n = 4; r1 = 150, r2 = 30, dr = (r1 - r2) / (n - 1);
-  createRing(0, 0, r1, 50);
+  createRing(0, 0, r1, 30);
   for (let i = 1; i < n; i++) {
     TweenMax.to({}, i * 0.5, {
       onComplete() {
-        createRing(0, 0, r1 - i * dr, 50 - i * 6);
+        createRing(0, 0, r1 - i * dr, 30 - i * 6);
       }
     });
   }

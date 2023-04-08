@@ -4,25 +4,25 @@ body {
   overflow: hidden;
 }
 
-.content {
+.content-circle {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  top: 0;
+  top: -20vh;
   left: 0;
   animation: rotatation 100s linear infinite;
 }
-.content .circle {
-  border: 2px solid #ffffff;
-  width: 30vw;
-  height: 30vw;
+.content-circle .circle {
+  border: 0.15vw solid #ffffff;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
 }
-.content .flower {
+.content-circle .flower {
   margin: 0;
   padding: 0;
   position: absolute;
