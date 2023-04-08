@@ -10,7 +10,7 @@ body {
     position: relative;
     animation: wind 4s infinite;
     margin-top: -10vw;
-    transform: scale(0.5)
+    transform: scale(0.3)
   }
 
   /* STEM */
