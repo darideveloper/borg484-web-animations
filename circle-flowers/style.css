@@ -2,6 +2,7 @@ body {
   background-color: #fa4616;
   color: #ffffff;
   overflow: hidden;
+  font-family: "Heebo", sans-serif;
 }
 
 .content-circle {
@@ -29,6 +30,75 @@ body {
   top: 50%;
   left: 50%;
 }
+.content-circle .flower .flower-container {
+  margin-top: -10vw;
+  transform: scale(0.3);
+}
+
+.bottom-flowers {
+  width: 100vw;
+  height: 30vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.bottom-flowers .donation {
+  padding: 0;
+  width: max-content;
+  height: 4vw;
+  margin: 0 1vw;
+}
+.bottom-flowers .donation .flower-container {
+  transform: scale(0.5);
+}
+.bottom-flowers .donation .amount {
+  font-size: 2vw;
+  margin: 0;
+  font-size: bold;
+  margin-top: 1vw;
+}
+.bottom-flowers .donation .name {
+  font-size: 1.5vw;
+  margin: 0;
+}
+.bottom-flowers .donation .name span {
+  display: block;
+}
+
+.titles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -10vw;
+  z-index: 1;
+}
+.titles span, .titles h1, .titles h2 {
+  display: block;
+  font-weight: bold;
+}
+.titles h2 .up, .titles h2 .down {
+  font-size: 1vw;
+  line-height: 1vw;
+}
+.titles h2 .middle {
+  font-size: 3vw;
+  line-height: 3vw;
+  padding-bottom: 0.5vw;
+}
+.titles h1 .amount {
+  font-size: 4vw;
+  line-height: 2vw;
+  margin-top: 3vw;
+}
+.titles h1 .down span {
+  display: inline-block;
+  font-size: 1vw;
+}
+
 @keyframes rotatation {
   0% {
     transform: rotate(0deg);

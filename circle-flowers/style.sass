@@ -1,10 +1,11 @@
 $color-bg: #fa4616
-$color-text: #ffffff	
-    
+$color-text: #ffffff
+
 body
     background-color: $color-bg
     color: $color-text
     overflow: hidden
+    font-family: 'Heebo', sans-serif
 
 .content-circle
     position: absolute
@@ -22,17 +23,87 @@ body
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-        border-radius: 50% 
+        border-radius: 50%
 
     .flower
         margin: 0
         padding: 0
-        position: absolute 
+        position: absolute
         top: 50%
         left: 50%
-        
-    @keyframes rotatation
-        0%
-            transform: rotate(0deg)
-        100%
-            transform: rotate(360deg)
+
+        .flower-container
+            margin-top: -10vw
+            transform: scale(0.3)
+
+.bottom-flowers
+    width: 100vw
+    height: 30vh
+    position: absolute
+    bottom: 0
+    left: 0
+    display: flex
+    justify-content: flex-start
+    align-items: center
+
+    .donation
+        padding: 0
+        width: max-content
+        height: 4vw
+        margin: 0 1vw
+
+        .flower-container
+            transform: scale(0.5)
+
+        .amount
+            font-size: 2vw
+            margin: 0
+            font-size: bold
+            margin-top: 1vw
+
+        .name
+            font-size: 1.5vw
+            margin: 0
+
+            span
+                display: block
+
+.titles
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    margin-top: -10vw
+    z-index: 1
+
+    span, h1, h2
+        display: block
+        font-weight: bold
+
+    h2
+        .up, .down
+            font-size: 1vw
+            line-height: 1vw
+
+        .middle
+            font-size: 3vw
+            line-height: 3vw
+            padding-bottom: 0.5vw
+
+    h1
+        .amount
+            font-size: 4vw
+            line-height: 2vw
+            margin-top: 3vw
+
+        .down
+            span
+                display: inline-block
+                font-size: 1vw
+
+
+@keyframes rotatation
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
