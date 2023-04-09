@@ -2,6 +2,8 @@ import { donors } from './api.js'
 
 const content_circle = document.querySelector('.content-circle')
 const bottom_flowers = document.querySelector('.bottom-flowers')
+const total_amount_elem = document.querySelector('h1 .amount')
+const num_donors_elem = document.querySelector('h1 .donors-num')
 
 const flower_content = `
   <div class="flower-container">
@@ -50,3 +52,17 @@ for (const donor in donors) {
   // Append flower to body
   bottom_flowers.innerHTML += current_donation
 }
+
+// Get total amount and number of donors
+const total_amount = Object.values(donors).reduce((a, b) => a + b, 0)
+const num_donors = Object.keys(donors).length
+
+// Convert number to currency
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+// Place total amount and number of donors
+total_amount_elem.innerHTML = formatter.format(total_amount)
+num_donors_elem.innerHTML = num_donors
