@@ -21,7 +21,7 @@ const flower_content = `
 `
 
 // Render specific number of flowers in circle
-const num_flowers = 18
+const num_flowers = Object.keys(donors).length
 const angule = 360 / num_flowers
 for (let num_flower = 0; num_flower < num_flowers; num_flower++) {
 
