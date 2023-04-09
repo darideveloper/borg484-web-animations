@@ -16,7 +16,6 @@ body {
     height: 0;
     width: 0.4vw;
     background: white;
-    animation: 1s grow-flower forwards;
     position: absolute;
     bottom: 0;
   }
@@ -55,13 +54,7 @@ body {
     from {opacity: 0;}
     to {opacity: 1;}
   }
-    
-    
-  @keyframes grow-flower {
-    from {height: 0;}
-    to {height: 5vw;}
-  }
-  
+
   
   /* Petals */
   

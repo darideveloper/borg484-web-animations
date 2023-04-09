@@ -5,6 +5,11 @@ body {
   font-family: "Heebo", sans-serif;
 }
 
+.stem {
+  height: 0;
+  transition-duration: 1s;
+}
+
 .content-circle {
   position: absolute;
   width: 100vw;

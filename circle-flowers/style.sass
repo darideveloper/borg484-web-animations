@@ -1,11 +1,21 @@
 $color-bg: #fa4616
 $color-text: #ffffff
 
+@function randomNum($min, $max)
+  $rand: random()
+  $randomNum: $min + floor($rand * (($max - $min) + 1))
+
+  @return $randomNum
+
 body
     background-color: $color-bg
     color: $color-text
     overflow: hidden
     font-family: 'Heebo', sans-serif
+
+.stem
+    height: 0
+    transition-duration: 1s
 
 .content-circle
     position: absolute
@@ -35,6 +45,7 @@ body
         .flower-container
             margin-top: -10vw
             transform: scale(0.3)
+
 
 .bottom-flowers
     width: 100vw
@@ -104,6 +115,7 @@ body
                 line-height: 1vw
 
 
+    
 @keyframes rotatation
     0%
         transform: rotate(0deg)

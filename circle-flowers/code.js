@@ -66,3 +66,36 @@ const formatter = new Intl.NumberFormat('en-US', {
 // Place total amount and number of donors
 total_amount_elem.innerHTML = formatter.format(total_amount)
 num_donors_elem.innerHTML = num_donors
+
+// Set height to circle stems after 1 second
+setTimeout(() => {
+  const stems = document.querySelectorAll('.content-circle .stem')
+  stems.forEach(stem => {
+
+    // get petals of the flowrs
+    const parent_flower = stem.parentElement
+    const petals = parent_flower.querySelector('.petals')
+
+    // Generate random height
+    const random_height = Math.floor(Math.random() * 8) + 5
+    
+    // Update heights
+    stem.style.height = `${random_height}vw`
+    petals.style.marginTop = `-${random_height}vw`
+  })
+})
+
+// Set height to bottom stems after 1 second
+setTimeout(() => {
+  const stems = document.querySelectorAll('.bottom-flowers .stem')
+  stems.forEach(stem => {
+
+    // get petals of the flowrs
+    const parent_flower = stem.parentElement
+    const petals = parent_flower.querySelector('.petals')
+    
+    // Update heights
+    stem.style.height = `7vw`
+    petals.style.marginTop = `-7vw`
+  })
+})
