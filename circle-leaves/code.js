@@ -1,3 +1,5 @@
+const leaves_num = 30
+
 let width, height, cx, cy;
 const svg = document.getElementById('svg'),
   svgGroup = document.getElementById('svg-group'),
@@ -54,12 +56,12 @@ function init() {
 }
 
 function initStartAnim() {
-  const n = 4; r1 = 150, r2 = 30, dr = (r1 - r2) / (n - 1);
+  const n = 4; r1 = 150, r2 = leaves_num, dr = (r1 - r2) / (n - 1);
   createRing(0, 0, r1, 30);
   for (let i = 1; i < n; i++) {
     TweenMax.to({}, i * 0.5, {
       onComplete() {
-        createRing(0, 0, r1 - i * dr, 30 - i * 6);
+        createRing(0, 0, r1 - i * dr, leaves_num - i * 6);
       }
     });
   }
