@@ -18,6 +18,11 @@ body {
 .heros .hero {
   width: 25vw;
   position: relative;
+  transition-duration: 0.5s;
+  opacity: 0;
+}
+.heros .hero.show {
+  opacity: 1;
 }
 .heros .hero img {
   width: 100%;
@@ -36,9 +41,9 @@ body {
   padding: 0;
 }
 .heros .hero .info .amount {
-  font-size: 3.5714285714vw;
+  font-size: 3.125vw;
   width: 100%;
-  margin-bottom: 2.9411764706vw;
+  margin-bottom: 3.125vw;
   color: #fff;
   font-weight: bold;
   text-shadow: 0 0 12px black;

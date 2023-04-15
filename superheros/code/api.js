@@ -3,7 +3,7 @@ function render_donations () {
 
   const hero_elems = document.querySelectorAll (".hero")
 
-  fetch ("./code/api.json")
+  fetch ("https://darideveloper.github.io/borg484-web-animations/superheros/code/api.json")
   .then (response => response.json())
   .then (data => {
     
@@ -20,6 +20,9 @@ function render_donations () {
       amount_elem.innerHTML = donation.amount
       name1_elem.innerHTML = donation.name1
       name2_elem.innerHTML = donation.name2
+
+      // Animate
+      hero_elem.classList.add ("show")
     })
 
   })
