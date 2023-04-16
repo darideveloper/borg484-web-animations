@@ -16,7 +16,6 @@ function render_donations () {
       const name2_elem = hero_elem.querySelector (".name2")
 
       // Place data
-      console.log (amount_elem)
       amount_elem.innerHTML = donation.amount
       name1_elem.innerHTML = donation.name1
       name2_elem.innerHTML = donation.name2
