@@ -5,7 +5,7 @@ body {
 }
 
 .heros {
-  background-image: url(/imgs/bg.webp);
+  background-image: url(../imgs/bg.webp);
   background-size: cover;
   background-position: center;
   width: 100vw;
