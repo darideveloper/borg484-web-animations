@@ -88,12 +88,3 @@ function App(current_canvas, num_burbles, cscale = chroma.scale([chroma.random()
     return Math.random() * (max - min) + min;
   }
 }
-
-// Load main canvas
-const current_canvas = document.querySelector('#canvas');
-App(current_canvas, 100, chroma.scale(["#00ffea", "#00ffea"]))
-
-// Load hero canvas
-document.querySelectorAll (".canvas-hero").forEach(canvas => {
-  App(canvas, 100, chroma.scale(["#ffdd00", "#ffee80"]));
-});
