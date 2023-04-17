@@ -84,9 +84,16 @@ canvas {
   left: 0;
   opacity: 0.2;
   aspect-ratio: auto 1366/671;
+  transition-duration: 1s;
 }
-canvas.canvas-hero {
+canvas.canvas-main {
   opacity: 0.6;
+}
+canvas.canvas-donation {
+  opacity: 0;
+}
+canvas.canvas-donation.show {
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=styles.css.map */

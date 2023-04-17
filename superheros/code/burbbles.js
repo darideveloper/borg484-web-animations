@@ -5,6 +5,7 @@ function App(current_canvas, num_burbles, cscale = chroma.scale([chroma.random()
   const bubbles = [];
 
   init();
+  return this;
 
   function init() {
     onResize();
@@ -19,6 +20,7 @@ function App(current_canvas, num_burbles, cscale = chroma.scale([chroma.random()
     });
 
     animate();
+
   }
 
   function initBubble(i) {
