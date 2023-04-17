@@ -67,10 +67,26 @@ async function init () {
   const current_canvas = document.querySelector('#canvas')
   App(current_canvas, 100, chroma.scale(["#00ffea", "#00ffea"]))
 
+  const canvas_heros_data = [
+    {
+      selector: ".canvas-hero.a",
+      color: ["#fd5d83", "#fd5d83"]
+    },
+    {
+      selector: ".canvas-hero.b",
+      color: ["#fdd45e", "#fdd45e"]
+    },
+    {
+      selector: ".canvas-hero.c",
+      color: ["#9173f5", "#9173f5"]
+    }, 
+  ]
+
   // Load hero canvas
-  document.querySelectorAll (".canvas-hero").forEach(canvas => {
-    App(canvas, 100, chroma.scale(["#ffdd00", "#ffee80"]))
-  })
+  for (canvas_hero_data of canvas_heros_data) {
+    const canvas_hero = document.querySelector(canvas_hero_data.selector)
+    App(canvas_hero, 100, chroma.scale(canvas_hero_data.color))
+  }
 }
 
 
