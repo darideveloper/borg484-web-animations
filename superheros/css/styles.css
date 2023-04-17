@@ -58,6 +58,7 @@ body {
   text-align: center;
   background: none;
   border: none;
+  outline: none;
 }
 .heros .hero .info .name1 {
   font-size: 1.25vw;
