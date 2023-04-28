@@ -5,6 +5,7 @@ body {
   background: #fff;
   zoom: 200%;
   font-family: 'Quicksand', sans-serif;
+  zoom: 1;
 }
 
 #svg {
