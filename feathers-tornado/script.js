@@ -7,7 +7,7 @@ const simplex = new SimplexNoise();
 // let colors = chroma.scale(['#C86B28', '#FFC501', '#CB2228', '#91B43C']);
 
 // let colors = chroma.scale(['#f2f2f2', '#e6e6e6', '#d1d1d1', '#bababa', '#a6a4a4', '#919191']);
-let colors = chroma.scale(['#6e8799']);
+let colors = chroma.scale(['#cee2f0']);
 let count = 0,timeout;
 
 function sleep(ms) {
