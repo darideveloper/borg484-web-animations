@@ -26,9 +26,9 @@ text {
   font-weight: bold;
 }
 
-text.animated {
+/* text.animated {
   fill: #223c50;
-}
+} */
 
 g.no-word {
   opacity: 0.6;
