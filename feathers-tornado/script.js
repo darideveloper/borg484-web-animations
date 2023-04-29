@@ -96,13 +96,15 @@ class Leaf {
       text.setAttributeNS(null, 'fill', this.stroke);
 
       console.log (leaf_height)
+      let translateY
 
       if (first_part) {
-        text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${-leaf_width/5*3}px)`;
+        translateY = -leaf_width/5*3
       } else {
-        text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${-leaf_width/5*1}px)`;
+        translateY = -leaf_width/5*1.6
       }
-
+      
+      text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${translateY}px) scale(0.8)`;
       text.innerHTML = word;
       this.group.appendChild(text);
 
