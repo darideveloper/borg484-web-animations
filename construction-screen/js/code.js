@@ -1,16 +1,28 @@
 const content_elem = document.querySelector(".content")
 
-// spehere enter
-anime({
-  targets: '.donation',
-  translateY: '32vw',
-  duration: 2000,
-  easing: 'easeInSine'
-})
+function donationIn () {
+  let timeline = anime.timeline({
+    easing: 'easeInSine'
+  })
+  timeline
+  .add ({
+    targets: '.donation',
+    translateY: '0vw',
+    translateX: '0vw',
+    rotateZ: 0,
+    duration: 0,
+    easing: 'easeInSine'
+  })
+  .add ({
+    targets: '.donation',
+    translateY: '32vw',
+    duration: 2000,
+    easing: 'easeInSine'
+  })
+}
 
 function donationOut () {
-  var timeline = anime.timeline({
-    duration: 2000,
+  let timeline = anime.timeline({
     easing: 'easeInSine'
   })
   
