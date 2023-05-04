@@ -1,6 +1,12 @@
-const content_elem = document.querySelector(".content")
+export function donationIn (name, amount) {
+  
+  // Update donation data
+  const name_elem = document.querySelector('.donation .name')
+  const amount_elem = document.querySelector('.donation .amount')
+  name_elem.innerHTML = name
+  amount_elem.innerHTML = amount
 
-function donationIn () {
+  // Animate with timeline
   let timeline = anime.timeline({
     easing: 'easeInSine'
   })
@@ -21,7 +27,9 @@ function donationIn () {
   })
 }
 
-function donationOut () {
+export function donationOut () {
+
+  // Animate with timeline
   let timeline = anime.timeline({
     easing: 'easeInSine'
   })
