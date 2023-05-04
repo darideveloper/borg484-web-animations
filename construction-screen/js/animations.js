@@ -1,6 +1,4 @@
-const content_elem = document.querySelector(".content")
-
-function donationIn () {
+export function donationIn () {
   let timeline = anime.timeline({
     easing: 'easeInSine'
   })
@@ -21,7 +19,7 @@ function donationIn () {
   })
 }
 
-function donationOut () {
+export function donationOut () {
   let timeline = anime.timeline({
     easing: 'easeInSine'
   })
