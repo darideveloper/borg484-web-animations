@@ -9,7 +9,7 @@ function init() {
     const positionsY = [5, 10, 15, 20, 25, 30]
 
     // Calculate pinguin random options
-    const hue = Math.floor(Math.random() * 80)
+    const hue = Math.floor(Math.random() * 50)
     const positionX = Math.random() > 0.5 ? 'left' : 'right'
     const positionYIndex = Math.floor(Math.random() * positionsY.length)
     const positionY = positionsY[positionYIndex]
@@ -32,7 +32,7 @@ function init() {
     // Styles
     penguinWrapper.style.filter = `hue-rotate(${hue}deg)`
     penguinWrapper.style.zIndex = zIndex
-    if (penguinWrapper === 'left') {
+    if (positionX === 'left') {
       penguinWrapper.style.left = '-13vw'
     } else {
       penguinWrapper.style.right = '-13vw'
