@@ -1,7 +1,7 @@
-const donations = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+const donations = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, ]
 
 function init() {
-  // Render penguins
+  // Render penguins with donations
 
   const penguinsContainer = document.querySelector('.penguins')
   donations.forEach(donation => {
@@ -48,15 +48,18 @@ function init() {
     penguinWrapper.appendChild(penguin)
     penguinsContainer.appendChild(penguinWrapper)
 
-    // Animate penguin
-    anime({
+    // Animate penguin in loop
+    const animation = anime({
       targets: penguinWrapper,
-      translateX: positionX == 'left' ? '113vw' : '-113vw',
+      translateX: positionX == 'left' ? '115vw' : '-115vw',
       duration: animationTime,
       delay: animationDelay,
       easing: 'linear',
-    })
+      loop: true,
+      direction: 'alternate',
+    })  
   })
 }
+
 
 init()
