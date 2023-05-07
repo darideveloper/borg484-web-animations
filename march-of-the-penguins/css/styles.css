@@ -14,9 +14,19 @@ body, html {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
-.penguins .penguin {
+.penguins .penguin-wrapper {
   position: absolute;
+}
+
+@keyframes walk {
+  0% {
+    transform: rotate(6deg);
+  }
+  100% {
+    transform: rotate(-6deg);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
