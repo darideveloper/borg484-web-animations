@@ -1,4 +1,7 @@
-const donations = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, ]
+const donations = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},]
+
+const minSize = 10
+const maxSize = 15
 
 function init() {
   // Render penguins with donations
@@ -14,7 +17,7 @@ function init() {
     const positionYIndex = Math.floor(Math.random() * positionsY.length)
     const positionY = positionsY[positionYIndex]
     const zIndex = positionsY.length - positionYIndex  // calculate zindex based on positionY
-    const size = Math.floor(Math.random() * 3) + 10
+    const size = Math.floor(Math.random() * (maxSize - minSize)) + minSize
     console.log({ hue, positionX, positionY, size })
 
     // Random animation time and delay
@@ -24,40 +27,53 @@ function init() {
     // html content of penguin
     const penguinWrapper = document.createElement('div')
     penguinWrapper.classList.add('penguin-wrapper')
+
     const penguin = document.createElement('img')
     penguin.src = './images/penguin.svg'
     penguin.alt = 'donation penguin'
     penguin.classList.add('penguin')
 
+    const text = document.createElement('p')
+    const textDonor = document.createElement('span')
+    const textAmount = document.createElement('span')
+    textDonor.classList.add('donor')
+    textAmount.classList.add('amount')
+    text.classList.add('text')
+    textDonor.innerText = 'Anonymous'
+    textAmount.innerText = '1000'
+    text.appendChild(textDonor)
+    text.appendChild(textAmount)
+
     // Styles
     penguinWrapper.style.filter = `hue-rotate(${hue}deg)`
     penguinWrapper.style.zIndex = zIndex
     if (positionX === 'left') {
-      penguinWrapper.style.left = '-13vw'
+      penguinWrapper.style.left = `-${maxSize}vw`
     } else {
-      penguinWrapper.style.right = '-13vw'
+      penguinWrapper.style.right = `-${maxSize}vw`
     }
     penguinWrapper.style.bottom = `${positionY}vh`
     penguinWrapper.style.width = `${size}vw`
     penguin.style.width = `100%`
 
     // Add walk animation
-  penguin.style.animation = `walk ${animationTime / 10000 / 2 }s infinite alternate ease-in-out`
+    penguin.style.animation = `walk ${animationTime / 10000 / 2}s infinite alternate ease-in-out`
 
     // Append to container
     penguinWrapper.appendChild(penguin)
+    penguinWrapper.appendChild(text)
     penguinsContainer.appendChild(penguinWrapper)
 
     // Animate penguin in loop
     const animation = anime({
       targets: penguinWrapper,
-      translateX: positionX == 'left' ? '115vw' : '-115vw',
+      translateX: positionX == 'left' ? `${100 + maxSize}vw` : `-${100 + maxSize}vw`,
       duration: animationTime,
       delay: animationDelay,
       easing: 'linear',
       loop: true,
       direction: 'alternate',
-    })  
+    })
   })
 }
 
