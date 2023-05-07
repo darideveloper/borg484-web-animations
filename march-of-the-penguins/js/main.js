@@ -1,7 +1,8 @@
 import { donations } from './api.js'
 
-const minSize = 10
-const maxSize = 15
+const size1 = 10
+const size2 = 12
+const size3 = 15
 
 function init() {
   // Render penguins with donations
@@ -17,7 +18,13 @@ function init() {
     const positionYIndex = Math.floor(Math.random() * positionsY.length)
     const positionY = positionsY[positionYIndex]
     const zIndex = positionsY.length - positionYIndex  // calculate zindex based on positionY
-    const size = Math.floor(Math.random() * (maxSize - minSize)) + minSize
+    let size = size1
+    if (amount > 50) {
+      size = size2
+    }
+    if (amount > 250) {
+      size = 14
+    }
     console.log({ hue, positionX, positionY, size })
 
     // Random animation time and delay
@@ -51,9 +58,9 @@ function init() {
     penguinWrapper.style.filter = `hue-rotate(${hue}deg)`
     penguinWrapper.style.zIndex = zIndex
     if (positionX === 'left') {
-      penguinWrapper.style.left = `-${maxSize}vw`
+      penguinWrapper.style.left = `-${size3}vw`
     } else {
-      penguinWrapper.style.right = `-${maxSize}vw`
+      penguinWrapper.style.right = `-${size3}vw`
     }
     penguinWrapper.style.bottom = `${positionY}vh`
     penguinWrapper.style.width = `${size}vw`
@@ -76,7 +83,7 @@ function init() {
     // Animate penguin in loop
     anime({
       targets: penguinWrapper,
-      translateX: positionX == 'left' ? `${100 + maxSize}vw` : `-${100 + maxSize}vw`,
+      translateX: positionX == 'left' ? `${100 + size3}vw` : `-${100 + size3}vw`,
       duration: animationTime,
       delay: animationDelay,
       easing: 'linear',
