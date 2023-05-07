@@ -1,0 +1,18 @@
+export const donations = [
+  {name: "dari", amount: 1000},
+  {name: "dev", amount: 2000},
+  {name: "John", amount: 3000},
+  {name: "Doe", amount: 4000},
+  {name: "John", amount: 5000},
+  {name: "Smith", amount: 6000},
+  {name: "John", amount: 7000},
+  {name: "Doe", amount: 8000},
+  {name: "John", amount: 9000},
+  {name: "Smith", amount: 10000},
+  {name: "Page", amount: 11000},
+  {name: "Carter", amount: 12000},
+  {name: "John", amount: 13000},
+  {name: "Doe", amount: 14000},
+  {name: "John", amount: 15000},
+  {name: "Smith", amount: 16000},
+]

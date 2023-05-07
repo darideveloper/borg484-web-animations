@@ -1,4 +1,4 @@
-const donations = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},]
+import { donations } from './api.js'
 
 const minSize = 10
 const maxSize = 15
@@ -7,7 +7,7 @@ function init() {
   // Render penguins with donations
 
   const penguinsContainer = document.querySelector('.penguins')
-  donations.forEach(donation => {
+  donations.forEach(({name, amount}) => {
 
     const positionsY = [5, 10, 15, 20, 25, 30]
 
@@ -42,8 +42,8 @@ function init() {
     textDonor.classList.add('donor')
     textAmount.classList.add('amount')
     text.classList.add('text')
-    textDonor.innerText = 'Dari Dev'
-    textAmount.innerText = '$1000'
+    textDonor.innerText = name
+    textAmount.innerText = `$${amount}`
     text.appendChild(textDonor)
     text.appendChild(textAmount)
 
