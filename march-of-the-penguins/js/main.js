@@ -24,9 +24,12 @@ function init() {
     const animationTime = Math.floor(Math.random() * 10000) + 5000
     const animationDelay = Math.floor(Math.random() * 10000)
 
-    // html content of penguin
+    // Content of penguin
     const penguinWrapper = document.createElement('div')
     penguinWrapper.classList.add('penguin-wrapper')
+
+    const content = document.createElement('div')
+    content.classList.add('content')
 
     const penguin = document.createElement('img')
     penguin.src = './images/penguin.svg'
@@ -39,8 +42,8 @@ function init() {
     textDonor.classList.add('donor')
     textAmount.classList.add('amount')
     text.classList.add('text')
-    textDonor.innerText = 'Anonymous'
-    textAmount.innerText = '1000'
+    textDonor.innerText = 'Dari Dev'
+    textAmount.innerText = '$1000'
     text.appendChild(textDonor)
     text.appendChild(textAmount)
 
@@ -54,18 +57,24 @@ function init() {
     }
     penguinWrapper.style.bottom = `${positionY}vh`
     penguinWrapper.style.width = `${size}vw`
+    content.style.width = `100%`
+    content.style.height = `100%`
     penguin.style.width = `100%`
 
+    text.style.fontSize = `${size}px`
+    text.style.marginTop = `${size*2}px`
+
     // Add walk animation
-    penguin.style.animation = `walk ${animationTime / 10000 / 2}s infinite alternate ease-in-out`
+    content.style.animation = `walk ${animationTime / 10000 / 2}s infinite alternate ease-in-out`
 
     // Append to container
-    penguinWrapper.appendChild(penguin)
-    penguinWrapper.appendChild(text)
+    content.appendChild(penguin)
+    content.appendChild(text)
+    penguinWrapper.appendChild(content)
     penguinsContainer.appendChild(penguinWrapper)
 
     // Animate penguin in loop
-    const animation = anime({
+    anime({
       targets: penguinWrapper,
       translateX: positionX == 'left' ? `${100 + maxSize}vw` : `-${100 + maxSize}vw`,
       duration: animationTime,

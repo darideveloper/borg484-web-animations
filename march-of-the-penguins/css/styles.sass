@@ -4,6 +4,7 @@ body, html
     width: 100vw
     height: 100vh
     overflow: hidden
+    font-family: 'Roboto', sans-serif
 
 .penguins
     width: 100vw
@@ -18,8 +19,22 @@ body, html
     .penguin-wrapper
         position: absolute
 
+
+        .text
+            position: absolute
+            top: 0
+            left: 50%
+            transform: translateX(-50%)
+            color: white
+            display: flex
+            align-items: center
+            justify-content: center
+            flex-direction: column
+            font-weight: bold
+
+
 @keyframes walk
     0%
-        transform: rotate(6deg)   
+        transform: rotate(4deg)   
     100%
-        transform: rotate(-6deg)
+        transform: rotate(-4deg)
