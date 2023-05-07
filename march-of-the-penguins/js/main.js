@@ -6,10 +6,14 @@ function init () {
   const penguinsContainer = document.querySelector ('.penguins')
   donations.forEach (donation => {
 
+    const positionsY = [5, 10, 15, 20, 25, 30]
+
     // Calculate pinguin random options
     const hue = Math.floor (Math.random () * 80)
     const positionX = Math.random () > 0.5 ? 'left' : 'right'
-    const positionY = Math.floor (Math.random () * 20)
+    const positionYIndex = Math.floor (Math.random () * positionsY.length)
+    const positionY = positionsY[positionYIndex]
+    const zIndex = positionsY.length - positionYIndex  // calculate zindex based on positionY
     const size = Math.floor (Math.random () * 3) + 10
     console.log ({hue, positionX, positionY, size}) 
     
@@ -23,6 +27,7 @@ function init () {
 
     // Styles
     penguin.style.filter = `hue-rotate(${hue}deg)`
+    penguin.style.zIndex = zIndex
     if (positionX === 'left') {
       penguin.style.left = '-13vw'
     } else {
