@@ -68,8 +68,8 @@ function init() {
     content.style.height = `100%`
     penguin.style.width = `100%`
 
-    text.style.fontSize = `${size/12}vw`
-    text.style.marginTop = `${size/10*1.5}vw`
+    text.style.fontSize = `${size/8}vw`
+    text.style.marginTop = `${size/10*6}vw`
 
     // Add walk animation
     content.style.animation = `walk ${animationTime / 10000 / 2}s infinite alternate ease-in-out`
