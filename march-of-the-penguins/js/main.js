@@ -8,7 +8,7 @@ function init() {
   // Render penguins with donations
 
   const penguinsContainer = document.querySelector('.penguins')
-  donations.forEach(({name, amount}) => {
+  donations.forEach(({name, amount, imageUrl}) => {
 
     const positionsY = [5, 10, 15, 20, 25, 30]
 
@@ -54,6 +54,10 @@ function init() {
     text.appendChild(textDonor)
     text.appendChild(textAmount)
 
+    const image = document.createElement('img')
+    image.src = imageUrl
+    image.classList.add('photo')
+
     // Styles
     penguinWrapper.style.filter = `hue-rotate(${hue}deg)`
     penguinWrapper.style.zIndex = zIndex
@@ -71,12 +75,17 @@ function init() {
     text.style.fontSize = `${size/8}vw`
     text.style.marginTop = `${size/10*6}vw`
 
+    image.style.filter = `hue-rotate(-${hue}deg)`
+    image.style.width = `${size/10*3.8}vw`
+    image.style.marginTop = `${size/10*0.8}vw`
+
     // Add walk animation
     content.style.animation = `walk ${animationTime / 10000 / 2}s infinite alternate ease-in-out`
 
     // Append to container
     content.appendChild(penguin)
     content.appendChild(text)
+    content.appendChild(image)
     penguinWrapper.appendChild(content)
     penguinsContainer.appendChild(penguinWrapper)
 
