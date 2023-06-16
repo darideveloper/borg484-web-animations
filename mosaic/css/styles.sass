@@ -1,0 +1,29 @@
+html, body
+    margin: 0
+    padding: 0
+    width: 100vw
+    height: 100vh
+    overflow: hidden
+
+.content
+    width: 100vw
+    height: 100vh
+    perspective: 500vw
+
+    .flag
+        width: 110vw
+        height: 110vh
+        position: absolute
+        top: -5vw
+        left: -5vw
+        transform: rotateY(20deg)
+        background-image: url('../imgs/flag.jpg')
+        background-size: cover
+        background-position: center
+        transition-duration: 1s
+
+        &[animation="left"]
+            transform: rotateY(-10deg)
+        
+        &[animation="right"]
+            transform: rotateY(10deg)
