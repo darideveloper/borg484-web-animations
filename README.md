@@ -20,8 +20,6 @@ Visit at: **[darideveloper.github.io/borg484-web-animations](https://daridevelop
 
 Multiple projects from a single client, about donations, with custom animations.
 
-Start date: **2022-11-08**
-
 Project type: **client**
 
 </div><br><details>
