@@ -5,10 +5,19 @@ html, body
     height: 100vh
     overflow: hidden
 
+body
+    perspective: 500vw
+
 .content
     width: 100vw
     height: 100vh
-    perspective: 500vw
+    transition-duration: 1s
+
+    &[animation="left"]
+        transform: rotateY(-10deg)
+    
+    &[animation="right"]
+        transform: rotateY(10deg)
 
     .flag
         width: 110vw
@@ -20,10 +29,47 @@ html, body
         background-image: url('../imgs/flag.jpg')
         background-size: cover
         background-position: center
-        transition-duration: 1s
 
-        &[animation="left"]
-            transform: rotateY(-10deg)
-        
-        &[animation="right"]
-            transform: rotateY(10deg)
+    .donations-wrapper
+        position: absolute
+        top: 0
+        left: 0
+        width: 100vw
+        height: 100vh
+        display: flex
+        flex-direction: column
+
+        .donations-line
+            display: flex
+            width: 100%
+
+            &:not(:first-child)
+                margin-top: -4vw
+
+            .donation 
+                width: 10vw
+                height: 8vw
+                overflow: hidden
+                clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)
+                display: flex
+                justify-content: center
+                align-items: center
+                opacity: 0.3
+                transition-duration: 0.7s
+                
+                &:hover
+                    opacity: 1
+
+                img
+                    width: 100%
+                    height: auto
+
+                &:nth-child(even)
+                    margin-top: 4vw
+                    margin-left: -2.5vw
+
+                &:nth-child(odd)
+                    margin-left: -2.5vw
+
+                &:first-child
+                    margin: 0 !important

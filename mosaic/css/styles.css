@@ -6,10 +6,20 @@ html, body {
   overflow: hidden;
 }
 
+body {
+  perspective: 500vw;
+}
+
 .content {
   width: 100vw;
   height: 100vh;
-  perspective: 500vw;
+  transition-duration: 1s;
+}
+.content[animation=left] {
+  transform: rotateY(-10deg);
+}
+.content[animation=right] {
+  transform: rotateY(10deg);
 }
 .content .flag {
   width: 110vw;
@@ -21,13 +31,50 @@ html, body {
   background-image: url("../imgs/flag.jpg");
   background-size: cover;
   background-position: center;
-  transition-duration: 1s;
 }
-.content .flag[animation=left] {
-  transform: rotateY(-10deg);
+.content .donations-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.content .flag[animation=right] {
-  transform: rotateY(10deg);
+.content .donations-wrapper .donations-line {
+  display: flex;
+  width: 100%;
+}
+.content .donations-wrapper .donations-line:not(:first-child) {
+  margin-top: -4vw;
+}
+.content .donations-wrapper .donations-line .donation {
+  width: 10vw;
+  height: 8vw;
+  overflow: hidden;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+  transition-duration: 0.7s;
+}
+.content .donations-wrapper .donations-line .donation:hover {
+  opacity: 1;
+}
+.content .donations-wrapper .donations-line .donation img {
+  width: 100%;
+  height: auto;
+}
+.content .donations-wrapper .donations-line .donation:nth-child(even) {
+  margin-top: 4vw;
+  margin-left: -2.5vw;
+}
+.content .donations-wrapper .donations-line .donation:nth-child(odd) {
+  margin-left: -2.5vw;
+}
+.content .donations-wrapper .donations-line .donation:first-child {
+  margin: 0 !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
