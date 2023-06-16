@@ -3,10 +3,10 @@ const donationsPerLine = 12
 const donationsWrapperElem = document.querySelector ('.donations-wrapper')
 
 // Render donations images
-function renderDonations () {
+async function renderDonations () {
 
   // Get donatrions
-  const donations = getDonations ()
+  const donations = await getDonations ()
 
   // Split donation in lines
   const donationsPerLine = 13

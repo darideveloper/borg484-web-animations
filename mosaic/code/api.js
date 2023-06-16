@@ -1,98 +1,20 @@
-function getDonations() {
+const endpoint = "https://web-animations-dashboard-74c97ec6c712.herokuapp.com/donations/mosaic"
+const baseS3 = "https://django-daridev.s3.amazonaws.com/media"
 
-  // Dummy data
-  return [
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
-    {"name": "sample 2", "image": "./imgs/donation2.png",},
-    {"name": "sample 3", "image": "./imgs/donation3.png",},
-    {"name": "sample 4", "image": "./imgs/donation4.png",},
-    {"name": "sample 5", "image": "./imgs/donation5.png",},
-    {"name": "sample 6", "image": "./imgs/donation1.png",},
-    {"name": "sample 7", "image": "./imgs/donation2.png",},
-    {"name": "sample 8", "image": "./imgs/donation3.png",},
-    {"name": "sample 9", "image": "./imgs/donation4.png",},
-    {"name": "sample 10", "image": "./imgs/donation5.png",},  
-    {"name": "sample 1", "image": "./imgs/donation1.png",},
+async function getDonations() {
 
-  ]
+  // Fetch json data from API
+  const res = await fetch(endpoint)
+  const data = await res.json()
+  
+  // Format data
+  let donations = []
+  data.forEach(donation => {
+    donations.push ({
+      "name": donation.donor,
+      "image": `${baseS3}/${donation.image}`,
+    })
+  })
+
+  return donations
 }
