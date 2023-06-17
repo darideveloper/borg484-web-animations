@@ -1,12 +1,21 @@
-const donationsPerLine = 12
-
 const donationsWrapperElem = document.querySelector ('.donations-wrapper')
+let donations = []
 
-// Render donations images
+// Make donations already rendered, visible
+async function showDonations () {
+    // Make donations visible, one by one
+    const donationsElems = document.querySelectorAll ('.donation.hide')
+    for (const donation of donationsElems) {
+      await new Promise (resolve => setTimeout (resolve, 300))
+      donation.classList.remove ('hide')
+    }
+}
+
+// Render donations images from api
 async function renderDonations () {
 
   // Get donatrions
-  const donations = await getDonations ()
+  donations = await getDonations ()
 
   // Split donation in lines
   const donationsPerLine = 13
@@ -24,37 +33,71 @@ async function renderDonations () {
   }
 
   // Render each line
-  donationsLines.forEach ((donationsLine) => {
+  donationsLines.forEach (async (donationsLine) => {
     
     // Create line element
-    const donationsLineElem = document.createElement ('div')
-    donationsLineElem.classList.add ('donations-line')
+    const donationsLineElem = getLineNode ()
     
       // Render each donation
-      donationsLine.forEach ((donation) => {
-          
-          // Create donation element
-          const donationElem = document.createElement ('div')
-          donationElem.classList.add ('donation')
-      
-          // Create donation image element
-          const donationImageElem = document.createElement ('img')
-          donationImageElem.classList.add ('donation-image')
-          donationImageElem.setAttribute ('src', donation.image)
-          donationImageElem.setAttribute ('alt', donation.name)
-          donationImageElem.setAttribute ('title', donation.name)
-      
-          // Append donation image to donation element
-          donationElem.appendChild (donationImageElem)
-      
-          // Append donation element to donations wrapper
-          donationsLineElem.appendChild (donationElem)
-      })
+      for (const donation of donationsLine) {
+
+        // Create donation element
+        const donationElem = getDonationNode (donation)
+        
+        // Append donation element to donations wrapper
+        donationsLineElem.appendChild (donationElem)
+      }
 
     // Append line element to donations wrapper
     donationsWrapperElem.appendChild (donationsLineElem)
 
   })
+
+  showDonations ()
 }
 
+async function renderNewDonation () {
+  // Get donations from api
+  const newDonations = await getDonations ()
+
+  // Filter new donations
+  const newDonationsFiltered = newDonations.filter (newDonation => {
+    return !donations.some (donation => donation.name === newDonation.name)
+  })
+
+  // render new donations
+  newDonationsFiltered.forEach (async (newDonation) => {
+
+    // Get last line
+    let lastLineElem = donationsWrapperElem.querySelector ('.donations-line:last-child')
+
+    // Vlaidate number of elements in last line
+    isNewLine = false
+    if (lastLineElem.children.length >= 13) {
+      // Create new line
+      lastLineElem = donationsLineElem ()
+      isNewLine = true
+    }
+
+    // Create and place donation element
+    const donationElem = getDonationNode (newDonation)
+    lastLineElem.appendChild (donationElem)
+
+    // Add new line to wrapper
+    if (isNewLine) {
+      donationsWrapperElem.appendChild (lastLineElem)
+    }
+  })
+
+  showDonations ()
+
+  donations = newDonations
+
+  console.log ('New donations rendered')
+}
+
+// Render initial donations
 renderDonations ()
+
+// Render new donations every 10 seconds
+setInterval (renderNewDonation, 10000)

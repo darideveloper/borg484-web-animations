@@ -62,6 +62,9 @@ body {
 .content .donations-wrapper .donations-line .donation:hover {
   opacity: 1;
 }
+.content .donations-wrapper .donations-line .donation.hide {
+  opacity: 0;
+}
 .content .donations-wrapper .donations-line .donation img {
   width: 100%;
   height: auto;
