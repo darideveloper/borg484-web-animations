@@ -1,16 +1,6 @@
 const donationsWrapperElem = document.querySelector ('.donations-wrapper')
 let donations = []
 
-// Make donations already rendered, visible
-async function showDonations () {
-    // Make donations visible, one by one
-    const donationsElems = document.querySelectorAll ('.donation.hide')
-    for (const donation of donationsElems) {
-      await new Promise (resolve => setTimeout (resolve, 300))
-      donation.classList.remove ('hide')
-    }
-}
-
 // Render donations images from api
 async function renderDonations () {
 

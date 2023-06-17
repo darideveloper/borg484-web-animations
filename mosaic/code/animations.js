@@ -17,3 +17,4 @@ content.addEventListener ("mousemove", (e) => {
     content.setAttribute ("animation", "right")
   }
 })
+

@@ -25,3 +25,32 @@ function getLineNode () {
 
   return donationsLineElem
 }
+
+// Make donations already rendered, visible
+async function showDonations () {
+  // Make donations visible, one by one
+  const donationsElems = document.querySelectorAll ('.donation.hide')
+  for (const donation of donationsElems) {
+    await new Promise (resolve => setTimeout (resolve, 300))
+    donation.classList.remove ('hide')
+  }
+}
+
+// Get and animate a random donation
+async function animateRandomDonation () {
+
+  // Get a random donation
+  const donationsElems = document.querySelectorAll ('.donation')
+  if (donationsElems.length === 0) {
+    return null
+  }
+  const randomDonationElem = donationsElems[Math.floor (Math.random () * donationsElems.length)]
+
+  // Animate
+  randomDonationElem.classList.add ('animate')
+  await new Promise (resolve => setTimeout (resolve, 3000))
+  randomDonationElem.classList.remove ('animate')
+}
+
+// Animate random donation every 3 seconds
+setInterval (animateRandomDonation, 3000)

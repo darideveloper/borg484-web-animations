@@ -49,8 +49,8 @@ body {
   margin-top: -4vw;
 }
 .content .donations-wrapper .donations-line .donation {
-  width: 10vw;
-  height: 8vw;
+  width: 12vw;
+  height: 10vw;
   overflow: hidden;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   display: flex;
@@ -59,7 +59,7 @@ body {
   opacity: 0.3;
   transition-duration: 0.7s;
 }
-.content .donations-wrapper .donations-line .donation:hover {
+.content .donations-wrapper .donations-line .donation:hover, .content .donations-wrapper .donations-line .donation.animate {
   opacity: 1;
 }
 .content .donations-wrapper .donations-line .donation.hide {
@@ -70,11 +70,11 @@ body {
   height: auto;
 }
 .content .donations-wrapper .donations-line .donation:nth-child(even) {
-  margin-top: 4vw;
-  margin-left: -2.5vw;
+  margin-top: 5vw;
+  margin-left: -3vw;
 }
 .content .donations-wrapper .donations-line .donation:nth-child(odd) {
-  margin-left: -2.5vw;
+  margin-left: -3vw;
 }
 .content .donations-wrapper .donations-line .donation:first-child {
   margin: 0 !important;
