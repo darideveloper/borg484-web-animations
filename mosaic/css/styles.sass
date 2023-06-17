@@ -37,14 +37,18 @@ body
         width: 100vw
         height: 100vh
         display: flex
-        flex-direction: column
+        align-items: flex-start
+        justify-content: flex-start
 
-        .donations-line
+        .donations-col
             display: flex
-            width: 100%
+            flex-direction: column
 
             &:not(:first-child)
-                margin-top: -4vw
+                margin-left: -3vw
+            
+            &:nth-child(even)
+                margin-top: 5vw
 
             .donation 
                 width: 12vw
@@ -68,12 +72,12 @@ body
                     width: 100%
                     height: auto
 
-                &:nth-child(even)
-                    margin-top: 5vw
-                    margin-left: -3vw
+                // &:nth-child(even)
+                //     margin-top: 5vw
+                //     margin-left: -3vw
 
-                &:nth-child(odd)
-                    margin-left: -3vw
+                // &:nth-child(odd)
+                //     margin-left: -3vw
 
-                &:first-child
-                    margin: 0 !important
+                // &:first-child
+                //     margin: 0 !important

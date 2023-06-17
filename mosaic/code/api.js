@@ -16,5 +16,5 @@ async function getDonations() {
     })
   })
 
-  return donations
+  return donations.slice(0, 10)
 }

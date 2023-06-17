@@ -1,4 +1,5 @@
 const donationsWrapperElem = document.querySelector ('.donations-wrapper')
+const donationsPerCol = 6
 let donations = []
 
 // Render donations images from api
@@ -7,39 +8,38 @@ async function renderDonations () {
   // Get donatrions
   donations = await getDonations ()
 
-  // Split donation in lines
-  const donationsPerLine = 13
-  let donationsLines = []
-  let donationsLine = []
+  // Split donation in Cols
+  let donationsCols = []
+  let donationsCol = []
   donations.forEach ((donation) => {
-    donationsLine.push (donation)
-    if (donationsLine.length === donationsPerLine) {
-      donationsLines.push (donationsLine)
-      donationsLine = []
+    donationsCol.push (donation)
+    if (donationsCol.length === donationsPerCol) {
+      donationsCols.push (donationsCol)
+      donationsCol = []
     }
   })
-  if (donationsLine.length > 0) {
-    donationsLines.push (donationsLine)
+  if (donationsCol.length > 0) {
+    donationsCols.push (donationsCol)
   }
 
-  // Render each line
-  donationsLines.forEach (async (donationsLine) => {
+  // Render each Col
+  donationsCols.forEach (async (donationsCol) => {
     
-    // Create line element
-    const donationsLineElem = getLineNode ()
+    // Create Col element
+    const donationsColElem = getColNode ()
     
       // Render each donation
-      for (const donation of donationsLine) {
+      for (const donation of donationsCol) {
 
         // Create donation element
         const donationElem = getDonationNode (donation)
         
         // Append donation element to donations wrapper
-        donationsLineElem.appendChild (donationElem)
+        donationsColElem.appendChild (donationElem)
       }
 
-    // Append line element to donations wrapper
-    donationsWrapperElem.appendChild (donationsLineElem)
+    // Append Col element to donations wrapper
+    donationsWrapperElem.appendChild (donationsColElem)
 
   })
 
@@ -58,24 +58,24 @@ async function renderNewDonation () {
   // render new donations
   newDonationsFiltered.forEach (async (newDonation) => {
 
-    // Get last line
-    let lastLineElem = donationsWrapperElem.querySelector ('.donations-line:last-child')
+    // Get last Col
+    let lastColElem = donationsWrapperElem.querySelector ('.donations-col:last-child')
 
-    // Vlaidate number of elements in last line
-    isNewLine = false
-    if (lastLineElem.children.length >= 13) {
-      // Create new line
-      lastLineElem = donationsLineElem ()
-      isNewLine = true
+    // Vlaidate number of elements in last Col
+    isNewCol = false
+    if (lastColElem.children.length >= donationsPerCol) {
+      // Create new Col
+      lastColElem = donationsColElem ()
+      isNewCol = true
     }
 
     // Create and place donation element
     const donationElem = getDonationNode (newDonation)
-    lastLineElem.appendChild (donationElem)
+    lastColElem.appendChild (donationElem)
 
-    // Add new line to wrapper
-    if (isNewLine) {
-      donationsWrapperElem.appendChild (lastLineElem)
+    // Add new Col to wrapper
+    if (isNewCol) {
+      donationsWrapperElem.appendChild (lastColElem)
     }
   })
 

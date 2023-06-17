@@ -19,11 +19,11 @@ function getDonationNode (donationData) {
 }
 
 
-function getLineNode () {
-  const donationsLineElem = document.createElement ('div')
-  donationsLineElem.classList.add ('donations-line')
+function getColNode () {
+  const donationsColElem = document.createElement ('div')
+  donationsColElem.classList.add ('donations-col')
 
-  return donationsLineElem
+  return donationsColElem
 }
 
 // Make donations already rendered, visible
