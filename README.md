@@ -26,6 +26,7 @@ Project type: **client**
             <summary>Table of Contents</summary>
             <ol>
 <li><a href='#buildwith'>Build With</a></li>
+<li><a href='#relatedprojects'>Related Projects</a></li>
 <li><a href='#media'>Media</a></li>
 <li><a href='#roadmap'>Roadmap</a></li></ol>
         </details><br>
@@ -33,6 +34,10 @@ Project type: **client**
 # Build with
 
 <div align='center'><a href='https://developer.mozilla.org/en-US/docs/Web/HTML' target='_blank'> <img src='https://i.imgur.com/OitgDfl.jpeg' alt='HTML + CSS' title='HTML + CSS' height='50px'/> </a><a href='https://animejs.com/' target='_blank'> <img src='https://animejs.com/documentation/assets/img/anime-mini-logo.svg' alt='AnimeJS' title='AnimeJS' height='50px'/> </a><a href='https://www.w3schools.com/js/js_es6.asp' target='_blank'> <img src='https://cdn.svgporn.com/logos/javascript.svg' alt='JavaScript' title='JavaScript' height='50px'/> </a></div>
+
+# Related projects
+
+<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='web animations dashboard' title='web animations dashboard' height='50px'/> </a></div>
 
 # Media
 
@@ -55,6 +60,8 @@ Project type: **client**
 [rhapsody](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/rhapsody.mp4)
 
 [superheros](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/superheros.mp4)
+
+[mosaic](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/mosaic.mp4)
 
 # Roadmap
 
