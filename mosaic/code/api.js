@@ -16,8 +16,5 @@ async function getDonations() {
     })
   })
 
-  // Duplicate donations
-  donations = donations.concat(donations.slice(0, 20))
-
   return donations
 }
