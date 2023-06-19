@@ -24,7 +24,7 @@ body {
 .content .flag {
   width: 110vw;
   height: 110vh;
-  position: absolute;
+  position: fixed;
   top: -5vw;
   left: -5vw;
   transform: rotateY(20deg);
@@ -38,9 +38,11 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  overflow: visible;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  overflow: visible;
 }
 .content .donations-wrapper .donations-col {
   display: flex;

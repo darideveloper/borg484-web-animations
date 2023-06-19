@@ -26,16 +26,6 @@ function getColNode () {
   return donationsColElem
 }
 
-// Make donations already rendered, visible
-async function showDonations () {
-  // Make donations visible, one by one
-  const donationsElems = document.querySelectorAll ('.donation.hide')
-  for (const donation of donationsElems) {
-    await new Promise (resolve => setTimeout (resolve, 300))
-    donation.classList.remove ('hide')
-  }
-}
-
 // Get and animate a random donation
 async function animateRandomDonation () {
 

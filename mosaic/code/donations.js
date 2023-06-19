@@ -43,7 +43,9 @@ async function renderDonations () {
 
   })
 
-  showDonations ()
+  await showDonations ()
+
+  startAutoScroll ()
 }
 
 async function renderNewDonation () {
