@@ -37,7 +37,7 @@ Project type: **client**
 
 # Related projects
 
-<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='web animations dashboard' title='web animations dashboard' height='50px'/> </a></div>
+<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='Web Animations Dashboard' title='Web Animations Dashboard' height='50px'/> </a></div>
 
 # Media
 
