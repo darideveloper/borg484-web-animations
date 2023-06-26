@@ -37,7 +37,7 @@ Project type: **client**
 
 # Related projects
 
-<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='Web Animations Dashboard' title='Web Animations Dashboard' height='50px'/> </a></div>
+<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='Web Animations Dashboard' title='Web Animations Dashboard' height='50px'/> </a></div>
 
 # Media
 
@@ -57,11 +57,15 @@ Project type: **client**
 
 [march of the penguins](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/march-of-the-penguins.mp4)
 
+[screen leaves dashboard](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/screen-leaves-dashboard.mp4)
+
 [rhapsody](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/rhapsody.mp4)
 
 [superheros](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/superheros.mp4)
 
 [mosaic](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/mosaic.mp4)
+
+[screen leaves frontend](https://github.com/darideveloper/borg484-web-animations/raw/master/videos/screen-leaves-frontend.mp4)
 
 # Roadmap
 
@@ -78,5 +82,6 @@ Projects:
 * [march-of-the-penguins](https://darideveloper.github.io/borg484-web-animations/march-of-the-penguins)
 * [mosaic](https://darideveloper.github.io/borg484-web-animations/mosaic)
 * [rhapsody](https://darideveloper.github.io/borg484-web-animations/rhapsody)
+* [screen-leaves](https://darideveloper.github.io/borg484-web-animations/screen-leaves)
 * [superheros](https://darideveloper.github.io/borg484-web-animations/superheros)
 
