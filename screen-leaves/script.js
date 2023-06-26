@@ -1,6 +1,9 @@
 let width, height, cx, cy;
 const svg = document.getElementById('svg'),leaves = document.getElementById('leaves');
-const nbLeaves = 750;
+
+// Get donations names and number
+const donations = getDonations ()
+const nbLeaves = donations.length
 
 const simplex = new SimplexNoise();
 // let colors = chroma.scale([chroma.random(), chroma.random(), chroma.random()]).mode('lch');
@@ -9,6 +12,9 @@ let colors = chroma.scale(['#7D8844', '#BFAF36', '#EFB248', '#ED8761', '#B12F49'
 let count = 0,timeout;
 
 function init() {
+
+  console.log (donations)
+
   onResize();
   window.addEventListener('resize', onResize, false);
 
@@ -25,22 +31,21 @@ function init() {
   });
 }
 
-function createLeaves() {
-  if (count++ < nbLeaves) {
-    createLeaf();
-    timeout = setTimeout(() => {
-      createLeaves();
-    }, rnd(50));
+async function createLeaves() {
+  for (donor of donations) {
+    console.log (donor)
+    createLeaf(donor)
+    await new Promise(r => setTimeout(r, 500));
   }
 }
 
-function createLeaf() {
+function createLeaf(donor) {
   let w = 15 + rnd(20);
   let h = w + rnd(w * 2);
   let x = rnd(cx - cx / 5, true);
   let y = rnd(cy - cy / 5, true);
   let l = new Leaf(x, y, w, h, 3 + Math.round(rnd(5)));
-  l.create(leaves);
+  l.create(leaves, donor);
 }
 
 class Leaf {
@@ -73,7 +78,7 @@ class Leaf {
     this.ep);
 
   }
-  create(elt) {
+  create(elt, donor) {
     this.group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     this.group.style.transform = `translate(${this.x}px, ${this.y}px) rotate3d(0, 0, 1, ${this.rz}deg)`;
     elt.appendChild(this.group);
@@ -90,6 +95,45 @@ class Leaf {
     this.path.style.strokeDasharray = length;
     this.path.style.strokeDashoffset = length;
     TweenMax.to(this.path, 3 + rnd(5), { strokeDashoffset: 0, fill: this.fill });
+
+    // Place donnor name
+    const leaf_height = this.group.getBBox().height.toFixed(2);
+    const leaf_width = this.group.getBBox().width.toFixed(2);
+    let first_part = true
+    donor.split(" ").forEach((word) => {
+      let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttributeNS(null, 'x', 0);
+      text.setAttributeNS(null, 'y', 0);
+      text.setAttributeNS(null, 'text-anchor', 'middle');
+      text.setAttributeNS(null, 'dominant-baseline', 'middle');
+      text.setAttributeNS(null, 'font-size', `${leaf_height/8}px`);
+      text.setAttributeNS(null, 'font-family', 'sans-serif');
+      text.setAttributeNS(null, 'fill', this.stroke);
+
+      console.log (leaf_height)
+      let translateY
+
+      if (first_part) {
+        translateY = -leaf_width/5
+      } else {
+        translateY = leaf_width/6
+      }
+      
+      text.style.transform = `rotate(90deg) translate(${leaf_height/2}px, ${translateY}px) scale(0.8)`;
+      text.innerHTML = word;
+      this.group.appendChild(text);
+
+      first_part = false
+
+      text = this.group.querySelector('text:last-child');
+      setTimeout(() => {
+        text.classList.add('animated');
+      }, 2500);
+
+      if (! word) {
+        this.group.classList.add('no-word');
+      }
+    })
   }
   pathD() {
     let d = [];
@@ -147,4 +191,4 @@ function rnd(max, negative) {
   return negative ? Math.random() * 2 * max - max : Math.random() * max;
 }
 
-init();
+init ()

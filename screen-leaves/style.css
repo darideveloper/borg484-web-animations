@@ -3,6 +3,7 @@ body {
   width: 100%;
   height: 100%;
   background: #fff;
+  zoom: 2.5;
 }
 
 #svg {
@@ -15,4 +16,22 @@ body {
 .leaf path {
   stroke-width: 1px;
   opacity: 0.8;
+}
+
+#leaves {
+  width: 100%;
+  height: 100%;
+}
+
+text {
+  --border-color: #494949;
+  fill: #ffffff;
+  transition-duration: 1s;
+  font-weight: bold;
+  text-shadow: 1px 0 var(--border-color), -1px 0 var(--border-color), 0 1px var(--border-color), 0 -1px var(--border-color),
+  1px 1px var(--border-color), -1px -1px var(--border-color), 1px -1px var(--border-color), -1px 1px var(--border-color);
+}
+
+g.no-word {
+  opacity: 0.6;
 }
