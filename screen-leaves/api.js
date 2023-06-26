@@ -1,11 +1,13 @@
-function getDonations () {
-  // TODO: get data from api
+async function getDonations () {
+  // get data from api
+  const endpoint = "https://web-animations-dashboard-74c97ec6c712.herokuapp.com/donations/screenleaves"
+  const response = await fetch(endpoint)
+  const data = await response.json()
 
-  // TODO: format data
+  // format data
+  dataFormatted = []
+  data.map ((row) => dataFormatted.push(`${row.donor_frirst_name} ${row.donor_last_name}`))
 
-  return [
-    "dari developer",
-    "dari developer",
-    "dari developer",
-  ]
+  // return data
+  return dataFormatted
 }

@@ -1,9 +1,6 @@
 let width, height, cx, cy;
 const svg = document.getElementById('svg'),leaves = document.getElementById('leaves');
 
-// Get donations names and number
-const donations = getDonations ()
-const nbLeaves = donations.length
 
 const simplex = new SimplexNoise();
 // let colors = chroma.scale([chroma.random(), chroma.random(), chroma.random()]).mode('lch');
@@ -11,10 +8,7 @@ const simplex = new SimplexNoise();
 let colors = chroma.scale(['#7D8844', '#BFAF36', '#EFB248', '#ED8761', '#B12F49', '#7D8844']);
 let count = 0,timeout;
 
-function init() {
-
-  console.log (donations)
-
+async function init() {
   onResize();
   window.addEventListener('resize', onResize, false);
 
@@ -32,8 +26,10 @@ function init() {
 }
 
 async function createLeaves() {
+  // Get donations names and number
+  const donations = await getDonations ()
+
   for (donor of donations) {
-    console.log (donor)
     createLeaf(donor)
     await new Promise(r => setTimeout(r, 500));
   }
@@ -110,7 +106,6 @@ class Leaf {
       text.setAttributeNS(null, 'font-family', 'sans-serif');
       text.setAttributeNS(null, 'fill', this.stroke);
 
-      console.log (leaf_height)
       let translateY
 
       if (first_part) {
