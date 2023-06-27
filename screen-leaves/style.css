@@ -35,3 +35,12 @@ text {
 g.no-word {
   opacity: 0.6;
 }
+
+#bg {
+  width: 8vw;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
