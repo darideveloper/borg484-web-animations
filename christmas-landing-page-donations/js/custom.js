@@ -21,7 +21,7 @@ async function create_sphere(size, text, photo) {
   let sphere_text = document.createElement('span')
   sphere_text.innerHTML = text
   let sphere_photo = document.createElement('img')
-  sphere_photo.src = `./imgs/sample-donors/${photo}`
+  sphere_photo.src = photo
   sphere.appendChild(sphere_text)
   sphere.appendChild(sphere_photo)
 
@@ -84,7 +84,7 @@ async function create_spheres() {
   while (true) {
 
     // Query from api
-    let { size, donor, photo } = get_donation()
+    let { size, donor, photo } = await get_donation()
 
     // Create sphere
     await create_sphere(size, donor, photo)

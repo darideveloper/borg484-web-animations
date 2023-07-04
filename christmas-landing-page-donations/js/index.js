@@ -4,7 +4,6 @@
     // SnowVolume will change the density of the snowflakes
     var SnowVolume = 800;
     var elem = document.querySelector('.snow');
-    console.log (elem)
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     var width = elem.clientWidth;
@@ -677,7 +676,6 @@
     var clientX = 1;
     var clientY = - pageYOffset * 5;
     
-    console.log(clientX);
     // Calculate Mouse Input
     if (!this.orientationSupport && this.relativeInput) {
     
@@ -695,7 +693,6 @@
     
     } else {
     
-        console.log(this.ix);
     // Calculate input relative to the window.
     this.ix = (clientX - this.wcx) / this.wrx;
     this.iy = (clientY - this.wcy) / this.wry;
