@@ -1,0 +1,54 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.cat, .dog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  height: 30vw;
+}
+
+.cat {
+  transform: translate(-130%, -50%);
+}
+
+.dog {
+  transform: translate(30%, -50%);
+}
+
+.videos {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-duration: 1s;
+}
+.videos .video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.videos .video-wrapper .temp, .videos .video-wrapper video {
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */

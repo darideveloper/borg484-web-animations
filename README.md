@@ -72,6 +72,7 @@ Project type: **client**
 Projects:
 
 * [become-a-traveler-today-logo-animation](https://darideveloper.github.io/borg484-web-animations/become-a-traveler-today-logo-animation)
+* [cat-dog](https://darideveloper.github.io/borg484-web-animations/cat-dog)
 * [christmas-landing-page-donations](https://darideveloper.github.io/borg484-web-animations/christmas-landing-page-donations)
 * [christmas-tree-donations](https://darideveloper.github.io/borg484-web-animations/christmas-tree-donations)
 * [circle-flowers](https://darideveloper.github.io/borg484-web-animations/circle-flowers)
