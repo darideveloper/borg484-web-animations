@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 
 <body>
@@ -12,11 +12,11 @@
       <div class="videos">
 
         <div class="video-wrapper idle">
-          <video src="./videos/cat-idle.mp4" autoplay muted preload></video>
+          <video src="./videos/cat-idle.mp4" autoplay muted preload loop></video>
         </div>
 
         <div class="video-wrapper donation hide">
-          <video src="./videos/cat-donation.mp4" autoplay muted preload></video>
+          <video src="./videos/cat-donation.mp4" muted preload></video>
         </div>
 
       </div>
@@ -29,18 +29,19 @@
       <div class="videos">
 
       <div class="video-wrapper idle">
-        <video src="./videos/dog-idle.mp4" autoplay muted preload></video>
+        <video src="./videos/dog-idle.mp4" autoplay muted preload loop></video>
       </div>
 
       <div class="video-wrapper donation hide">
-        <video src="./videos/dog-donation.mp4" autoplay muted preload></video>
+        <video src="./videos/dog-donation.mp4" muted preload></video>
       </div>
 
       </div>
 
     </div>
   </div>
-  <script src="code.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/code.js"></script>
 </body>
 
 </html>
