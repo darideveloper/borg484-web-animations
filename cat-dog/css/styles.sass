@@ -46,3 +46,46 @@ body
         .temp, video
             width: 100%
             height: 100%
+
+.balls
+    width: 4vw
+    height: 4vw
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition-duration: 0s
+
+    &.dog-start
+        transform: translate(400%, 250%)
+
+    &.cat-start
+        transform: translate(-470%, 250%)
+
+    &.dog-end
+        transform: translate(400%, 250%) rotate(600deg)
+
+    &.cat-end
+        transform: translate(-470%, 250%) rotate(-600deg)
+
+    &[class*="dog"]
+        .images img.ball
+            opacity: 1
+
+    &[class*="cat"]
+        .images img.yarn
+            opacity: 1
+
+    .images
+        position: relative
+        width: 100%
+        height: 100%
+
+        img
+            width: 100%
+            height: 100%
+            position: absolute
+            top: 0
+            left: 0
+            opacity: 0
+            transition-duration: 4s

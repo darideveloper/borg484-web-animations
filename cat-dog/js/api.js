@@ -1,21 +1,19 @@
 let oldCatTotal = null
 let oldDogTotal = null
 
-// setTimeout(() => {
-//   oldDogTotal = 1000
-// }, 1000);
-
 async function getDonations () {
 
   // get data from api
   const endpoint = "https://web-animations-dashboard-74c97ec6c712.herokuapp.com/donations/cat-dog"
   const response = await fetch(endpoint)
   const data = await response.json()
+  const donations = data.donations
+  let ended = !data.enabled
 
   // count totals
   let totalCat = 0
   let totalDog = 0
-  data.map ((row) => {
+  donations.map ((row) => {
     if (row.team === "cat") {
       totalCat += parseFloat(row.amount)
     } else {
@@ -37,11 +35,16 @@ async function getDonations () {
   oldCatTotal = totalCat
   oldDogTotal = totalDog
 
-  console.log ({newCat, newDog, totalCat, totalDog})
+  // Debug
+  // console.log ({newCat, newDog, totalCat, totalDog, ended})
+
+  let winner = totalCat > totalDog ? "cat" : "dog"
 
   // return data
   return {
     newCat,
     newDog,
+    ended: ended,
+    winner: winner,
   }
 }

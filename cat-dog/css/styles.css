@@ -56,4 +56,46 @@ body {
   height: 100%;
 }
 
+.balls {
+  width: 4vw;
+  height: 4vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-duration: 0s;
+}
+.balls.dog-start {
+  transform: translate(400%, 250%);
+}
+.balls.cat-start {
+  transform: translate(-470%, 250%);
+}
+.balls.dog-end {
+  transform: translate(400%, 250%) rotate(600deg);
+}
+.balls.cat-end {
+  transform: translate(-470%, 250%) rotate(-600deg);
+}
+.balls[class*=dog] .images img.ball {
+  opacity: 1;
+}
+.balls[class*=cat] .images img.yarn {
+  opacity: 1;
+}
+.balls .images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.balls .images img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition-duration: 4s;
+}
+
 /*# sourceMappingURL=styles.css.map */
