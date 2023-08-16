@@ -41,7 +41,7 @@ Project type: **client**
 
 # Related projects
 
-<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='Web Animations Dashboard' title='Web Animations Dashboard' height='50px'/> </a></div>
+<div align='center'><a href='https://github.com/darideveloper/web-animations-dashboard/' target='_blank'> <img src='https://github.com/darideveloper/web-animations-dashboard/blob/master/logo.png?raw=true' alt='Web Animations Dashboard' title='Web Animations Dashboard' height='50px'/> </a><a href='None' target='_blank'> <img src='None' alt='Twitch Cookies Getter V System' title='Twitch Cookies Getter V System' height='50px'/> </a></div>
 
 # Media
 
@@ -73,19 +73,19 @@ Project type: **client**
 
 # Roadmap
 
-Projects:
-
-* [become-a-traveler-today-logo-animation](https://darideveloper.github.io/borg484-web-animations/become-a-traveler-today-logo-animation)
-* [christmas-landing-page-donations](https://darideveloper.github.io/borg484-web-animations/christmas-landing-page-donations)
-* [christmas-tree-donations](https://darideveloper.github.io/borg484-web-animations/christmas-tree-donations)
-* [circle-flowers](https://darideveloper.github.io/borg484-web-animations/circle-flowers)
-* [circle-leaves](https://darideveloper.github.io/borg484-web-animations/circle-leaves)
-* [construction-screen](https://darideveloper.github.io/borg484-web-animations/construction-screen)
-* [feathers-tornado](https://darideveloper.github.io/borg484-web-animations/feathers-tornado)
-* [flip-stars](https://darideveloper.github.io/borg484-web-animations/flip-stars)
-* [march-of-the-penguins](https://darideveloper.github.io/borg484-web-animations/march-of-the-penguins)
-* [mosaic](https://darideveloper.github.io/borg484-web-animations/mosaic)
-* [rhapsody](https://darideveloper.github.io/borg484-web-animations/rhapsody)
-* [screen-leaves](https://darideveloper.github.io/borg484-web-animations/screen-leaves)
+Projects:
+
+* [become-a-traveler-today-logo-animation](https://darideveloper.github.io/borg484-web-animations/become-a-traveler-today-logo-animation)
+* [christmas-landing-page-donations](https://darideveloper.github.io/borg484-web-animations/christmas-landing-page-donations)
+* [christmas-tree-donations](https://darideveloper.github.io/borg484-web-animations/christmas-tree-donations)
+* [circle-flowers](https://darideveloper.github.io/borg484-web-animations/circle-flowers)
+* [circle-leaves](https://darideveloper.github.io/borg484-web-animations/circle-leaves)
+* [construction-screen](https://darideveloper.github.io/borg484-web-animations/construction-screen)
+* [feathers-tornado](https://darideveloper.github.io/borg484-web-animations/feathers-tornado)
+* [flip-stars](https://darideveloper.github.io/borg484-web-animations/flip-stars)
+* [march-of-the-penguins](https://darideveloper.github.io/borg484-web-animations/march-of-the-penguins)
+* [mosaic](https://darideveloper.github.io/borg484-web-animations/mosaic)
+* [rhapsody](https://darideveloper.github.io/borg484-web-animations/rhapsody)
+* [screen-leaves](https://darideveloper.github.io/borg484-web-animations/screen-leaves)
 * [superheros](https://darideveloper.github.io/borg484-web-animations/superheros)
 
