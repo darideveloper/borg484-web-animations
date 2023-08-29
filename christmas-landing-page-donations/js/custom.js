@@ -82,12 +82,20 @@ async function create_spheres() {
 
   // Infinity loop
   while (true) {
-
-    // Query from api
-    let { size, donor, photo } = await get_donation()
-
-    // Create sphere
-    await create_sphere(size, donor, photo)
+    
+    // Detect id current tab is active
+    if (document.hidden) {
+      // Wait 1 second and continue
+      await sleep(1)
+    } else {
+  
+      // Query from api
+      let { size, donor, photo } = await get_donation()
+  
+      // Create sphere
+      await create_sphere(size, donor, photo)
+      
+    }
   }
 
 }
@@ -95,13 +103,19 @@ async function create_spheres() {
 async function remove_spheres() {
   // Delete the firsts spheres after the animation
 
+  // Detect id current tab is active
+  
   // Wait for first sphere
   await sleep(animation_time + 2)
-
+  
   while (true) {
-    let last_sphere = spheres_wrapper.querySelector(".sphere:first-child")
-    spheres_wrapper.removeChild(last_sphere)
-    await sleep(animation_time / 3)
+    if (document.hidden) {
+      await sleep(1)
+    } else {
+      let last_sphere = spheres_wrapper.querySelector(".sphere:first-child")
+      spheres_wrapper.removeChild(last_sphere)
+      await sleep(animation_time / 3)
+    }
   }
 
 }
