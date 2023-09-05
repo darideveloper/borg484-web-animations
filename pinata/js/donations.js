@@ -28,5 +28,5 @@ async function renderDonations () {
 }
 renderDonations ()
 
-// Render new donations every 5 seconds
-setInterval(renderDonations, 5000)
+// Render new donations every 10 seconds
+setInterval(renderDonations, 10000)
