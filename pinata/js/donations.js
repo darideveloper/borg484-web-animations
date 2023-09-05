@@ -3,16 +3,26 @@ let newDonations = 0
 
 const World = Matter.World
 
+let firstRender = true
+
+function animeAmount (selector, from, to) {
+  anime({
+    targets: selector,
+    value: [from, to],
+    round: 1,
+    easing: 'easeInOutExpo',
+    duration: 2000
+  })
+} 
+
 async function renderDonations () {
 
   // Get data from api
-  let {donationsNum, totalTeam1, totalTeam2, totalTeam3} = await getDonations()
+  let {donationsNum, donationsTeams} = await getDonations()
 
   // Update donations counters
   newDonations = donationsNum - currentDonations
   currentDonations = donationsNum
-
-  console.log ({newDonations, currentDonations})
 
   // Render new donations
   let shape = getShape()
@@ -24,6 +34,34 @@ async function renderDonations () {
     // Create new shape
     shape = getShape()
   }
+  
+  if (! firstRender) {
+    return
+  }
+
+  // Update donations counters
+  const teamsWrapper = document.querySelector('.teams')
+  for (let {team, amount} of donationsTeams) {
+
+    // Create theam element
+    const teamElem = `
+    <div class="team" data-team="${team}">
+      <input type="text" class="name" value="${team}" />
+      <input class="amount" value="0"/>
+    </div>
+    `
+
+    // Add team element
+    teamsWrapper.innerHTML += teamElem
+  }
+  
+  // Add initial animation to donations counters
+  donationsTeams.forEach (({team, amount}) => {
+    const selectorAmount = `.teams .team[data-team="${team}"] input.amount`
+    animeAmount (selectorAmount, 0, amount)
+  })
+
+  firstRender = false
 
 }
 renderDonations ()

@@ -6,29 +6,33 @@ async function getDonations () {
   const data = await response.json()
   const donations = data.donations
 
-  // count totals
-  let totalTeam1 = 0
-  let totalTeam2 = 0
-  let totalTeam3 = 0
+  // Get all diffent values of "team"
+  let teams = donations.map ((row) => row.team)
+  teams = [...new Set(teams)]
+
+  let donationsTeams = []
+
+  // Save donations by team
   donations.map ((row) => {
-    if (row.team === "team1") {
-      totalTeam1 += parseFloat(row.amount)
-    } else if (row.team === "team2") {
-      totalTeam2 += parseFloat(row.amount)
-    } else if (row.team === "team3") {
-      totalTeam3 += parseFloat(row.amount)
+
+    let team = donationsTeams.find ((team) => team.team === row.team)
+    if (team) {
+      // Update existing team
+      team.amount += row.amount
+    } else {
+      // Create new team
+      donationsTeams.push ({
+        team: row.team,
+        amount: row.amount
+      })
     }
   })
   
   let donationsNum = donations.length
 
-  console.log ({totalTeam1, totalTeam2, totalTeam3, donationsNum})
-
   // return data
   return {
     donationsNum,
-    totalTeam1,
-    totalTeam2,
-    totalTeam3,
+    donationsTeams,
   }
 }

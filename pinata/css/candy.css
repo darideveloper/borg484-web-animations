@@ -20,3 +20,7 @@ header {
 #candy-svg {
   display: none;
 }
+
+.matter-demo canvas {
+  opacity: 1
+}
