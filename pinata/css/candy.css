@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+header {
+  display: none !important;
+}
+
+.matter-demo.matter-js {
+  background: #fff !important; 
+  opacity: 0.8;
+}
+
+#candy-svg {
+  display: none;
+}

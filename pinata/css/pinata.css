@@ -58,12 +58,5 @@
   top: -3vw;
   width: 15vw;
   transform-origin: top center;
-}
-
-.candy canvas{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 1;
+  z-index: 2;
 }
