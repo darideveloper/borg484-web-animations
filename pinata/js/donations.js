@@ -8,7 +8,7 @@ let firstRender = true
 function animeAmount (selector, from, to) {
   anime({
     targets: selector,
-    value: [from, to],
+    value: [from, `$${to}`],
     round: 1,
     easing: 'easeInOutExpo',
     duration: 2000
@@ -60,6 +60,11 @@ async function renderDonations () {
     const selectorAmount = `.teams .team[data-team="${team}"] input.amount`
     animeAmount (selectorAmount, 0, amount)
   })
+
+  // Update counters header
+  const teamsWrapperWidth = teamsWrapper.offsetWidth
+  const height = teamsWrapperWidth*0.3
+  teamsWrapper.style.height = `${height}px`
 
   firstRender = false
 

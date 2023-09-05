@@ -1,0 +1,44 @@
+.teams {
+    position: absolute;
+    bottom: -2vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: 800px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: aliceblue;
+    border: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.team input {
+    max-width: 80%;
+    text-align: center;
+    pointer-events: none;
+    border: none;
+    background-color: transparent;
+}
+
+.team input.name {
+    font-size: 2vw;
+    margin-bottom: 1vw;
+}
+
+.team input.amount {
+    font-size: 4vw;
+    margin-bottom: 1vw;
+}
