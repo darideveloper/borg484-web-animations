@@ -5,7 +5,14 @@ const World = Matter.World
 
 let firstRender = true
 
-function animeAmount (selector, from, to) {
+let teamsCounters = {}
+
+function animeAmount (selector, team, from, to) {
+
+  // Update counters
+  teamsCounters[team] = to
+
+  // Animate donations counters
   anime({
     targets: selector,
     value: [from, `$${to}`],
@@ -36,6 +43,20 @@ async function renderDonations () {
   }
   
   if (! firstRender) {
+
+    // Update donations counters
+    donationsTeams.forEach (({team, amount}) => {
+
+      // Get last counter
+      const lastAmount = teamsCounters[team]
+
+      // Update
+      if (lastAmount !== amount) {
+        const selectorAmount = `.teams .team[data-team="${team}"] input.amount`
+        animeAmount (selectorAmount, team, lastAmount, amount)
+      }
+    })
+
     return
   }
 
@@ -58,7 +79,7 @@ async function renderDonations () {
   // Add initial animation to donations counters
   donationsTeams.forEach (({team, amount}) => {
     const selectorAmount = `.teams .team[data-team="${team}"] input.amount`
-    animeAmount (selectorAmount, 0, amount)
+    animeAmount (selectorAmount, team, 0, amount)
   })
 
   // Update counters header

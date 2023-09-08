@@ -10,11 +10,12 @@ function getShape () {
 
   let randomX = Math.floor(Math.random() * window.innerWidth)
   let randomY = Math.floor(Math.random() * window.innerHeight)
-  let randomRadius = Math.floor(Math.random() * 20) + 50
+  let randomRadius = Math.floor(40)
 
-  // ------------- CHANGE THE SHAPE HERE!  -------------
   let shape = Bodies.circle(randomX, randomY, randomRadius, bodyOptions)
-  // ----------------------------------------------------
+
+  // Add texture to shape
+  shape.render.sprite.texture = './imgs/candy.png' 
 
   return shape
 }
