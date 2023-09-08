@@ -1,21 +1,20 @@
 .teams {
     position: absolute;
-    bottom: -2vw;
+    bottom: -8vw;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    max-width: 800px;
     z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .team {
     border-radius: 50%;
     border: 1px solid black;
-    width: 30%;
-    height: 100%;
+    width: 20vw;
+    height: 20vw;
     display: flex;
     align-items: center;
     justify-content: center;
