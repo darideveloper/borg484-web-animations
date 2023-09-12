@@ -1,0 +1,222 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url("../imgs/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.bg-trans {
+  background-image: url("../imgs/bg-trans.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+}
+
+.star .line {
+  position: absolute;
+  height: 1px;
+  height: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.star .line .dot {
+  width: 0.35vw;
+  height: 0.35vw;
+  padding: 0.1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.star .line .dot .middle {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  border-radius: 100%;
+}
+.star .line .dot .middle:hover {
+  background-color: red;
+}
+.star .line .dot.inactive .middle {
+  background-color: black;
+}
+.star .line.a {
+  top: 32vw;
+  left: 50.5vw;
+  width: 20.5vw;
+  transform: rotate(62deg);
+}
+.star .line.b {
+  top: 39vw;
+  left: 52.1vw;
+  width: 13.6vw;
+  transform: rotate(107deg) translateY(-1.3vw) translateX(1.5vw);
+}
+.star .line.c {
+  top: 32.2vw;
+  left: 56vw;
+  width: 4.5vw;
+  transform: rotate(209deg) translateY(0.3vw) translateX(-0.3vw);
+}
+.star .line.d {
+  top: 33.2vw;
+  left: 45vw;
+  width: 14.5vw;
+  transform: rotate(9deg) translateY(-0.7vw) translateX(1.1vw);
+}
+.star .line.e {
+  top: 36vw;
+  left: 56vw;
+  width: 5vw;
+  transform: rotate(-21deg) translateY(-0.8vw) translateX(0.8vw);
+}
+.star .line.f {
+  top: 32.2vw;
+  left: 62vw;
+  width: 11vw;
+  transform: rotate(-15deg) translateX(0.4vw) translateY(0.2vw);
+}
+.star .line.g {
+  top: 40.2vw;
+  left: 60vw;
+  width: 19.5vw;
+  transform: rotate(211deg) translateY(1.1vw) translateX(-0.7vw);
+}
+.star .line.h {
+  top: 42.2vw;
+  left: 62vw;
+  width: 16.6vw;
+  transform: rotate(17deg) translateY(0.2vw) translateX(3.3vw);
+}
+.star .line.i {
+  top: 42.2vw;
+  left: 58vw;
+  width: 10.6vw;
+  transform: rotate(-41deg) translateY(0.5vw) translateX(-2.7vw);
+}
+.star .line.j {
+  top: 44.2vw;
+  left: 52vw;
+  width: 11.8vw;
+  transform: rotate(84deg) translateY(0.7vw) translateX(-2.5vw);
+}
+.star .line.k {
+  top: 33.2vw;
+  left: 41vw;
+  width: 12.8vw;
+  transform: rotate(202deg) translateY(0.9vw) translateX(-2.8vw);
+}
+.star .line.l {
+  top: 32.2vw;
+  left: 43vw;
+  width: 11.8vw;
+  transform: rotate(178deg) translateY(1.2vw) translateX(-1.5vw);
+}
+.star .line.m {
+  top: 28.2vw;
+  left: 53vw;
+  width: 7.8vw;
+  transform: rotate(87deg) translateY(0.8vw) translateX(-1.5vw);
+}
+.star .line.n {
+  top: 26.2vw;
+  left: 52.5vw;
+  width: 10.8vw;
+  transform: rotate(-135deg) translateY(1vw) translateX(-1.5vw);
+}
+.star .line.o {
+  top: 34.2vw;
+  left: 61.5vw;
+  width: 3.8vw;
+  transform: rotate(114deg) translateY(1.6vw) translateX(-1.8vw);
+}
+.star .line.p {
+  top: 34.2vw;
+  left: 61.5vw;
+  width: 6.8vw;
+  transform: rotate(22deg) translateY(0.7vw) translateX(0.9vw);
+}
+.star .line.q {
+  top: 39.2vw;
+  left: 65.5vw;
+  width: 15.8vw;
+  transform: rotate(36deg) translateY(0.6vw) translateX(2.8vw);
+}
+.star .line.r {
+  top: 35.2vw;
+  left: 65.5vw;
+  width: 7.8vw;
+  transform: rotate(-52deg) translateY(0.9vw) translateX(2.5vw);
+}
+.star .line.s {
+  top: 29.2vw;
+  left: 61.5vw;
+  width: 10.3vw;
+  transform: rotate(2deg) translateY(1.1vw) translateX(2vw);
+}
+
+.popup-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-18vw, -3.8vw);
+  width: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+.popup-wrapper.inactive {
+  opacity: 0;
+}
+.popup-wrapper .popup {
+  width: auto;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+}
+.popup-wrapper .popup .bg {
+  background-color: #a21420;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.popup-wrapper .popup .bg .triangle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: #a21420;
+  transform: translate(-0.5vw, 0.3vw) rotate(45deg);
+}
+.popup-wrapper .popup p {
+  display: inline-block;
+  padding: 0vw 2vw;
+  margin: 0.7vw 0;
+  color: white;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=styles.css.map */
