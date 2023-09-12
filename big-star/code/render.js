@@ -1,11 +1,12 @@
 const popup = document.querySelector('.popup-wrapper')
+const cardsWrapper = document.querySelector('.cards .swiper-wrapper')
 
-function renderDots () {
+function renderDots() {
   // Reneder dots over star line guides
 
   const lines = document.querySelectorAll('.line')
   lines.forEach(line => {
-    
+
     // Get the line size (max of width and height)
     const lineWidth = line.getBoundingClientRect().width
     const lineHeight = line.getBoundingClientRect().height
@@ -29,12 +30,12 @@ function renderDots () {
   })
 }
 
-async function renderDonations () {
+async function renderDonations() {
   // Render donations in random dots
 
   // Get donations from api
   const donations = await getDonations()
-  
+
   // Query dots
   const dots = document.querySelectorAll('.dot')
 
@@ -52,7 +53,7 @@ async function renderDonations () {
 
     // Show popup on mouseover
     randomDot.addEventListener('mouseover', e => {
-      
+
       // Get dot absolute position in screen
       const dotRect = randomDot.getBoundingClientRect()
       const dotX = dotRect.x
@@ -76,9 +77,23 @@ async function renderDonations () {
       popup.classList.add('inactive')
     })
 
+    // Add card to slider
+    const card = `<div class="swiper-slide">
+      <div class="img-wrapper">
+        <img src="./imgs/light.webp" alt="light">
+        <p class="name">${donation}</p>
+      </div>
+    </div>`
+    cardsWrapper.innerHTML = card + cardsWrapper.innerHTML
+
+    // Change color of image wrapper 
+    const currentCard = cardsWrapper.querySelector('.swiper-slide:first-child')
+    const imgWrapper = currentCard.querySelector('.img-wrapper')
+    const randomColorRgba = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5)`
+    imgWrapper.style.backgroundColor = randomColorRgba
   })
 }
 
 // Render dots when loads
 renderDots()
-renderDonations ()
+renderDonations()

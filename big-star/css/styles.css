@@ -12,20 +12,6 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.bg-trans {
-  background-image: url("../imgs/bg-trans.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: 0;
-}
-
 .star .line {
   position: absolute;
   height: 1px;
@@ -217,6 +203,59 @@ body {
   margin: 0.7vw 0;
   color: white;
   font-weight: bold;
+}
+
+.cards {
+  position: absolute;
+  bottom: -17vw;
+  left: 0;
+  transition-duration: 1s;
+}
+.cards:hover {
+  bottom: 0vw;
+}
+.cards .content {
+  position: relative;
+  width: 100vw;
+}
+.cards .content .bg {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.cards .content .swiper {
+  width: 100vw;
+}
+.cards .content .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 14vw;
+  height: 20vw;
+}
+.cards .content .swiper-slide .img-wrapper {
+  width: 10vw;
+  height: 10vw;
+  padding: 1vw;
+  border-radius: 100%;
+  margin-top: 2vw;
+  background-color: #2d6094;
+}
+.cards .content .swiper-slide .img-wrapper img {
+  height: 100%;
+}
+.cards .content .swiper-slide .name {
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin-top: 2vw;
+  color: #143250;
+}
+.cards .content .swiper .swiper-button-next::after, .cards .content .swiper .swiper-button-prev::after {
+  color: #143250;
 }
 
 /*# sourceMappingURL=styles.css.map */

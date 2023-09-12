@@ -7,12 +7,17 @@
   <title>Big Star</title>
   <link rel="stylesheet" href="./css/styles.css">
 
+  <!-- Disable zoom -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@400;700&display=swap"
     rel="stylesheet">
+
+  <!-- Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
 </head>
 
@@ -53,8 +58,47 @@
     </div>
   </div>
 
+  <div class="cards">
+    <div class="content">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="bg">
+        <path fill="#6a7d8b" fill-opacity="1"
+          d="M0,64L26.7,80C53.3,96,107,128,160,122.7C213.3,117,267,75,320,80C373.3,85,427,139,480,138.7C533.3,139,587,85,640,69.3C693.3,53,747,75,800,106.7C853.3,139,907,181,960,170.7C1013.3,160,1067,96,1120,64C1173.3,32,1227,32,1280,64C1333.3,96,1387,160,1413,192L1440,224L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
+          data-darkreader-inline-fill="" style="--darkreader-inline-fill: #55646f;"></path>
+      </svg>
+
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <!-- <div class="swiper-slide">
+            <div class="img-wrapper">
+              <img src="./imgs/light.webp" alt="light">
+              <p class="name">Sample Name Sample</p>
+            </div>
+          </div> -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+  </div>
+
   <script src="./code/api.js"></script>
   <script src="./code/render.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      // Slider per page 
+      slidesPerView: 5,
+      // Space 
+      spaceBetween: 30,
+    });
+  </script>
 </body>
 
 </html>
