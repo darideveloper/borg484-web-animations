@@ -40,7 +40,7 @@ body {
   background-color: red;
 }
 .star .line .dot.inactive .middle {
-  background-color: black;
+  background-color: #880000;
 }
 .star .line.a {
   top: 32vw;

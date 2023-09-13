@@ -1,3 +1,4 @@
+let donations = []
 const popup = document.querySelector('.popup-wrapper')
 const cardsWrapper = document.querySelector('.cards .swiper-wrapper')
 
@@ -33,14 +34,16 @@ function renderDots() {
 async function renderDonations() {
   // Render donations in random dots
 
-  // Get donations from api
-  const donations = await getDonations()
+  // Get donations from api and filter new donations
+  let newDonations = await getDonations()
+  newDonations = newDonations.filter(donation => !donations.includes(donation))
+  console.log (newDonations)
 
   // Query dots
   const dots = document.querySelectorAll('.dot')
 
   // Activate random dots for each donation
-  donations.forEach(donation => {
+  newDonations.forEach(donation => {
 
     // Activate random dot
     const randomIndex = Math.floor(Math.random() * dots.length)
@@ -84,16 +87,29 @@ async function renderDonations() {
         <p class="name">${donation}</p>
       </div>
     </div>`
-    cardsWrapper.innerHTML = card + cardsWrapper.innerHTML
+
+    // Append regular and new slides
+    // if (donations.length == 0) {
+    swiper.appendSlide(card)
+    // }
+    // else {
+    //   swiper.prependSlide(card)
+    // }
 
     // Change color of image wrapper 
-    const currentCard = cardsWrapper.querySelector('.swiper-slide:first-child')
+    const currentCard = cardsWrapper.querySelector('.swiper-slide:last-child')
     const imgWrapper = currentCard.querySelector('.img-wrapper')
     const randomColorRgba = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5)`
     imgWrapper.style.backgroundColor = randomColorRgba
+
+    // Merge new donations with old donations
+    donations = donations.concat(newDonations)
   })
 }
 
-// Render dots when loads
+// Render 
 renderDots()
 renderDonations()
+
+// Render new donations every 5 seconds
+setInterval(renderDonations, 5000)
