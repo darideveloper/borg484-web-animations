@@ -8,7 +8,7 @@
  * @param {int} paid - 0 or 1
  * @param {integer} donor - the id of the donor
  */
-function addDonor(amount, intAmount, dedicationImageUrl, name, id, paid, donor) {
+function addDonation(amount, intAmount, dedicationImageUrl, name, id, paid, donor) {
   return
 }
 
@@ -117,6 +117,105 @@ class Render {
         donor: 10
       },
       {
+        amount: '00.00',
+        intAmount: 0,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 0',
+        id: '0',
+        paid: 1,
+        donor: 0
+      },
+      {
+        amount: '10.00',
+        intAmount: 10,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 101',
+        id: '101',
+        paid: 0,
+        donor: 101
+      },
+      {
+        amount: '20.00',
+        intAmount: 20,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 201',
+        id: '201',
+        paid: 0,
+        donor: 201
+      },
+      {
+        amount: '30.00',
+        intAmount: 30,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 301',
+        id: '301',
+        paid: 0,
+        donor: 301
+      },
+      {
+        amount: '40.00',
+        intAmount: 40,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 401',
+        id: '401',
+        paid: 0,
+        donor: 401
+      },
+      {
+        amount: '50.00',
+        intAmount: 5001,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 5',
+        id: '501',
+        paid: 0,
+        donor: 501
+      },
+      {
+        amount: '60.00',
+        intAmount: 60,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 601',
+        id: '601',
+        paid: 0,
+        donor: 601
+      },
+      {
+        amount: '70.00',
+        intAmount: 70,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 701',
+        id: '701',
+        paid: 0,
+        donor: 701
+      },
+      {
+        amount: '80.00',
+        intAmount: 80,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 801',
+        id: '801',
+        paid: 0,
+        donor: 801
+      },
+      {
+        amount: '90.00',
+        intAmount: 90,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 901',
+        id: '901',
+        paid: 0,
+        donor: 901
+      },
+      {
+        amount: '100.00',
+        intAmount: 100,
+        dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
+        name: 'Donor 1001',
+        id: '1001',
+        paid: 0,
+        donor: 1001
+      },
+      {
         amount: '200.00',
         intAmount: 200,
         dedicationImageUrl: 'https://www.darideveloper.com/imgs/logo.png',
@@ -165,8 +264,14 @@ class Render {
     this.renderedDonationsIds = []
 
     // Html elements
-    this.donationLowerWrapper = document.querySelector('.donations-lower')
     this.donationUpperWrapper = document.querySelector('.donations-upper')
+    
+    // Init swiper
+    this.swiper = new Swiper(".swiper", {
+      slidesPerView: 10,
+      spaceBetween: 30,
+      autoplay: {delay: 1000},
+    });
   }
 
   /**
@@ -205,12 +310,12 @@ class Render {
     // Add donation to wrapper
     if (donation.id) {
       const donationElem = `
-        <div class="donation">
+        <div class="donation swiper-slide">
           <img class="" src="${donation.dedicationImageUrl}" alt="${donation.name} photo">
           <p class="">${donation.name}</p>
         </div>
       `
-      this.donationLowerWrapper.innerHTML += donationElem
+      this.swiper.appendSlide(donationElem)
 
       // Add donation id to rendered donations
       this.renderedDonationsIds.push(donation.id)
@@ -247,7 +352,7 @@ class Render {
    * Render all initial lower donations
    */
   renderInitialLower () {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       this.renderNextLower()
     }
   }

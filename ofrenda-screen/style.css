@@ -27,22 +27,23 @@ body {
   width: 100%;
   height: 18vh;
   background-color: #3e1446;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
 }
-.donations-lower .donation {
+.donations-lower .swiper {
+  width: 100%;
+  height: 100%;
+}
+.donations-lower .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100%;
 }
-.donations-lower .donation img {
-  width: 6vw;
-  height: 6vw;
-  border-radius: 50%;
+.donations-lower .swiper-slide img {
+  width: 100px;
+  height: auto;
 }
-.donations-lower .donation p {
+.donations-lower .swiper-slide p {
   margin: 0;
   padding: 0;
   color: #f9f2d5;
@@ -94,10 +95,12 @@ body {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  width: 130px;
+  width: 15vw;
   text-align: center;
   color: #f9f2d5;
-  text-shadow: 0 0 7px #000;
+  text-shadow: 0 0 1vw #000;
+  font-size: 1.6vw;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

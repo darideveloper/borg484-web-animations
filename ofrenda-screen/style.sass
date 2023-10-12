@@ -23,10 +23,12 @@ body
     width: 100%
     height: 18vh
     background-color: #3e1446
-    display: grid
-    grid-template-columns: repeat(10, 1fr)
 
-    .donation
+    .swiper
+        width: 100%
+        height: 100%
+
+    .swiper-slide
         display: flex
         align-items: center
         justify-content: center
@@ -34,9 +36,8 @@ body
         height: 100%
 
         img
-            width: 6vw
-            height: 6vw
-            border-radius: 50%
+            width: 100px
+            height: auto
 
         p
             margin: 0
@@ -90,8 +91,10 @@ body
                 left: 50%
                 transform: translateX(-50%)
                 margin: 0
-                width: 130px
+                width: 15vw
                 text-align: center
                 color: #f9f2d5
-                text-shadow: 0 0 7px #000
+                text-shadow: 0 0 1vw #000
+                font-size: 1.6vw
+                text-align: center
 

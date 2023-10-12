@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ofrenda Screen</title>
-  <link rel="stylesheet" href="style.css">
-
+  
+  <!-- Fornts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+ 
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -18,6 +23,11 @@
 
   <!-- Wrapper for lower donations -->
   <div class="donations-lower">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Donations rendred here -->
+      </div>
+    </div>
   </div>
 
   <!-- Wrapper for upper donations -->
@@ -25,13 +35,27 @@
 
     <div class="content">
       <div class="donation left">
+        <!-- Donation rendred here -->
       </div>
-
       <div class="donation right">
+        <!-- Donation rendred here -->
       </div>
     </div>
   </div>
 
+  <!-- Sliders -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper", {
+      slidesPerView: 10,
+      spaceBetween: 30,
+      autoplay: {delay: 1000},
+    });
+  </script>
+
+  <!-- Custom code -->
   <script src="./code.js"></script>
 </body>
 
