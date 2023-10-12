@@ -24,8 +24,12 @@ class Render {
       this.renderInitialUpper()
     }, 100)
 
+    // Constrol variable to stwitch frames
+    this.lastFrame = 'left'
+
     // Render new donations in loop
     this.renderLoopLower()
+    this.renderLoopUpper()
   }
 
 
@@ -89,21 +93,23 @@ class Render {
     const donation = this.getNextLowerDonation()
 
     // Add donation to wrapper
-    if (donation.id) {
-      const donationElem = `
-        <div class="donation swiper-slide">
-          <img class="" src="${donation.dedicationImageUrl}" alt="${donation.name} photo">
-          <p class="">${donation.name}</p>
-        </div>
-      `
-      this.swiper.appendSlide(donationElem)
-
-      // Add donation id to rendered donations
-      this.renderedDonationsIds.push(donation.id)
-
-      // Debug
-      console.log(`rendered lower donation: ${donation.id}`)
+    if (!donation.id) {
+      return
     }
+
+    const donationElem = `
+      <div class="donation swiper-slide">
+        <img class="" src="${donation.dedicationImageUrl}" alt="${donation.name} photo">
+        <p class="">${donation.name}</p>
+      </div>
+    `
+    this.swiper.appendSlide(donationElem)
+
+    // Add donation id to rendered donations
+    this.renderedDonationsIds.push(donation.id)
+
+    // Debug
+    console.log(`rendered lower donation: ${donation.id}`)
   }
 
   /**
@@ -115,21 +121,34 @@ class Render {
     // Get donation data
     const donation = this.getNextUpperDonation()
 
+    if (!donation.id) {
+      return
+    }
+
     // Get frame
     const frame = this.donationUpperWrapper.querySelector(`.donation.${position}`)
 
-    // Delete previous donation and add new one
-    frame.innerHTML = ''
-    const donationElem = `
-      <div class="img-wrapper">
-        <img class="" src="${donation.dedicationImageUrl}" alt="${donation.name} photo">
-      </div>
-      <p class="">${donation.name}</p>
-    `
-    frame.innerHTML = donationElem
+    // Hide
+    frame.classList.add ("transparent")
 
-    // Add donation id to rendered donations
-    this.renderedDonationsIds.push(donation.id)
+    // Delete previous donation and add new one
+    setTimeout(() => {
+      frame.innerHTML = ''
+      const donationElem = `
+        <div class="img-wrapper">
+          <img class="" src="${donation.dedicationImageUrl}" alt="${donation.name} photo">
+        </div>
+        <p class="">${donation.name}</p>
+      `
+      frame.innerHTML = donationElem
+  
+      // Add donation id to rendered donations
+      this.renderedDonationsIds.push(donation.id)
+    }, 500)
+
+    setTimeout(() => {
+      frame.classList.remove ("transparent")
+    }, 1000)
   }
 
   /**
@@ -156,7 +175,7 @@ class Render {
   renderLoopLower() {
     setInterval(() => {
       this.renderNextLower()
-    }, 1000)
+    }, 3000)
   }
 
   /**
@@ -165,9 +184,13 @@ class Render {
   renderLoopUpper() {
     setInterval(() => {
       // Select random "left" or "right" frame
-      const randomFrame = Math.random() < 0.5 ? 'left' : 'right'
-      this.renderNextUpper(randomFrame)
-    }, 1000)
+      let frame = "right"
+      if (this.lastFrame === "right") {
+        frame = "left"
+      }
+      this.renderNextUpper(frame)
+      this.lastFrame = frame
+    }, 6000)
   }
 
 }

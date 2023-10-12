@@ -67,6 +67,11 @@ body {
   height: 100%;
   position: absolute;
   top: 0;
+  opacity: 1;
+  transition-duration: 0.2s;
+}
+.donations-upper .content .donation.transparent {
+  opacity: 0;
 }
 .donations-upper .content .donation.left {
   left: 0;
