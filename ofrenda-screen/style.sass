@@ -1,0 +1,97 @@
+body
+    margin: 0
+    padding: 0
+    overflow: hidden
+    background-color: #491756
+    display: flex
+    align-items: flex-start
+    justify-content: center
+
+.hide
+    display: none
+
+.bg-image
+    width: 100%
+    height: auto
+
+.debug
+    border: 1px solid red
+
+.donations-lower
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: 18vh
+    background-color: #3e1446
+    display: grid
+    grid-template-columns: repeat(10, 1fr)
+
+    .donation
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        height: 100%
+
+        img
+            width: 6vw
+            height: 6vw
+            border-radius: 50%
+
+        p
+            margin: 0
+            padding: 0
+            color: #f9f2d5
+            font-size: 1.2vw
+
+.donations-upper
+    position: absolute
+    width: 100%
+    height: 13.8vw
+    top: 6.5vw
+    left: 0
+
+    .content
+        width: 100%
+        height: 100%
+        position: relative
+
+
+        .donation
+            width: 10vw
+            height: 100%
+            position: absolute
+            top: 0
+            
+            &.left
+                left: 0
+                margin-left: 21.7vw
+
+            &.right
+                right: 0
+                margin-right: 22vw
+
+            .img-wrapper
+                border-radius: 50%
+                display: flex
+                align-items: center
+                justify-content: center
+                overflow: hidden
+                width: 100%
+                height: 100%
+    
+                img
+                    width: 120%
+                    height: auto
+
+            p
+                position: absolute
+                bottom: -4vw
+                left: 50%
+                transform: translateX(-50%)
+                margin: 0
+                width: 130px
+                text-align: center
+                color: #f9f2d5
+                text-shadow: 0 0 7px #000
+
