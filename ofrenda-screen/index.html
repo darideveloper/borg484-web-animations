@@ -14,12 +14,30 @@
   <!-- swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
+  <!-- Custom styles -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Disable zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 </head>
 
 <body>
 
-  <img src="./imgs/bg.jpg" alt="background image" class="bg-image">
+  <img src="./imgs/bg.png" alt="background image" class="bg-image">
+
+  <div class="videos-wrapper">
+
+    <div class="videos">
+      <video autoplay loop muted preload class="blink">
+        <source src="./videos/skull_blink.mp4" type="video/mp4">
+      </video>
+      <video muted preload class="blow transparent">
+        <source src="./videos/skull_blow.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
 
   <!-- Wrapper for lower donations -->
   <div class="donations-lower">
@@ -50,7 +68,6 @@
   <script>
     var swiper = new Swiper(".swiper", {
       slidesPerView: 10,
-      spaceBetween: 30,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -89,6 +106,26 @@
       dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
       name = 'Donor 21',
       id = '21',
+      paid = 1,
+      donor = 1
+    )
+
+    render.addDonation(
+      amount = '110.00',
+      intAmount = 110,
+      dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
+      name = 'Donor 22',
+      id = '22',
+      paid = 1,
+      donor = 1
+    )
+
+    render.addDonation(
+      amount = '115.00',
+      intAmount = 115,
+      dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
+      name = 'Donor 23',
+      id = '23',
       paid = 1,
       donor = 1
     )
@@ -203,19 +240,20 @@
       donor = 1
     )
 
-    render.addDonation(
-      amount = '60.00',
-      intAmount = 60,
-      dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-      name = 'Donor 12',
-      id = '12',
-      paid = 1,
-      donor = 1
-    )
+    // Simulate adding new lower donations after few seconds
+    setTimeout (() => {
+      render.addDonation(
+        amount = '60.00',
+        intAmount = 60,
+        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
+        name = 'Donor 12',
+        id = '12',
+        paid = 1,
+        donor = 1
+      )
+    }, 5000)
 
-    // Simulate adding new donations after few seconds
-    setTimeout(() => {
-
+    setTimeout (() => {
       render.addDonation(
         amount = '65.00',
         intAmount = 65,
@@ -225,7 +263,9 @@
         paid = 1,
         donor = 1
       )
+    }, 7000)
 
+    setTimeout (() => {
       render.addDonation(
         amount = '70.00',
         intAmount = 70,
@@ -235,7 +275,9 @@
         paid = 1,
         donor = 1
       )
+    }, 25000)
 
+    setTimeout (() => {
       render.addDonation(
         amount = '75.00',
         intAmount = 75,
@@ -245,117 +287,7 @@
         paid = 1,
         donor = 1
       )
-
-      render.addDonation(
-        amount = '80.00',
-        intAmount = 80,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 16',
-        id = '16',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '85.00',
-        intAmount = 85,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 17',
-        id = '17',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '90.00',
-        intAmount = 90,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 18',
-        id = '18',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '95.00',
-        intAmount = 95,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 19',
-        id = '19',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '110.00',
-        intAmount = 110,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 22',
-        id = '22',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '115.00',
-        intAmount = 115,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 23',
-        id = '23',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '120.00',
-        intAmount = 120,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 24',
-        id = '24',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '125.00',
-        intAmount = 125,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 25',
-        id = '25',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '130.00',
-        intAmount = 130,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 26',
-        id = '26',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '135.00',
-        intAmount = 135,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 27',
-        id = '27',
-        paid = 1,
-        donor = 1
-      )
-
-      render.addDonation(
-        amount = '140.00',
-        intAmount = 140,
-        dedicationImageUrl = 'https://www.darideveloper.com/imgs/logo.png',
-        name = 'Donor 28',
-        id = '28',
-        paid = 1,
-        donor = 1
-      )
-    }, 2000)
+    }, 35000)
 
   </script>
 

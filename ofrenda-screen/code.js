@@ -8,6 +8,13 @@ class Render {
     this.donations = []
     this.renderedDonationsIds = []
 
+    // Videos elemns
+    this.videoBlink = document.querySelector('video.blink')
+    this.videoBlow = document.querySelector('video.blow')
+
+    // Playing video control variable
+    this.playingVideo = false
+
     // Html elements
     this.donationUpperWrapper = document.querySelector('.donations-upper')
 
@@ -19,6 +26,8 @@ class Render {
     })
 
     // Load initial data
+    this.initialLowerRendered = false
+    this.initialUpperRendered = false
     setTimeout(() => {
       this.renderInitialLower()
       this.renderInitialUpper()
@@ -30,8 +39,8 @@ class Render {
     // Render new donations in loop
     this.renderLoopLower()
     this.renderLoopUpper()
-  }
 
+  }
 
   /**
    * Add donot to donors data
@@ -44,6 +53,8 @@ class Render {
    * @param {integer} donor - the id of the donor
    */
   addDonation(amount, intAmount, dedicationImageUrl, name, id, paid, donor) {
+
+    // Save donation
     this.donations.push({
       amount,
       intAmount,
@@ -53,7 +64,33 @@ class Render {
       paid,
       donor
     })
+
     console.log (`added donation: ${id}`)
+
+    // Change videos when donation comes, only if initial data is loaded
+    // or if the video is not playing
+    if (!this.initialLowerRendered || !this.initialUpperRendered || this.playingVideo) {
+      return
+    }
+
+    this.playingVideo = true
+
+    // Restart blow video
+    this.videoBlow.currentTime = 0
+    this.videoBlow.play()
+
+    // Show blink video
+    this.videoBlow.classList.remove('transparent')
+    this.videoBlink.classList.add('transparent')
+
+    // Hide video after 6s
+    setTimeout(() => {
+      this.videoBlow.classList.add('transparent')
+      this.videoBlink.classList.remove('transparent')
+      this.playingVideo = false
+    }, 6000)
+  
+
   }
 
   /**
@@ -158,6 +195,7 @@ class Render {
     for (let i = 0; i < 20; i++) {
       this.renderNextLower()
     }
+    this.initialLowerRendered = true
   }
 
   /**
@@ -166,6 +204,9 @@ class Render {
   renderInitialUpper() {
     this.renderNextUpper('left')
     this.renderNextUpper('right')
+    setTimeout(() => {
+      this.initialUpperRendered = true
+    }, 1500)
   }
 
 
@@ -183,6 +224,7 @@ class Render {
    */
   renderLoopUpper() {
     setInterval(() => {
+
       // Select random "left" or "right" frame
       let frame = "right"
       if (this.lastFrame === "right") {
@@ -192,5 +234,4 @@ class Render {
       this.lastFrame = frame
     }, 6000)
   }
-
 }

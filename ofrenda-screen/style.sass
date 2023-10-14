@@ -8,7 +8,10 @@ body
     justify-content: center
 
 .hide
-    display: none
+    display: none !important
+
+.transparent
+    opacity: 0 !important
 
 .bg-image
     width: 100%
@@ -29,6 +32,7 @@ body
         height: 100%
 
     .swiper-slide
+        width: 100%
         display: flex
         align-items: center
         justify-content: center
@@ -36,7 +40,7 @@ body
         height: 100%
 
         img
-            width: 100px
+            width: 70%
             height: auto
 
         p
@@ -57,7 +61,6 @@ body
         height: 100%
         position: relative
 
-
         .donation
             width: 10vw
             height: 100%
@@ -65,17 +68,14 @@ body
             top: 0
             opacity: 1
             transition-duration: 0.2s
-
-            &.transparent
-                opacity: 0
             
             &.left
                 left: 0
-                margin-left: 21.7vw
+                margin-left: 14vw
 
             &.right
                 right: 0
-                margin-right: 22vw
+                margin-right: 14vw
 
             .img-wrapper
                 border-radius: 50%
@@ -103,3 +103,21 @@ body
                 font-size: 1.6vw
                 text-align: center
 
+.videos-wrapper
+    position: absolute
+    top: 18vw
+    left: 50%
+    transform: translateX(-50%)
+    width: 30%
+    height: auto
+    z-index: -1
+
+    .videos
+        position: relative
+
+        video
+            width: 100%
+            height: auto
+            position: absolute
+            top: 0
+            left: 0
