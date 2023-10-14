@@ -12,6 +12,9 @@ class Render {
     this.videoBlink = document.querySelector('video.blink')
     this.videoBlow = document.querySelector('video.blow')
 
+    // Butterfly elemt
+    this.butterfliesWrapper = document.querySelector('.butterflies-wrapper')
+
     // Playing video control variable
     this.playingVideo = false
 
@@ -21,7 +24,6 @@ class Render {
     // Init swiper
     this.swiper = new Swiper(".swiper", {
       slidesPerView: 10,
-      spaceBetween: 30,
       autoplay: { delay: 1000 },
     })
 
@@ -83,10 +85,20 @@ class Render {
     this.videoBlow.classList.remove('transparent')
     this.videoBlink.classList.add('transparent')
 
+    // Show butterflies
+    this.butterfliesWrapper.classList.remove('transparent')
+
     // Hide video after 6s
     setTimeout(() => {
+
+      
+      // Hide blow video
       this.videoBlow.classList.add('transparent')
       this.videoBlink.classList.remove('transparent')
+      
+      // Hide butterflies
+      this.butterfliesWrapper.classList.add('transparent')
+      
       this.playingVideo = false
     }, 6000)
   
@@ -234,4 +246,70 @@ class Render {
       this.lastFrame = frame
     }, 6000)
   }
+}
+
+// butterflies animations from
+// https://codepen.io/rachsmith/pen/AeEmXG
+
+var butterflies = [];
+setTimeout(function() {
+  for (var i=0; i<50; i++) {
+    var b = new Butterfly();
+    b.init();
+    butterflies.push(b);
+  };
+  
+  animate();
+}, 500);
+
+function Butterfly() {
+  var _this = this;
+  
+  _this.init = function() {
+    _this.x = Math.floor(Math.random()*window.innerWidth);
+    _this.y = Math.floor(Math.random()*window.innerHeight);;
+    _this.directionX = true;
+    _this.directionY = true;
+
+   _this.domElement = document.createElement('div');
+   _this.domElement.className = 'butterfly';
+   _this.domElement.innerHTML = '<div class="left-wing"><div class="top"></div><div class="bottom"></div></div><div class="right-wing"><div class="top"></div><div class="bottom"></div></div>';
+    document.querySelector('.butterflies-wrapper').appendChild(_this.domElement);
+  
+  }
+
+  _this.moveButterfly = function() {
+    _this.domElement.style.webkitTransform = 'translate3D('+_this.x+'px, '+_this.y+'px, 0px) rotate3d(1, 0.5, 0, 110deg)';
+    var randomnumberX=Math.floor(Math.random()*11);
+    var randomnumberY=Math.floor(Math.random()*11);
+    if(randomnumberX > 8) {
+      _this.directionX = _this.directionX*-1;
+    }
+  
+    if(randomnumberY > 8) {
+      _this.directionY = _this.directionY*-1;
+    }
+  
+    if(_this.directionX == true) {
+      _this.x = _this.x+1;
+    } else {
+      _this.x = _this.x-1;
+    }
+  
+    if(_this.directionY == true) {
+      _this.y = _this.y+1;
+    } else {
+      _this.y = _this.y-1;
+    }
+  
+  }
+  
+  return _this;
+}
+
+function animate() {
+  for(var i=0, l=butterflies.length; i<l; i++) {
+    butterflies[i].moveButterfly();
+  }
+  webkitRequestAnimationFrame(animate);
 }
