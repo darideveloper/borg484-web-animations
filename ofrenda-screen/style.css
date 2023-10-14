@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #491756;
+  background-color: #3e1446;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -19,6 +19,15 @@ body {
 .bg-image {
   width: 100%;
   height: auto;
+}
+
+.decorator {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .debug {
