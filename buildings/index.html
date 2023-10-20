@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buildings</title>
+
+  <!-- Fornts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Disable zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Background image -->
+  <img src="./imgs/bg.jpg" alt="background image" class="bg blur">
+
+  <!-- Tower image -->
+  <img src="./imgs/tower.svg" alt="tower image" class="tower transparent">
+
+  <!-- Buldings wrapper -->
+  <div class="donations-wrapper">
+    <div class="swiper transparent">
+      <div class="swiper-wrapper">
+        <!-- Donations rendred here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliders -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Mian code -->
+  <script src="./code.js"></script>
+
+  <script>
+
+    // Init rendered and send initial data (building images)
+    const buildingImages = [
+      "./imgs/building1.svg",
+      "./imgs/building2.svg",
+      "./imgs/building3.svg",
+      "./imgs/building4.svg",
+      "./imgs/building5.svg",
+      "./imgs/building6.svg",
+      "./imgs/building7.svg",
+      "./imgs/building8.svg",
+      "./imgs/building9.svg",
+    ]
+    const render = new Render(buildingImages, maxDonationsAmount=2000)
+
+    // Initial donations (6 or more)
+    render.addDonation("dari dev 1", 100, "https://www.darideveloper.com/imgs/logo.png", "1")
+    render.addDonation("dari dev 2", 100, "https://www.darideveloper.com/imgs/logo.png", "2")
+    render.addDonation("dari dev 3", 100, "https://www.darideveloper.com/imgs/logo.png", "3")
+    render.addDonation("dari dev 4", 100, "https://www.darideveloper.com/imgs/logo.png", "4")
+    render.addDonation("dari dev 5", 100, "https://www.darideveloper.com/imgs/logo.png", "5")
+    render.addDonation("dari dev 6", 100, "https://www.darideveloper.com/imgs/logo.png", "6")
+    render.addDonation("dari dev 7", 100, "https://www.darideveloper.com/imgs/logo.png", "7")
+    render.addDonation("dari dev 8", 100, "https://www.darideveloper.com/imgs/logo.png", "8")
+
+    // Simullate Add new donation
+    setTimeout (() => {
+      render.addDonation("dari dev 9", 300, "https://www.darideveloper.com/imgs/logo.png", "9")
+    }, 1000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 10", 300, "https://www.darideveloper.com/imgs/logo.png", "10")
+    }, 2000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 11", 300, "https://www.darideveloper.com/imgs/logo.png", "11")
+    }, 3000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 12", 300, "https://www.darideveloper.com/imgs/logo.png", "12")
+    }, 4000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 13", 300, "https://www.darideveloper.com/imgs/logo.png", "13")
+    }, 6000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 14", 300, "https://www.darideveloper.com/imgs/logo.png", "14")
+    }, 7000)
+
+    setTimeout (() => {
+      render.addDonation("dari dev 15", 300, "https://www.darideveloper.com/imgs/logo.png", "15")
+    }, 8000)
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+body
+    margin: 0
+    padding: 0
+    overflow: hidden
+    background-color: #3e1446
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    font-family: 'Montserrat', sans-serif
+
+.transparent
+    opacity: 0 !important
+    transform: translateY(1vw)
+
+.blur
+    filter: blur(10px)
+
+.bg
+    width: 110vw
+    height: 110vh
+    position: absolute
+    top: -3vw
+    left: -3vw
+    transition-duration: 0.5s
+
+.tower
+    width: 15vw
+    z-index: 1
+    position: absolute
+    bottom: 10vw
+    transition: transform 0.5s
+    transform-origin: bottom
+
+.donations-wrapper
+    width: 70vw
+    height: auto
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    height: 45vh
+    z-index: 2
+
+    .swiper
+        transition-duration: 0.5s
+        height: 100%
+
+        .donation
+            display: flex
+            align-items: center
+            justify-content: flex-end
+            flex-direction: column
+            height: 100%
+
+            .logo
+                width: 3vw
+                margin-bottom: 0.5vw
+
+            .building
+                width: 8vw
+
+            p
+                font-size: 1.2vw
+                text-transform: capitalize
+                text-align: center
+                color: white
