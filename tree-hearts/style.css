@@ -97,3 +97,61 @@ body {
 .heart-img {
 	width: 30px;
 }
+
+.tree-img {
+	width: 40vw;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.swiper {
+	transition-duration: 0.2s;
+}
+
+.transparent {
+	opacity: 0;
+}
+
+.donations-wrapper {
+	position: absolute;
+	bottom: 1vw;
+	left: 0;
+	width: 100vw;
+}
+
+.donations-wrapper .donation {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.donations-wrapper .photo {
+	width: 3.5vw;
+	position: absolute;
+	border-radius: 100%;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+
+.donations-wrapper .heart {
+	width: 8vw;
+}
+
+.donations-wrapper .name {
+	font-size: 1vw;
+	text-align: center;
+	margin-top: 0.5vw;
+	margin-bottom: 0.2vw;
+}
+
+.donations-wrapper .amount {
+	font-size: 0.8vw;
+	text-align: center;
+	margin: 0;
+}
