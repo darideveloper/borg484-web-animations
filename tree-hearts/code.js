@@ -168,7 +168,6 @@ initiSwiper() {
       <img class="photo" src="${image}" alt="${name} photo">
       <img class="heart" src="./imgs/heart-empty.png" alt="heart">
       <p class="name">${name}</p>
-      <p class="amount">$ ${amount}</p>
     </div>
   `
     if (this.initialsRendered) {

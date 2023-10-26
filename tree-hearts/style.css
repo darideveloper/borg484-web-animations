@@ -95,7 +95,7 @@ body {
 }
 
 .heart-img {
-	width: 30px;
+	width: 50px;
 }
 
 .tree-img {
@@ -133,7 +133,7 @@ body {
 	width: 3.5vw;
 	position: absolute;
 	border-radius: 100%;
-	top: 40%;
+	top: 44%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
