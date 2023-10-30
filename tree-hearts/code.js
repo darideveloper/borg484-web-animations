@@ -23,10 +23,7 @@ class Render {
 
     this.tree.style.width = this.width + 'px'
     this.tree.style.height = this.height + 'px'
-
-    // resize when screen size change
-    window.addEventListener('resize', this.resize, false)
-
+    
     // Resize when load
     this.resize()
 
@@ -48,7 +45,7 @@ class Render {
 
       // Render initial donations
       for (const donation of this.donationsTop) {
-        this.sliderRenderDonation(donation.name, donation.image, donation.amount)
+        this.sliderRenderDonation(donation.name)
       }
 
       // Show swiper
@@ -92,9 +89,8 @@ initiSwiper() {
    * Render new donation
    * @param {str} name donor name
    * @param {int} amount donation amount
-   * @param {str} image donor image url
   */
-  addDonation(name, amount, image) {
+  addDonation(name, amount) {
 
     // Create img tag
     var element = document.createElement('img')
@@ -117,19 +113,19 @@ initiSwiper() {
     this.tree.appendChild(element)
 
     // Save donation in list
-    this.donations.push({ name, amount, image })
+    this.donations.push({ name, amount })
 
     // Direct save new donation in top
     let manualAdded = false
     if (this.donationsTop.length < this.numDonationsTop) {
-      this.donationsTop.push({ name, amount, image })
+      this.donationsTop.push({ name, amount })
 
       console.log ('donation added to top')
     
       // Add new donation in top an remove last
     } else if (this.donationsTop[this.donationsTop.length - 1].amount < amount) {
       
-      this.donationsTop.push({ name, amount, image })
+      this.donationsTop.push({ name, amount })
       this.donationsTop = this.donationsTop.sort((a, b) => {
         return b.amount - a.amount
       })
@@ -150,23 +146,20 @@ initiSwiper() {
       this.sliderRenderTop ()
     }
 
-    console.log(`donation added ${name} ${amount} ${image}`)
+    console.log(`donation added ${name} ${amount}`)
   }
 
   /**
    * Add single donation to slider
    * @param {str} name donor name
-   * @param {str} image donot image url
-   * @param {int} amount donation amount
    * @returns {any}
    */
-  sliderRenderDonation(name, image, amount) {
+  sliderRenderDonation(name) {
 
     // Add donation to swiper
     const donationElem = `
     <div class="donation swiper-slide">
-      <img class="photo" src="${image}" alt="${name} photo">
-      <img class="heart" src="./imgs/heart-empty.png" alt="heart">
+      <img class="heart" src="./imgs/heart.png" alt="heart">
       <p class="name">${name}</p>
     </div>
   `
@@ -199,7 +192,7 @@ initiSwiper() {
 
       // Add new donations to slider
       for (const donation of this.donationsTop) {
-        this.sliderRenderDonation(donation.name, donation.image, donation.amount)
+        this.sliderRenderDonation(donation.name)
       }
 
       // Restart swiper
