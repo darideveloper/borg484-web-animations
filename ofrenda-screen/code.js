@@ -12,8 +12,9 @@ class Render {
     this.videoBlink = document.querySelector('video.blink')
     this.videoBlow = document.querySelector('video.blow')
 
-    // Butterfly elemt
+    // Butterfly elemnts
     this.butterfliesWrapper = document.querySelector('.butterflies-wrapper')
+    this.butterflies = []
 
     // Playing video control variable
     this.playingVideo = false
@@ -67,7 +68,14 @@ class Render {
       donor
     })
 
-    console.log (`added donation: ${id}`)
+    console.log(`added donation: ${id}`)
+
+    // Add new butterfly
+    const butterfly = new Butterfly()
+    butterfly.init()
+    butterfly.moveButterfly()
+    this.butterflies.push(butterfly)
+    console.log (this.butterflies)
 
     // Change videos when donation comes, only if initial data is loaded
     // or if the video is not playing
@@ -91,17 +99,16 @@ class Render {
     // Hide video after 6s
     setTimeout(() => {
 
-      
       // Hide blow video
       this.videoBlow.classList.add('transparent')
       this.videoBlink.classList.remove('transparent')
-      
+
       // Hide butterflies
       this.butterfliesWrapper.classList.add('transparent')
-      
+
       this.playingVideo = false
     }, 6000)
-  
+
 
   }
 
@@ -178,7 +185,7 @@ class Render {
     const frame = this.donationUpperWrapper.querySelector(`.donation.${position}`)
 
     // Hide
-    frame.classList.add ("transparent")
+    frame.classList.add("transparent")
 
     // Delete previous donation and add new one
     setTimeout(() => {
@@ -190,13 +197,13 @@ class Render {
         <p class="">${donation.name}</p>
       `
       frame.innerHTML = donationElem
-  
+
       // Add donation id to rendered donations
       this.renderedDonationsIds.push(donation.id)
     }, 500)
 
     setTimeout(() => {
-      frame.classList.remove ("transparent")
+      frame.classList.remove("transparent")
     }, 1000)
   }
 
@@ -250,66 +257,47 @@ class Render {
 
 // butterflies animations from
 // https://codepen.io/rachsmith/pen/AeEmXG
-
-var butterflies = [];
-setTimeout(function() {
-  for (var i=0; i<50; i++) {
-    var b = new Butterfly();
-    b.init();
-    butterflies.push(b);
-  };
-  
-  animate();
-}, 500);
-
 function Butterfly() {
-  var _this = this;
-  
-  _this.init = function() {
-    _this.x = Math.floor(Math.random()*window.innerWidth);
-    _this.y = Math.floor(Math.random()*window.innerHeight);;
-    _this.directionX = true;
-    _this.directionY = true;
+  var _this = this
 
-   _this.domElement = document.createElement('div');
-   _this.domElement.className = 'butterfly';
-   _this.domElement.innerHTML = '<div class="left-wing"><div class="top"></div><div class="bottom"></div></div><div class="right-wing"><div class="top"></div><div class="bottom"></div></div>';
-    document.querySelector('.butterflies-wrapper').appendChild(_this.domElement);
-  
+  _this.init = function () {
+    _this.x = Math.floor(Math.random() * window.innerWidth)
+    _this.y = Math.floor(Math.random() * window.innerHeight);;
+    _this.directionX = true
+    _this.directionY = true
+
+    _this.domElement = document.createElement('div')
+    _this.domElement.className = 'butterfly'
+    _this.domElement.innerHTML = '<div class="left-wing"><div class="top"></div><div class="bottom"></div></div><div class="right-wing"><div class="top"></div><div class="bottom"></div></div>'
+    document.querySelector('.butterflies-wrapper').appendChild(_this.domElement)
+
   }
 
-  _this.moveButterfly = function() {
-    _this.domElement.style.webkitTransform = 'translate3D('+_this.x+'px, '+_this.y+'px, 0px) rotate3d(1, 0.5, 0, 110deg)';
-    var randomnumberX=Math.floor(Math.random()*11);
-    var randomnumberY=Math.floor(Math.random()*11);
-    if(randomnumberX > 8) {
-      _this.directionX = _this.directionX*-1;
+  _this.moveButterfly = function () {
+    _this.domElement.style.webkitTransform = 'translate3D(' + _this.x + 'px, ' + _this.y + 'px, 0px) rotate3d(1, 0.5, 0, 110deg)'
+    var randomnumberX = Math.floor(Math.random() * 11)
+    var randomnumberY = Math.floor(Math.random() * 11)
+    if (randomnumberX > 8) {
+      _this.directionX = _this.directionX * -1
     }
-  
-    if(randomnumberY > 8) {
-      _this.directionY = _this.directionY*-1;
+
+    if (randomnumberY > 8) {
+      _this.directionY = _this.directionY * -1
     }
-  
-    if(_this.directionX == true) {
-      _this.x = _this.x+1;
+
+    if (_this.directionX == true) {
+      _this.x = _this.x + 1
     } else {
-      _this.x = _this.x-1;
+      _this.x = _this.x - 1
     }
-  
-    if(_this.directionY == true) {
-      _this.y = _this.y+1;
-    } else {
-      _this.y = _this.y-1;
-    }
-  
-  }
-  
-  return _this;
-}
 
-function animate() {
-  for(var i=0, l=butterflies.length; i<l; i++) {
-    butterflies[i].moveButterfly();
+    if (_this.directionY == true) {
+      _this.y = _this.y + 1
+    } else {
+      _this.y = _this.y - 1
+    }
+
   }
-  webkitRequestAnimationFrame(animate);
+
+  return _this
 }
