@@ -1,115 +1,99 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  border: 1px solid red;
 }
 
-canvas#flowers-pattern {
-    display: block;
-    width: 100%;
+.flowers-wrapper {
+  margin-top: -5vh;
+  margin-left: -5vw;
+  border: 1px solid red;
+  position: relative;
+  width: 110vw;
+  height: 110vh;
 }
 
-.lil-gui {
-    --width: 450px;
-    max-width: 90%;
-    --widget-height: 20px;
-    font-size: 15px;
-    --input-font-size: 15px;
-    --padding: 10px;
-    --spacing: 10px;
-    --slider-knob-width: 5px;
-    --background-color: rgba(5, 0, 15, .8);
-    --widget-color: rgba(255, 255, 255, .3);
-    --focus-color: rgba(255, 255, 255, .4);
-    --hover-color: rgba(255, 255, 255, .5);
-
-    --font-family: monospace;
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: url("./imgs/bg.png") no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 
-.lil-gui.autoPlace {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.logo-flicker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.logo-flicker .logo {
+  width: 15vw;
+}
+.logo-flicker .flicker-wrapper {
+  margin-top: 1vw;
+  width: 45vw;
+  height: 10vw;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+}
+.logo-flicker .flicker-wrapper .amount {
+  font-size: 7vw;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-top: 2vw;
+  line-height: 6vw;
 }
 
-/* Hide controls */
-.lil-gui {
-    display: none !important;
+.flower {
+  width: 5vw;
+  position: absolute;
+  z-index: -1;
+  transition-duration: 0.5s;
+}
+.flower.transparent {
+  opacity: 0;
 }
 
-/* ---------------------------------------- */
-/* Custom css */
-
-body {
-    font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
+.flower.x {
+  animation: rotate-x 10s infinite linear;
 }
 
-#flowers-pattern {
-    z-index: -2;
+.flower.y {
+  animation: rotate-y 10s infinite linear;
 }
 
-.logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 2;
+@keyframes rotate-x {
+  0% {
+    transform: rotateZ(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg) rotateX(30deg);
+  }
+  100% {
+    transform: rotateZ(360deg) rotateX(0deg);
+  }
+}
+@keyframes rotate-y {
+  0% {
+    transform: rotateZ(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg) rotateY(30deg);
+  }
+  100% {
+    transform: rotateZ(360deg) rotateY(0deg);
+  }
 }
 
-.logo .content {
-    position: relative;
-    width: 30vw;
-    height: auto;
-    padding: 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.logo .content::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    filter: blur(5px);
-    background: rgba( 255, 255, 255, 0.4 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 10.5px );
-    -webkit-backdrop-filter: blur( 10.5px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    z-index: -1;
-    border-radius: 10%;
-}
-
-.logo img {
-    width: 15vw;
-    height: auto;
-}
-
-.logo p {
-    color: black;
-    text-align: center;
-    font-weight: bold;
-    font-size: 2vw;
-}
-
-.logo p span {
-    font-size: 3vw;
-    display: block;
-}
-
-canvas {
-    background-color: red; /* Change this to the desired background color */
-    border: 1px solid red;
-}
+/*# sourceMappingURL=style.css.map */

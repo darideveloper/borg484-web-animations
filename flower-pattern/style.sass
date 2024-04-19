@@ -1,0 +1,89 @@
+html
+    width: 100vw
+    height: 100vh
+    overflow: hidden
+    border: 1px solid red
+
+.flowers-wrapper
+    margin-top: -5vh
+    margin-left: -5vw
+    border: 1px solid red
+    position: relative
+    width: 110vw
+    height: 110vh
+
+.bg
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    position: absolute
+    background: url('./imgs/bg.png') no-repeat
+    background-size: cover
+    z-index: -1
+
+
+.logo-flicker
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+
+    .logo
+        width: 15vw
+
+    // Flicker styles, remove this if its not required
+    .flicker-wrapper
+        margin-top: 1vw
+        width: 45vw
+        height: 10vw
+        background: rgba(white, 0.6)
+        border-radius: 30px
+
+        // Amount styles
+        .amount
+            font-size: 7vw
+            font-weight: bold
+            color: #000
+            text-align: center
+            margin-top: 2vw
+            line-height: 6vw
+
+
+.flower
+    width: 5vw
+    position: absolute
+    z-index: -1
+    transition-duration: 0.5s
+
+    &.transparent
+        opacity: 0.0
+
+.flower.x
+    animation: rotate-x 10s infinite linear 
+
+.flower.y
+    animation: rotate-y 10s infinite linear 
+
+// rotate flowers with keyframes
+@keyframes rotate-x
+    0%
+        transform: rotateZ(0deg) rotateX(0deg)
+    50%
+        transform: rotateZ(180deg) rotateX(30deg)
+    100%
+        transform: rotateZ(360deg) rotateX(0deg)
+
+    // rotate flowers with keyframes
+@keyframes rotate-y
+    0%
+        transform: rotateZ(0deg) rotateY(0deg)
+    50%
+        transform: rotateZ(180deg) rotateY(30deg)
+    100%
+        transform: rotateZ(360deg) rotateY(0deg)
