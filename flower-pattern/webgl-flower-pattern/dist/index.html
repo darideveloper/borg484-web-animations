@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - WebGL Flower Pattern</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<canvas id="flowers-pattern"></canvas>
+
+
+<script type="x-shader/x-fragment" id="vertShader">
+    precision mediump float;
+
+    varying vec2 vUv;
+    attribute vec2 a_position;
+
+    void main() {
+        vUv = .5 * (a_position + 1.);
+        gl_Position = vec4(a_position, 0.0, 1.0);
+    }
+</script>
+
+
+<script type="x-shader/x-fragment" id="fragShader">
+    precision mediump float;
+
+    varying vec2 vUv;
+    uniform float u_scale;
+    uniform float u_time;
+    uniform float u_ratio;
+    uniform float u_petals_number;
+    uniform float u_flower_thickness;
+    uniform float u_def_floating;
+    uniform float u_visibility;
+    uniform float u_back_darkness;
+    uniform vec2 u_pointer;
+
+    #define TWO_PI 6.28318530718
+
+    float get_dot_shape(vec2 uv, vec2 center, float pwr) {
+        float pointer_shape = 1. - length(uv - center);
+        pointer_shape = clamp(pointer_shape, 0., 1.);
+        pointer_shape = pow(pointer_shape, pwr);
+        return pointer_shape;
+    }
+
+    // pseudo-random
+    float random(vec2 seed) {
+        return fract(sin(dot(seed, vec2(12.9898, 78.233))) * 43758.5453);
+    }
+    vec2 hash(vec2 p) {
+        p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+        return fract(sin(p)*18.5453);
+    }
+
+    // polynomial-based smooth minimum
+    float smin(float a, float b, float k) {
+        float h = clamp(.5 + .5 * (b - a) / k, 0., 1.);
+        return mix(b, a, h) - k * h * (1. - h);
+    }
+
+
+    vec3 get_flower_pattern(vec2 uv, float scale, float tile_time, float rotation_time, float pointer) {
+        vec2 _uv = uv * scale;
+
+        vec2 i_uv = floor(_uv);
+        vec2 f_uv = fract(_uv);
+
+        float randomizer = 1.;
+        vec3 d = vec3(1.);
+        float cell_angle = 0.;
+
+        for (int y = -1; y <= 1; y++) {
+            for (int x = -1; x <= 1; x++) {
+                vec2 tile_offset = vec2(float(x), float(y));
+                vec2 o = hash(i_uv + tile_offset);
+                tile_offset += (.3 + .3 * sin(tile_time + TWO_PI * o)) - f_uv;
+
+                float dist = dot(tile_offset, tile_offset);
+
+                float old_min_dist = d.x;
+
+                d.z = max(d.x, max(d.y, min(d.z, dist)));// 3rd
+                d.y = max(d.x, min(d.y, dist));// 2nd
+                d.x = min(d.x, dist);// Closest
+
+                if (old_min_dist > d.x) {
+                    cell_angle = atan(tile_offset.x, tile_offset.y);
+                    randomizer = o.x;
+                }
+            }
+        }
+        d = sqrt(d);
+        float voronoi_shape = min(smin(d.z, d.y, .1) - d.x, 1.);
+        voronoi_shape *= u_flower_thickness;
+        voronoi_shape = pow(voronoi_shape, .3);
+
+        cell_angle += randomizer * rotation_time;
+        cell_angle += .7 * pointer;
+        cell_angle = mod(cell_angle, TWO_PI);
+
+        float sectoral_shape = abs(sin(cell_angle * .5 * (u_petals_number + floor(randomizer * 2.))));
+        sectoral_shape = mix(1., sectoral_shape, pow(d.x, .4));
+        sectoral_shape *= voronoi_shape;
+
+        float drawing_border = .3;
+        float border_shape = smoothstep(drawing_border, drawing_border + .05, sectoral_shape) - smoothstep(drawing_border - .2, drawing_border, sectoral_shape);
+        sectoral_shape = smoothstep(drawing_border, drawing_border + .1, sectoral_shape);
+
+        float mid_shape = 1. - smoothstep(.05, .07, d.x - .03 * pointer);
+
+        float visibility = step(randomizer, u_visibility);
+        border_shape *= visibility;
+        sectoral_shape *= visibility;
+        mid_shape *= visibility;
+
+        vec3 color = vec3(.1, .1, .2) / (1. + u_back_darkness);
+        color = mix(color, vec3(.8, .82, .87), sectoral_shape);
+        color += mix(color, vec3(.8, .1, .1), border_shape);
+        color = mix(color, vec3(1., .2 + .5 * randomizer, .2), mid_shape);
+
+        return color;
+    }
+
+
+    void main() {
+        vec2 uv = vUv;
+        uv.x *= u_ratio;
+
+        vec2 point = u_pointer;
+        point.x *= u_ratio;
+
+        float pointer_shape = get_dot_shape(uv, point, 4.);
+        float tile_floating_speed = .0004 * u_time * u_def_floating;
+        float flower_rotation_speed = .0002 * u_time;
+        vec3 color = get_flower_pattern(uv, u_scale, tile_floating_speed, flower_rotation_speed, pointer_shape);
+
+        float opacity = 1.;
+        gl_FragColor = vec4(color, opacity);
+    }
+</script>
+<!-- partial -->
+  <script type="module" src="./script.js"></script>
+
+</body>
+</html>

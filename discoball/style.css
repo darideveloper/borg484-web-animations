@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.btn-container button {
+  width: 120px;
+  padding: 8px;
+  margin: 0 0 8px 0;
+  display: block;
+  cursor: pointer;
+}
+
+.ball-containers {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: #212121;
+  overflow: hidden;
+}
+
+.ball-container {
+  position: absolute;
+  width: 33vw;
+  height: 100vh;
+  top: 50%;
+}
+
+.ball-container.left {
+  left: 0%;
+  transform: translateY(-50%);
+}
+
+.ball-container.middle {
+  left: 33%;
+  transform: translateY(-50%);
+}
+
+.ball-container.right {
+  left: 66%;
+  transform: translateY(-50%);
+}
+
+.ball-container .string {
+  width: 2px;
+  height: 20vw;
+  background: #333;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.ball-container .discoball {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(200, 100, 100, 0.7);
+  transform: rotateX(90deg);
+  transform-style: preserve-3d;
+  animation: rotate-discoball 16s linear infinite;
+  transition-duration: 1s;
+}
+
+.ball-container .mirror {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition-duration: 1s;
+}
+
+.ball-container .glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 50%;
+  top: 50px;
+  left: 50%;
+  margin-left: -75px;
+  filter: blur(30px);
+  opacity: 0.15;
+}
+
+@keyframes rotate-discoball {
+  from {
+    transform: rotateX(90deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(90deg) rotateZ(360deg);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+.credit {
+  position:absolute;
+  bottom:30px;
+  right:30px;
+  font-family:sans-serif;
+  color:white;
+}
+.credit a {
+  color:#bbb;
+}
+
+.mirror.hiddden {
+  opacity: 0 !important;
+}
