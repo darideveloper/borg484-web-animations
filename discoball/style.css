@@ -106,7 +106,7 @@
   font-size: 2vw;
 }
 
-.ball-container .text .amount {
+.ball-container .text .amount-wrapper {
   bottom: 5vh;
   font-size: 2.3vw;
 }

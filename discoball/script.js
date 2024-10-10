@@ -7,11 +7,11 @@ class DiscoBalls {
    * @param {number} maxAmount - The max amount of donations
    * @param {HTMLElement} ball - The disco ball element
   */
-  constructor(initialAmount, maxAmount, ball) {
+  constructor(initialAmount, maxAmount, ballWrapper) {
 
-    // Render ball
-    this.createDiscoBall(ball)
-    this.ball = ball
+    // Get elemebts
+    this.ball = ballWrapper.querySelector(".discoball")
+    this.amount = ballWrapper.querySelector(".amount")
 
     // Animations data
     this.initialDiscoBallSize = 0.35
@@ -22,6 +22,10 @@ class DiscoBalls {
     this.maxAmount = maxAmount
     this.currentAmount = initialAmount
     this.lastAmount = 0
+
+    // Render ball and initial amount
+    this.createDiscoBall(this.ball)
+    this.updateAmount()
 
     // Calculate mirror to activate in each donation
     const mirrors = this.ball.querySelectorAll(".mirror")
@@ -112,6 +116,8 @@ class DiscoBalls {
 
     // Render disco ball
     this.updateDiscoBall()
+
+    this.updateAmount()
   }
 
   updateDiscoBall() {
@@ -132,6 +138,10 @@ class DiscoBalls {
     this.currentBallSize = this.sizeIncreasePerDonation * this.currentAmount
     this.ball.style.scale = this.currentBallSize
   }
+
+  updateAmount() {
+    this.amount.innerHTML = this.currentAmount
+  }
 }
 
 // Refresh page when resize
@@ -140,13 +150,13 @@ window.addEventListener("resize", () => {
 });
 
 // Start the disco balls animations
-const discoBallLeftElem = document.querySelector(".ball-container.left .discoball")
-const discoBallMiddleElem = document.querySelector(".ball-container.middle .discoball")
-const discoBallRightElem = document.querySelector(".ball-container.right .discoball")
+const discoBallLeftWrapper = document.querySelector(".ball-container.left")
+const discoBallMiddleWrapper= document.querySelector(".ball-container.middle")
+const discoBallRightWrapper = document.querySelector(".ball-container.right")
 
-const discoBallLeft = new DiscoBalls(500, 1000, discoBallLeftElem)
-const discoBallMiddle = new DiscoBalls(1000, 2000, discoBallMiddleElem)
-const discoBallRight = new DiscoBalls(2000, 3000, discoBallRightElem)
+const discoBallLeft = new DiscoBalls(500, 1000, discoBallLeftWrapper)
+const discoBallMiddle = new DiscoBalls(1000, 2000, discoBallMiddleWrapper)
+const discoBallRight = new DiscoBalls(2000, 3000, discoBallRightWrapper)
 
 setTimeout(() => {
   discoBallLeft.addDonation(500)
@@ -159,13 +169,3 @@ setTimeout(() => {
 setTimeout(() => {
   discoBallRight.addDonation(1000)
 }, 3000)
-
-
-// etInterval(() => {
-
-//   const mirrorsElems = document.querySelectorAll(".mirror.hiddden")
-//   const randomMirror = mirrorsElems[Math.floor(Math.random() * mirrorsElems.length)]
-//   if (randomMirror) {
-//     randomMirror.classList.remove("hiddden")
-//   }
-// }, 100)s
