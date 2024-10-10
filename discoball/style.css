@@ -90,6 +90,27 @@
   opacity: 0.15;
 }
 
+.ball-container .text p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding:0.3vw 2vw;
+  border-radius: 10%;
+}
+
+.ball-container .text .category {
+  top: 5vh;
+  font-size: 2vw;
+}
+
+.ball-container .text .amount {
+  bottom: 5vh;
+  font-size: 2.3vw;
+}
+
 @keyframes rotate-discoball {
   from {
     transform: rotateX(90deg) rotateZ(0deg);

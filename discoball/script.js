@@ -26,7 +26,6 @@ class DiscoBalls {
     // Calculate mirror to activate in each donation
     const mirrors = this.ball.querySelectorAll(".mirror")
     const mirrorsAmount = mirrors.length
-    console.log({mirrorsAmount, maxAmount})
     this.mirrorsPerDonation = mirrorsAmount / maxAmount
 
     // Calculate size increase per donation
@@ -131,7 +130,6 @@ class DiscoBalls {
 
     // Scale disco ball
     this.currentBallSize = this.sizeIncreasePerDonation * this.currentAmount
-    console.log(this.currentBallSize)
     this.ball.style.scale = this.currentBallSize
   }
 }
