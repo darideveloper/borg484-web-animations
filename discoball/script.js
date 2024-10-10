@@ -10,25 +10,25 @@ class DiscoBalls {
   constructor(initialAmount, maxAmount, ballWrapper) {
 
     // Get elemebts
-    this.ball = ballWrapper.querySelector(".discoball")
-    this.amount = ballWrapper.querySelector(".amount")
+    this.ballElem = ballWrapper.querySelector(".discoball")
+    this.amountElem = ballWrapper.querySelector(".amount")
 
     // Animations data
     this.initialDiscoBallSize = 0.35
     this.maxDiscoBallSize = 1
     this.currentBallSize = this.initialDiscoBallSize
-    
+
     this.initialAmount = initialAmount
     this.maxAmount = maxAmount
     this.currentAmount = initialAmount
     this.lastAmount = 0
 
     // Render ball and initial amount
-    this.createDiscoBall(this.ball)
+    this.createDiscoBall(this.ballElem)
     this.updateAmount()
 
     // Calculate mirror to activate in each donation
-    const mirrors = this.ball.querySelectorAll(".mirror")
+    const mirrors = this.ballElem.querySelectorAll(".mirror")
     const mirrorsAmount = mirrors.length
     this.mirrorsPerDonation = mirrorsAmount / maxAmount
 
@@ -87,7 +87,6 @@ class DiscoBalls {
         }px) translateZ(${z}px) rotateZ(${b}rad) rotateY(${a}rad)`
 
       mirror.style.backgroundColor = randomGreyColour(a)
-      mirror.style.animation = addSparkle()
 
       ball.appendChild(mirror)
     }
@@ -99,73 +98,159 @@ class DiscoBalls {
       return `hsl(0, 0%, ${l}%)`
     }
 
-    function addSparkle() {
-      const delay = Math.floor(Math.random() * 3)
-      const animation = `sparkle 3s ${delay}s infinite`
-      return animation
-    }
   }
 
   addDonation(amount) {
     // Update amount
-    this.lastAmount = amount
+    this.lastAmount = this.currentAmount
     this.currentAmount += amount
     if (this.currentAmount > this.maxAmount) {
       this.currentAmount = this.maxAmount
     }
 
-    // Render disco ball
-    this.updateDiscoBall()
 
+    // Render disco ball and amount
+    this.updateDiscoBall()
     this.updateAmount()
   }
 
   updateDiscoBall() {
 
+    function addSparkle() {
+      const delay = Math.floor(Math.random() * 3)
+      const animation = `sparkle 3s ${delay}s infinite`
+      return animation
+    }
+
     // Activate mirrors
-    const hiddenMirrors = this.ball.querySelectorAll(".mirror.hiddden")
+    const hiddenMirrors = this.ballElem.querySelectorAll(".mirror.hiddden")
 
     const diffAmount = this.currentAmount - this.lastAmount
-    const mirrorsToActivateNum = Math.floor(diffAmount * this.mirrorsPerDonation)
+    const mirrorsToActivateNum = Math.ceil(diffAmount * this.mirrorsPerDonation)
     const mirrors = Array.from(hiddenMirrors)
     const randomMirrors = mirrors.sort(() => Math.random() - 0.5)
     const mirrorsToActivate = randomMirrors.slice(0, mirrorsToActivateNum)
     for (const mirror of mirrorsToActivate) {
+
+      // Show mirror
       mirror.classList.remove("hiddden")
+
+      // Add sparkle animation
+      setTimeout(() => {
+        mirror.style.animation = addSparkle()
+      }, 3000)
     }
 
     // Scale disco ball
     this.currentBallSize = this.sizeIncreasePerDonation * this.currentAmount
-    this.ball.style.scale = this.currentBallSize
+    this.ballElem.style.scale = this.currentBallSize
   }
 
   updateAmount() {
-    this.amount.innerHTML = this.currentAmount
+    // Animate amount
+    this.animateValue(
+      this.amountElem,
+      this.currentAmount - this.lastAmount,
+      this.currentAmount,
+      2000
+    )
   }
+
+  animateValue(elem, start, end, duration) {
+    // assumes integer values for start and end
+
+    var obj = elem
+    var range = end - start
+    // no timer shorter than 50ms (not really visible any way)
+    var minTimer = 50
+    // calc step time to show all interediate values
+    var stepTime = Math.abs(Math.floor(duration / range))
+
+    // never go below minTimer
+    stepTime = Math.max(stepTime, minTimer)
+
+    // get current time and calculate desired end time
+    var startTime = new Date().getTime()
+    var endTime = startTime + duration
+    var timer
+
+    function run() {
+      var now = new Date().getTime()
+      var remaining = Math.max((endTime - now) / duration, 0)
+      var value = Math.round(end - (remaining * range))
+      obj.innerHTML = value
+      if (value == end) {
+        clearInterval(timer)
+      }
+    }
+
+    timer = setInterval(run, stepTime)
+    run()
+  }
+
 }
 
 // Refresh page when resize
 window.addEventListener("resize", () => {
-  location.reload();
-});
+  location.reload()
+})
 
 // Start the disco balls animations
 const discoBallLeftWrapper = document.querySelector(".ball-container.left")
-const discoBallMiddleWrapper= document.querySelector(".ball-container.middle")
+const discoBallMiddleWrapper = document.querySelector(".ball-container.middle")
 const discoBallRightWrapper = document.querySelector(".ball-container.right")
 
-const discoBallLeft = new DiscoBalls(500, 1000, discoBallLeftWrapper)
-const discoBallMiddle = new DiscoBalls(1000, 2000, discoBallMiddleWrapper)
-const discoBallRight = new DiscoBalls(2000, 3000, discoBallRightWrapper)
 
+// >>>>>> Setup amounts >>>>>>>>
+const initialAmountLeft = 500
+const maxAmountLeft = 1000
+
+const initialAmountMiddle = 1000
+const maxAmountMiddle = 2000
+
+const initialAmountRight = 2000
+const maxAmountRight = 3000
+// >>>>>> End Setup amounts >>>>>>>>
+
+
+const discoBallLeft = new DiscoBalls(initialAmountLeft, maxAmountLeft, discoBallLeftWrapper)
+const discoBallMiddle = new DiscoBalls(initialAmountMiddle, maxAmountMiddle, discoBallMiddleWrapper)
+const discoBallRight = new DiscoBalls(initialAmountRight, maxAmountRight, discoBallRightWrapper)
+
+// >>>>>> Donations >>>>>>>>
 setTimeout(() => {
-  discoBallLeft.addDonation(500)
+  discoBallLeft.addDonation(10)
 }, 1000)
 
 setTimeout(() => {
+  discoBallMiddle.addDonation(100)
+}, 4000)
+
+setTimeout(() => {
+  discoBallRight.addDonation(300)
+}, 8000)
+
+setTimeout(() => {
+  discoBallRight.addDonation(20)
+}, 12000)
+
+setTimeout(() => {
+  discoBallMiddle.addDonation(500)
+}, 16000)
+
+setTimeout(() => {
+  discoBallLeft.addDonation(250)
+}, 20000)
+
+setTimeout(() => {
+  discoBallLeft.addDonation(1000)
+}, 24000)
+
+setTimeout(() => {
   discoBallMiddle.addDonation(1000)
-}, 2000)
+}, 28000)
 
 setTimeout(() => {
   discoBallRight.addDonation(1000)
-}, 3000)
+}, 32000)
+// >>>>>> End donations >>>>>>>>

@@ -67,14 +67,15 @@
   transform: rotateX(90deg);
   transform-style: preserve-3d;
   animation: rotate-discoball 16s linear infinite;
-  transition-duration: 1s;
+  transition-duration: 2s;
 }
 
 .ball-container .mirror {
   position: absolute;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  transition-duration: 1s;
+  transition-duration: 2s;
+  opacity: 1;
 }
 
 .ball-container .glow {
