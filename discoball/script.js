@@ -196,61 +196,27 @@ window.addEventListener("resize", () => {
 })
 
 // Start the disco balls animations
-const discoBallLeftWrapper = document.querySelector(".ball-container.left")
-const discoBallMiddleWrapper = document.querySelector(".ball-container.middle")
-const discoBallRightWrapper = document.querySelector(".ball-container.right")
+const discoBallWrapper = document.querySelector(".ball-container")
 
 
 // >>>>>> Setup amounts >>>>>>>>
-const initialAmountLeft = 500
-const maxAmountLeft = 1000
-
-const initialAmountMiddle = 1000
-const maxAmountMiddle = 2000
-
-const initialAmountRight = 2000
-const maxAmountRight = 3000
+const initialAmount = 1000
+const maxAmount = 2000
 // >>>>>> End Setup amounts >>>>>>>>
 
 
-const discoBallLeft = new DiscoBalls(initialAmountLeft, maxAmountLeft, discoBallLeftWrapper)
-const discoBallMiddle = new DiscoBalls(initialAmountMiddle, maxAmountMiddle, discoBallMiddleWrapper)
-const discoBallRight = new DiscoBalls(initialAmountRight, maxAmountRight, discoBallRightWrapper)
+const discoBall = new DiscoBalls(initialAmount, maxAmount, discoBallWrapper)
 
 // >>>>>> Donations >>>>>>>>
 setTimeout(() => {
-  discoBallLeft.addDonation(10)
-}, 1000)
+  discoBall.addDonation(100)
+}, 3000)
 
 setTimeout(() => {
-  discoBallMiddle.addDonation(100)
-}, 4000)
+  discoBall.addDonation(500)
+}, 6000)
 
 setTimeout(() => {
-  discoBallRight.addDonation(300)
-}, 8000)
-
-setTimeout(() => {
-  discoBallRight.addDonation(20)
-}, 12000)
-
-setTimeout(() => {
-  discoBallMiddle.addDonation(500)
-}, 16000)
-
-setTimeout(() => {
-  discoBallLeft.addDonation(250)
-}, 20000)
-
-setTimeout(() => {
-  discoBallLeft.addDonation(1000)
-}, 24000)
-
-setTimeout(() => {
-  discoBallMiddle.addDonation(1000)
-}, 28000)
-
-setTimeout(() => {
-  discoBallRight.addDonation(1000)
-}, 32000)
+  discoBall.addDonation(1000)
+}, 10000)
 // >>>>>> End donations >>>>>>>>
