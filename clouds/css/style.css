@@ -21,6 +21,29 @@ body {
   font-family: bold;
 }
 
+.logo {
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+}
+
+.bottom-names {
+  background-color: #0a6493;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+.bottom-names span {
+  margin-right: 20px;
+  color: white;
+}
+
 .cloud-wrapper {
   height: auto;
   position: absolute;
@@ -105,15 +128,6 @@ body {
   top: 0 !important;
   left: 0 !important;
   margin-left: 0 !important;
-}
-
-.logo {
-  width: 90%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0 auto;
 }
 
 @keyframes moveClouds {

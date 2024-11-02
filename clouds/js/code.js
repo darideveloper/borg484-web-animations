@@ -33,6 +33,9 @@ class CloudsManager {
     }
     this.screenWidth = window.innerWidth
 
+    // Bottom names
+    this.bottomNames = []
+    this.namesWrapper = document.querySelector('.bottom-names > marquee')
   }
 
   /**
@@ -127,6 +130,12 @@ class CloudsManager {
     this.animateCloud(randomId, "donation", true)
     this.coudsCounters.donation += 1
   }
+
+  addBottomName(name) {
+    this.bottomNames.push(name)
+    const nameElem = `<span class="name">&#9679; ${name}</span>`
+    this.namesWrapper.innerHTML += nameElem
+  }
 }
 
 // Start clouds manager and create bg clouds
@@ -147,3 +156,13 @@ cloudsManager.addDonationCloud(2, "./images/client-photo.webp", "Sophia Taylor",
 cloudsManager.addDonationCloud(3, "./images/client-photo.webp", "William Anderson", "Future Manager")
 cloudsManager.addDonationCloud(1, "./images/client-photo.webp", "Isabella Thomas", "Future Writer")
 
+// Add names to the bottom
+cloudsManager.addBottomName("Noah Martinez")
+cloudsManager.addBottomName("Alice Johnson")
+cloudsManager.addBottomName("Oliver Brown")
+cloudsManager.addBottomName("Emma Wilson")
+cloudsManager.addBottomName("James Moore")
+cloudsManager.addBottomName("Sophia Taylor")
+cloudsManager.addBottomName("William Anderson")
+cloudsManager.addBottomName("Isabella Thomas")
+cloudsManager.addBottomName("Ethan White")

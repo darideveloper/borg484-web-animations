@@ -1,3 +1,7 @@
+// Variables
+$color-blue: #0a6493
+$color-white: #c3e7e5
+    
 // setup fonts
 font-face
     font-family: regular
@@ -14,11 +18,33 @@ body
     padding: 0
     overflow: hidden
     font-family: regular
-    color: #0a6493
-    background-color: #c3e7e5 
+    color: $color-blue
+    background-color: $color-white
 
 .title
     font-family: bold
+
+.logo
+    width: 90%
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    margin: 0 auto
+
+.bottom-names 
+    background-color: $color-blue
+    padding: 10px 0
+    position: absolute
+    bottom: 0
+    left: 0
+    z-index: 1
+    width: 100%
+
+    span
+        margin-right: 20px
+        color: white
+
 
 // Setup clouds
 .cloud-wrapper
@@ -104,16 +130,10 @@ body
         left: 0 !important
         margin-left: 0 !important
 
-.logo
-    width: 90%
-    position: absolute
-    bottom: 0
-    left: 50%
-    transform: translateX(-50%)
-    margin: 0 auto
-
+// Animations
 @keyframes moveClouds
     0%
         transform: translateX(0)
     100%
         transform: translateX(150vw)
+
