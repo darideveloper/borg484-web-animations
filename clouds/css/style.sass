@@ -1,0 +1,118 @@
+// setup fonts
+font-face
+    font-family: regular
+    src: url("../fonts/Wavehaus-95SemiBold.otf") format("opentype")
+
+@font-face
+    font-family: bold
+    font-weight: bold
+    src: url("../fonts/Wavehaus-158ExtraBold.otf") format("opentype")
+
+// Global styles
+body
+    margin: 0
+    padding: 0
+    overflow: hidden
+    font-family: regular
+    color: #0a6493
+    background-color: #c3e7e5 
+
+.title
+    font-family: bold
+
+// Setup clouds
+.cloud-wrapper
+    height: auto
+    position: absolute
+    left: 0
+
+    img, .image-mask
+        width: 100%
+
+    &.animate-fast
+        animation: moveClouds 20s linear infinite
+
+    &.animate-slow
+        animation: moveClouds 30s linear infinite
+
+    // Donations texts
+    p
+        font-size: 1.5vw
+        position: absolute
+        bottom: -5vw
+        right: 0
+        display: flex
+        flex-direction: column
+        text-align: right
+
+    .image-mask
+        mask-image: url(../images/cloud-mask-1.webp)
+        mask-position: center
+        mask-repeat: no-repeat
+        border: 1px solid red
+
+    // Background clouds
+    &.bg
+        z-index: -1
+
+    // Sizes and positions
+    &.size-1
+        width: 15vw
+        margin-left: -25vw
+
+        .image-mask
+            mask-size: 15vw
+
+
+    &.size-2
+        width: 20vw
+        margin-left: -30vw
+
+        .image-mask
+            mask-size: 20vw
+
+    &.size-3
+        width: 25vw
+        margin-left: -35vw
+
+        .image-mask
+            mask-size: 25vw
+
+    &.size-4
+        width: 30vw
+        margin-left: -40vw
+
+        .image-mask
+            mask-size: 30vw
+
+    &.line-1
+        top: 0%
+
+    &.line-2
+        top: 20%
+
+    &.line-3
+        top: 35%
+
+    &.line-4
+        top: 40%
+
+    // Temp
+    &.test
+        position: relative
+        top: 0 !important
+        left: 0 !important
+        margin-left: 0 !important
+
+.logo
+    width: 90%
+    position: absolute
+    bottom: 0
+    left: 0
+    margin: 0 auto
+
+@keyframes moveClouds
+    0%
+        transform: translateX(0)
+    100%
+        transform: translateX(150vw)

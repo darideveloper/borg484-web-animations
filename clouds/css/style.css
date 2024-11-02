@@ -1,0 +1,125 @@
+font-face {
+  font-family: regular;
+  src: url("../fonts/Wavehaus-95SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: bold;
+  font-weight: bold;
+  src: url("../fonts/Wavehaus-158ExtraBold.otf") format("opentype");
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: regular;
+  color: #0a6493;
+  background-color: #c3e7e5;
+}
+
+.title {
+  font-family: bold;
+}
+
+.cloud-wrapper {
+  height: auto;
+  position: absolute;
+  left: 0;
+}
+.cloud-wrapper img, .cloud-wrapper .image-mask {
+  width: 100%;
+}
+.cloud-wrapper.animate-fast {
+  animation: moveClouds 20s linear infinite;
+}
+.cloud-wrapper.animate-slow {
+  animation: moveClouds 30s linear infinite;
+}
+.cloud-wrapper p {
+  font-size: 1.5vw;
+  position: absolute;
+  bottom: -5vw;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.cloud-wrapper .image-mask {
+  -webkit-mask-image: url(../images/cloud-mask-1.webp);
+          mask-image: url(../images/cloud-mask-1.webp);
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  border: 1px solid red;
+}
+.cloud-wrapper.bg {
+  z-index: -1;
+}
+.cloud-wrapper.size-1 {
+  width: 15vw;
+  margin-left: -25vw;
+}
+.cloud-wrapper.size-1 .image-mask {
+  -webkit-mask-size: 15vw;
+          mask-size: 15vw;
+}
+.cloud-wrapper.size-2 {
+  width: 20vw;
+  margin-left: -30vw;
+}
+.cloud-wrapper.size-2 .image-mask {
+  -webkit-mask-size: 20vw;
+          mask-size: 20vw;
+}
+.cloud-wrapper.size-3 {
+  width: 25vw;
+  margin-left: -35vw;
+}
+.cloud-wrapper.size-3 .image-mask {
+  -webkit-mask-size: 25vw;
+          mask-size: 25vw;
+}
+.cloud-wrapper.size-4 {
+  width: 30vw;
+  margin-left: -40vw;
+}
+.cloud-wrapper.size-4 .image-mask {
+  -webkit-mask-size: 30vw;
+          mask-size: 30vw;
+}
+.cloud-wrapper.line-1 {
+  top: 0%;
+}
+.cloud-wrapper.line-2 {
+  top: 20%;
+}
+.cloud-wrapper.line-3 {
+  top: 35%;
+}
+.cloud-wrapper.line-4 {
+  top: 40%;
+}
+.cloud-wrapper.test {
+  position: relative;
+  top: 0 !important;
+  left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.logo {
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150vw);
+  }
+}/*# sourceMappingURL=style.css.map */
