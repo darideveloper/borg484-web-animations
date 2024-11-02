@@ -47,7 +47,7 @@ class CloudsManager {
   animateCloud(id, type, fast = false) {
     // Anime cloud
     const animClass = fast ? 'animate-fast' : 'animate-slow'
-    const waitTime = this.coudsCounters[type] * 3500
+    const waitTime = this.coudsCounters[type] * 5000
     setTimeout(() => {
       const elem = document.getElementById(id)
       elem.classList.add(animClass)
@@ -105,8 +105,12 @@ class CloudsManager {
 
   /**
    * Add a new donation cloud
+   * 
+    * @param {int} size - cloud size (1-4)
+    * @param {str} photoSrc - donor photo source
+    * @param {str} name - donor name
    */
-  addDonationCloud(size, photoSrc, name, job) {
+  addDonationCloud(size, name, photoSrc) {
 
     // Get random values
     const randomLine = this.getRandomLine("empty")
@@ -120,7 +124,6 @@ class CloudsManager {
         </div>
         <p>
           <span class="name title">${name}</span>
-          <span class="job">${job}</span>
         </p>
       </div>
     `
@@ -131,38 +134,62 @@ class CloudsManager {
     this.coudsCounters.donation += 1
   }
 
+  /**
+   * Add bottom name
+   * 
+   * @param {str} name - donor name
+   */
   addBottomName(name) {
     this.bottomNames.push(name)
     const nameElem = `<span class="name">&#9679; ${name}</span>`
     this.namesWrapper.innerHTML += nameElem
   }
+
+  /**
+   * Add text or image donation
+   * 
+   * @param {str} name - donor name
+   * @param {str} photoSrc - donor photo source (default "")
+   * @param {int} size - cloud size (default 0, 1-4)
+   */
+  addDonation(name, photoSrc = "", size = 0) {
+    if (photoSrc !== "" && size > 0) {
+      // Rener cloud donation
+      this.addDonationCloud(size, name, photoSrc)
+    } else {
+      // Render text donation
+      this.addBottomName(name)
+    }
+  }
 }
 
 // Start clouds manager and create bg clouds
 const cloudsManager = new CloudsManager()
-
 const cloundsAmount = 4
 for (let i = 0; i < cloundsAmount; i++) {
   cloudsManager.addEmptyCloud()
 }
 
-// Add donations
-cloudsManager.addDonationCloud(1, "./images/client-photo.webp", "Noah Martinez", "Future Scientist")
-cloudsManager.addDonationCloud(2, "./images/client-photo.webp", "Alice Johnson", "Future Doctor")
-cloudsManager.addDonationCloud(3, "./images/client-photo.webp", "Oliver Brown", "Future Engineer")
-cloudsManager.addDonationCloud(1, "./images/client-photo.webp", "Emma Wilson", "Future Artist")
-cloudsManager.addDonationCloud(4, "./images/client-photo.webp", "James Moore", "Future Developer")
-cloudsManager.addDonationCloud(2, "./images/client-photo.webp", "Sophia Taylor", "Future Designer")
-cloudsManager.addDonationCloud(3, "./images/client-photo.webp", "William Anderson", "Future Manager")
-cloudsManager.addDonationCloud(1, "./images/client-photo.webp", "Isabella Thomas", "Future Writer")
-
-// Add names to the bottom
-cloudsManager.addBottomName("Noah Martinez")
-cloudsManager.addBottomName("Alice Johnson")
-cloudsManager.addBottomName("Oliver Brown")
-cloudsManager.addBottomName("Emma Wilson")
-cloudsManager.addBottomName("James Moore")
-cloudsManager.addBottomName("Sophia Taylor")
-cloudsManager.addBottomName("William Anderson")
-cloudsManager.addBottomName("Isabella Thomas")
-cloudsManager.addBottomName("Ethan White")
+// Render donations
+cloudsManager.addDonation("Ethan White")
+cloudsManager.addDonation("Olivia Harris", "./images/client-photo.webp", 2)
+cloudsManager.addDonation("Mason Martinez")
+cloudsManager.addDonation("Sophia Johnson", "./images/client-photo.webp", 3)
+cloudsManager.addDonation("Elijah Brown")
+cloudsManager.addDonation("Ava Wilson", "./images/client-photo.webp", 1)
+cloudsManager.addDonation("Michael Moore")
+cloudsManager.addDonation("Emily Taylor", "./images/client-photo.webp", 4)
+cloudsManager.addDonation("Alexander Anderson")
+cloudsManager.addDonation("Mia Thomas", "./images/client-photo.webp", 2)
+cloudsManager.addDonation("Benjamin White")
+cloudsManager.addDonation("Charlotte Harris", "./images/client-photo.webp", 3)
+cloudsManager.addDonation("Daniel Martinez")
+cloudsManager.addDonation("Amelia Johnson", "./images/client-photo.webp", 1)
+cloudsManager.addDonation("Henry Brown")
+cloudsManager.addDonation("Harper Wilson", "./images/client-photo.webp", 4)
+cloudsManager.addDonation("Matthew Moore")
+cloudsManager.addDonation("Ella Taylor", "./images/client-photo.webp", 2)
+cloudsManager.addDonation("Jackson Anderson")
+cloudsManager.addDonation("Scarlett Thomas", "./images/client-photo.webp", 3)
+cloudsManager.addDonation("David White")
+cloudsManager.addDonation("Victoria Harris", "./images/client-photo.webp", 1)
