@@ -195,6 +195,8 @@
   <script>
 
 
+
+
     class CloudsManager {
 
       /**
@@ -213,11 +215,6 @@
         this.cloudsDonationsWrapper = document.querySelector('.clouds-donation')
 
         // Animations settings
-        this.baseTime = 12000
-        this.speeds = {
-          "empty": 0.4,
-          "donation": 0.6
-        }
         this.freeLines = {
           "empty": this.lines,
           "donation": this.lines
@@ -231,22 +228,60 @@
         // Bottom names
         this.bottomNames = []
         this.namesWrapper = document.querySelector('.bottom-names > marquee')
+
+        // Manage clouds data
+        this.clouds = []
+        this.currentClouds = []
+      }
+
+      /** 
+       * Animate again all donation clouds when initial animation ends
+      */
+      animateAllDonationCouds() {
+        for (let cloudIndex = 0; cloudIndex < this.clouds.length; cloudIndex++) {
+          const cloud = this.clouds[cloudIndex]
+          const waitTime = cloudIndex * 5000
+          this.currentClouds.push(cloud)
+          setTimeout(() => {
+            this.animateCloud(cloud.id, cloud.fast)
+          }, waitTime)
+        }
       }
 
       /**
        * Start animation for a cloud
        * @param {str} id - cloud id
-       * @param {str} type - cloud type (empty or donation)
+       * @param {int} wait_time - wait time before animation starts
        * @param {bool} fast - fast animation
+       * @param {bool} force - force animation (without waiting)
        */
-      animateCloud(id, type, fast = false) {
-        // Anime cloud
+      animateCloud(id, fast = false) {
+
+        // Add animation class
         const animClass = fast ? 'animate-fast' : 'animate-slow'
-        const waitTime = this.coudsCounters[type] * 5000
+        const animDuration = fast ? 20000 : 30000
+        const elem = document.getElementById(id)
+        elem.classList.add(animClass)
+
+        // Remove animation class when animation ends
         setTimeout(() => {
-          const elem = document.getElementById(id)
-          elem.classList.add(animClass)
-        }, waitTime)
+          elem.classList.remove(animClass)
+          if (animClass === 'animate-fast') {
+            // Remove donation cloud from current clouds
+            this.currentClouds = this.currentClouds.filter(cloud => cloud.id !== id)
+            console.log(this.currentClouds, this.clouds)
+
+            // Restart animation for all donation clouds
+            if (this.currentClouds.length === 0) {
+              console.log("Restart donations clouds")
+              this.animateAllDonationCouds()
+            }
+
+          } else {
+            // Delete empty cloud
+            elem.remove()
+          }
+        }, animDuration)
       }
 
       /**
@@ -286,15 +321,24 @@
         const randomId = this.getRandomId()
 
         // Create cloud (with random size and line)
-        const cloudElem = `
-      <div class="cloud-wrapper bg size-${randomSize} line-${randomLine}" id="${randomId}">
-        <img src="./images/cloud.webp" alt="empty cloud" class="empty cloud">
-      </div>
-    `
-        this.cloudBgWrapper.innerHTML += cloudElem
+        const cloudWrapper = document.createElement("div")
+        cloudWrapper.classList.add("cloud-wrapper", "bg", `size-${randomSize}`, `line-${randomLine}`)
+        cloudWrapper.id = randomId
+
+        // Create the image element
+        const cloudImage = document.createElement("img")
+        cloudImage.src = "./images/cloud.webp"
+        cloudImage.alt = "empty cloud"
+        cloudImage.classList.add("empty", "cloud")
+        cloudWrapper.appendChild(cloudImage)
+
+        // Append the image to the wrapper
+        this.cloudBgWrapper.appendChild(cloudWrapper)
 
         // Start animation
-        this.animateCloud(randomId, "empty")
+        const waitTime = this.coudsCounters["empty"] * 5000
+        const fast = false
+        this.animateCloud(randomId, fast)
         this.coudsCounters.empty += 1
       }
 
@@ -325,8 +369,17 @@
         this.cloudsDonationsWrapper.innerHTML += cloudElem
 
         // Start animation
-        this.animateCloud(randomId, "donation", true)
+        const waitTime = this.coudsCounters["donation"] * 5000
+        const fast = true
+        setTimeout(() => {
+          this.animateCloud(randomId, fast)
+        }, waitTime)
         this.coudsCounters.donation += 1
+
+        // Save donation cloud data
+        const cloudData = { id: randomId, waitTime, fast }
+        this.clouds.push(cloudData)
+        this.currentClouds.push(cloudData)
       }
 
       /**
@@ -360,10 +413,9 @@
 
     // Start clouds manager and create bg clouds
     const cloudsManager = new CloudsManager()
-    const cloundsAmount = 4
-    for (let i = 0; i < cloundsAmount; i++) {
+    setInterval(() => {
       cloudsManager.addEmptyCloud()
-    }
+    }, 6000)
 
     // Render donations
     cloudsManager.addDonation("Ethan White")
