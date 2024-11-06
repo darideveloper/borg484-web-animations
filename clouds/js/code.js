@@ -18,11 +18,6 @@ class CloudsManager {
     this.cloudsDonationsWrapper = document.querySelector('.clouds-donation')
 
     // Animations settings
-    this.baseTime = 12000
-    this.speeds = {
-      "empty": 0.4,
-      "donation": 0.6
-    }
     this.freeLines = {
       "empty": this.lines,
       "donation": this.lines
@@ -36,22 +31,56 @@ class CloudsManager {
     // Bottom names
     this.bottomNames = []
     this.namesWrapper = document.querySelector('.bottom-names > marquee')
+
+    // Manage clouds data
+    this.clouds = []
+    this.currentClouds = []
   }
 
   /**
    * Start animation for a cloud
    * @param {str} id - cloud id
-   * @param {str} type - cloud type (empty or donation)
+   * @param {int} wait_time - wait time before animation starts
    * @param {bool} fast - fast animation
+   * @param {bool} force - force animation (without waiting)
    */
-  animateCloud(id, type, fast = false) {
+  animateCloud(id, waitTime, fast = false, force = false) {
     // Anime cloud
-    const animClass = fast ? 'animate-fast' : 'animate-slow'
-    const waitTime = this.coudsCounters[type] * 5000
-    setTimeout(() => {
+
+    function animate() {
+      // Add animation class
+      const animClass = fast ? 'animate-fast' : 'animate-slow'
+      const animDuration = fast ? 20000 : 30000
       const elem = document.getElementById(id)
       elem.classList.add(animClass)
-    }, waitTime)
+
+      // Remove animation class when animation ends
+      setTimeout(() => {
+        elem.classList.remove(animClass)
+        if (animClass === 'animate-fast') {
+          // Remove donation cloud from current clouds
+          this.currentClouds = this.currentClouds.filter(cloud => cloud.id !== id)
+        } else {
+          // Delete empty cloud
+          elem.remove()
+        }
+        console.log({ currentClouds: this.currentClouds, clouds: this.clouds })
+      }, animDuration)
+
+
+    }
+
+    console.log({ id, waitTime, fast, force })
+
+    // Run next cloud animation
+    if (force) {
+      console.log('force')
+      animate()
+    } else {
+      setTimeout(() => {
+        animate()
+      }, waitTime)
+    }
   }
 
   /**
@@ -76,7 +105,7 @@ class CloudsManager {
    * 
    * @returns {str} random id
    */
-  getRandomId () {
+  getRandomId() {
     return Math.random().toString(36).substring(2, 15)
   }
 
@@ -84,22 +113,31 @@ class CloudsManager {
    * Add a new empty cloud (witgout donor)
    */
   addEmptyCloud() {
-    
+
     // Ramdom values
     const randomSize = this.sizes[Math.floor(Math.random() * this.sizes.length)]
     const randomLine = this.getRandomLine("empty")
     const randomId = this.getRandomId()
-    
+
     // Create cloud (with random size and line)
-    const cloudElem = `
-      <div class="cloud-wrapper bg size-${randomSize} line-${randomLine}" id="${randomId}">
-        <img src="./images/cloud.webp" alt="empty cloud" class="empty cloud">
-      </div>
-    `
-    this.cloudBgWrapper.innerHTML += cloudElem
+    const cloudWrapper = document.createElement("div")
+    cloudWrapper.classList.add("cloud-wrapper", "bg", `size-${randomSize}`, `line-${randomLine}`)
+    cloudWrapper.id = randomId
+
+    // Create the image element
+    const cloudImage = document.createElement("img")
+    cloudImage.src = "./images/cloud.webp"
+    cloudImage.alt = "empty cloud"
+    cloudImage.classList.add("empty", "cloud")
+    cloudWrapper.appendChild(cloudImage)
+
+    // Append the image to the wrapper
+    this.cloudBgWrapper.appendChild(cloudWrapper)
 
     // Start animation
-    this.animateCloud(randomId, "empty")
+    const waitTime = this.coudsCounters["empty"] * 5000
+    const fast = false
+    this.animateCloud(randomId, waitTime, fast, true)
     this.coudsCounters.empty += 1
   }
 
@@ -130,8 +168,15 @@ class CloudsManager {
     this.cloudsDonationsWrapper.innerHTML += cloudElem
 
     // Start animation
-    this.animateCloud(randomId, "donation", true)
+    const waitTime = this.coudsCounters["donation"] * 5000
+    const fast = true
+    this.animateCloud(randomId, waitTime, fast)
     this.coudsCounters.donation += 1
+
+    // Save donation cloud data
+    const cloudData = { id: randomId, waitTime, fast }
+    this.clouds.push(cloudData)
+    this.currentClouds.push(cloudData)
   }
 
   /**
@@ -165,10 +210,9 @@ class CloudsManager {
 
 // Start clouds manager and create bg clouds
 const cloudsManager = new CloudsManager()
-const cloundsAmount = 4
-for (let i = 0; i < cloundsAmount; i++) {
+setInterval(() => {
   cloudsManager.addEmptyCloud()
-}
+}, 6000)
 
 // Render donations
 cloudsManager.addDonation("Ethan White")
@@ -176,20 +220,20 @@ cloudsManager.addDonation("Olivia Harris", "./images/client-photo.webp", 2)
 cloudsManager.addDonation("Mason Martinez")
 cloudsManager.addDonation("Sophia Johnson", "./images/client-photo.webp", 3)
 cloudsManager.addDonation("Elijah Brown")
-cloudsManager.addDonation("Ava Wilson", "./images/client-photo.webp", 1)
-cloudsManager.addDonation("Michael Moore")
-cloudsManager.addDonation("Emily Taylor", "./images/client-photo.webp", 4)
-cloudsManager.addDonation("Alexander Anderson")
-cloudsManager.addDonation("Mia Thomas", "./images/client-photo.webp", 2)
-cloudsManager.addDonation("Benjamin White")
-cloudsManager.addDonation("Charlotte Harris", "./images/client-photo.webp", 3)
-cloudsManager.addDonation("Daniel Martinez")
-cloudsManager.addDonation("Amelia Johnson", "./images/client-photo.webp", 1)
-cloudsManager.addDonation("Henry Brown")
-cloudsManager.addDonation("Harper Wilson", "./images/client-photo.webp", 4)
-cloudsManager.addDonation("Matthew Moore")
-cloudsManager.addDonation("Ella Taylor", "./images/client-photo.webp", 2)
-cloudsManager.addDonation("Jackson Anderson")
-cloudsManager.addDonation("Scarlett Thomas", "./images/client-photo.webp", 3)
-cloudsManager.addDonation("David White")
-cloudsManager.addDonation("Victoria Harris", "./images/client-photo.webp", 1)
+// cloudsManager.addDonation("Ava Wilson", "./images/client-photo.webp", 1)
+// cloudsManager.addDonation("Michael Moore")
+// cloudsManager.addDonation("Emily Taylor", "./images/client-photo.webp", 4)
+// cloudsManager.addDonation("Alexander Anderson")
+// cloudsManager.addDonation("Mia Thomas", "./images/client-photo.webp", 2)
+// cloudsManager.addDonation("Benjamin White")
+// cloudsManager.addDonation("Charlotte Harris", "./images/client-photo.webp", 3)
+// cloudsManager.addDonation("Daniel Martinez")
+// cloudsManager.addDonation("Amelia Johnson", "./images/client-photo.webp", 1)
+// cloudsManager.addDonation("Henry Brown")
+// cloudsManager.addDonation("Harper Wilson", "./images/client-photo.webp", 4)
+// cloudsManager.addDonation("Matthew Moore")
+// cloudsManager.addDonation("Ella Taylor", "./images/client-photo.webp", 2)
+// cloudsManager.addDonation("Jackson Anderson")
+// cloudsManager.addDonation("Scarlett Thomas", "./images/client-photo.webp", 3)
+// cloudsManager.addDonation("David White")
+// cloudsManager.addDonation("Victoria Harris", "./images/client-photo.webp", 1)
