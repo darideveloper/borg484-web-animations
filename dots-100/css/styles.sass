@@ -1,0 +1,65 @@
+$default-dot-size: 10px
+$default-dot-space: 10px
+$background-color: #f0f0f0
+$dot-color: #333
+$hover-dot-color: #f00
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    width: 100vh
+    height: 100vh
+    overflow: hidden
+
+img
+    width: 60vw
+    height: auto
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    opacity: 0
+
+.number-wrapper
+    border: 1ps xolid red
+    width: 60vw
+    height: 100vh
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border: 1px solid red
+
+    .cero-1
+        width: 22vw
+        height: 22vw
+        position: absolute
+        top: 9vw
+        left: 10vw
+        border: 4vw solid red
+        border-radius: 100%
+        opacity: 0.1
+
+#dot-container
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(10px, 1fr))
+    gap: $default-dot-space
+    justify-items: center
+    width: 100vw
+    height: 100vh
+
+    .dot
+        border-radius: 50%
+        background-color: $dot-color
+        opacity: 0
+
+        &.over
+            opacity: 1
+
+// Set custom properties for JS to access
+:root
+    --dot-size: #{$default-dot-size}
+    --dot-space: #{$default-dot-space}
