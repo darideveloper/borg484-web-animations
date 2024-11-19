@@ -1,77 +1,64 @@
-// Function to get the CSS custom property value
-function getCSSVariable(variable) {
-  return parseInt(getComputedStyle(document.documentElement).getPropertyValue(variable))
-}
+const dotsWrapper = document.querySelector('.dots')
+const maxDots = 1300
 
-// Function to create the grid of dots
-function createDotGrid() {
-  const container = document.getElementById('dot-container')
-  container.innerHTML = ''  // Clear any existing dots
-
-  const dotSize = getCSSVariable('--dot-size')
-  const dotSpace = getCSSVariable('--dot-space')
-
-  // Calculate how many rows and columns based on container width and height
-  const containerWidth = container.clientWidth
-  const containerHeight = container.clientHeight
-
-  const cols = Math.floor(containerWidth / (dotSize + dotSpace))
-  const rows = Math.floor(containerHeight / (dotSize + dotSpace))
-
-  // Create the dots based on the grid dimensions
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const dot = document.createElement('div')
-      dot.classList.add('dot')
-      dot.style.width = `${dotSize}px`
-      dot.style.height = `${dotSize}px`
-
-      container.appendChild(dot)
-    }
+function createDots() {
+  console.log('Creating dots')
+  for (let i = 0; i < maxDots; i++) {
+    console.log('Creating dot')
+    const dot = document.createElement('div')
+    dot.classList.add('dot')
+    dotsWrapper.appendChild(dot)
   }
 }
 
-// Function to check if a dot is over the target div (circle)
-function isDotOverTarget(dot, targetDiv) {
-  const dotRect = dot.getBoundingClientRect();
-  const targetRect = targetDiv.getBoundingClientRect();
 
-  // Target circle center coordinates
-  const targetCenterX = targetRect.left + targetRect.width / 2;
-  const targetCenterY = targetRect.top + targetRect.height / 2;
+function isOverValidDiv(mainElement, validDivs, invalidDivs) {
+  // Get the bounding rectangle of the main element
+  const mainRect = mainElement.getBoundingClientRect();
 
-  // Dot coordinates
-  const dotCenterX = dotRect.left + dotRect.width / 2;
-  const dotCenterY = dotRect.top + dotRect.height / 2;
+  // Helper function to check overlap
+  const isOverlapping = (rect1, rect2) => {
+      return !(
+          rect1.right < rect2.left || 
+          rect1.left > rect2.right || 
+          rect1.bottom < rect2.top || 
+          rect1.top > rect2.bottom
+      );
+  };
 
-  // Calculate distance between centers
-  const distance = Math.sqrt(
-    Math.pow(dotCenterX - targetCenterX, 2) + Math.pow(dotCenterY - targetCenterY, 2)
-  );
+  // Check if it's overlapping any invalid div
+  for (let invalidDiv of invalidDivs) {
+      const invalidRect = invalidDiv.getBoundingClientRect();
+      if (isOverlapping(mainRect, invalidRect)) {
+          return false; // It's over an invalid div
+      }
+  }
 
-  // Check if the dot is inside the circular target area
-  const targetRadius = targetRect.width / 2; // Assuming the target is a circle
-  const isOver = distance <= targetRadius;
+  // Check if it's overlapping any valid div
+  for (let validDiv of validDivs) {
+      const validRect = validDiv.getBoundingClientRect();
+      if (isOverlapping(mainRect, validRect)) {
+          return true; // It's over a valid div and no invalid divs
+      }
+  }
 
-  console.log({ isOver, dot, targetDiv, distance, targetRadius });
-  
-  return isOver;
+  // Default: not over any valid div
+  return false;
 }
 
 
-// Initial grid setup
-createDotGrid()
+// Create dots grid
+createDots()
 
-setTimeout(() => {
-  const dots = document.querySelectorAll('.dot');
-  for (const dot of dots) {
-    const targetDiv = document.querySelector('.cero-1');
-    const isOver = isDotOverTarget(dot, targetDiv);
-  
-    if (isOver) {
-      dot.classList.add('over');
-    } else {
-      dot.classList.remove('over');
-    }
+// // Apply over class to valid dots 
+const dots = document.querySelectorAll('.dot')
+const validDivs = document.querySelectorAll('.over')
+const invalidDivs = document.querySelectorAll('.not-over')
+console.log({ dots, validDivs, invalidDivs })
+for (const dot of dots) {
+  const dotOver = isOverValidDiv(dot, validDivs, invalidDivs)
+  if (dotOver) {
+    dot.classList.add('over')
   }
-}, 100);
+  console.log({ dotOver, dot })
+}
