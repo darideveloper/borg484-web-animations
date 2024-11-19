@@ -1,5 +1,5 @@
 $dot-size: 1vw
-$dots-columns: 50
+$dots-columns: 30
 
 *
     margin: 0
@@ -19,9 +19,10 @@ img
     left: 50%
     transform: translate(-50%, -50%)
     opacity: 0
+    margin-top: -6vw
 
-.number-wrapper, .dot-grid
-    width: 60vw
+.number-wrapper
+    width: 70vw
     height: 70vh
     position: absolute
     top: 50%
@@ -36,16 +37,16 @@ img
             position: absolute
             top: 1.2vw
             left: 1.7vw
-            opacity: 0.2
+            opacity: 0
 
         .line
             width: 3.7vw
-            height: 25vw
+            height: 27vw
             background-color: blue
             position: absolute
             top: 4vw
             left: 5.5vw
-            opacity: 0.2
+            opacity: 0
 
     .cero
         width: 29vw
@@ -57,102 +58,98 @@ img
         justify-content: center
         align-items: center
 
+        // Place ceros
         &:nth-child(2)
-            left: 11vw
+            left: 12vw
 
         &:nth-child(3)
             left: 30vw
 
-        .border
-            background-color: blue
-            border-radius: 100%
-            width: 100%
-            height: 100%
-
-        .fill
-            background-color: red
-            width: 75%
-            height: 75%
-            border-radius: 100%
-            position: absolute
-
-
+        // Rotate corners
         .top .corner:nth-child(1)
             transform: rotateZ(0deg)
 
         .top .corner:nth-child(2)
-            transform: rotateZ(270deg)
+            transform: rotateZ(180deg) scale(-1, 1)
 
         .bottom .corner:nth-child(1)
-            transform: rotateZ(90deg)
+            transform: rotateZ(180deg) scale(1, -1)
 
         .bottom .corner:nth-child(2)
-            transform: rotateZ(180deg)
+            transform: rotateZ(0deg) scale(-1, -1)
 
+        // Render squares
         .top, .bottom
             width: 50%
             height: 100%
 
             .corner
                 width: 100%
-                height: 50%                
+                height: 50%
+                position: relative
 
                 .squere
-                    width: 4vw
-                    height: 4vw
+                    width: 25%
+                    height: 25%
                     position: absolute
                     background-color: blue
-                    opacity: 0.5
-                    position: relative
+                    opacity: 0
+                    position: absolute
 
                     &:nth-child(1)
-                        top: 0
-                        left: 73%
+                        top: -8%
+                        left: 78%
 
                     &:nth-child(2)
-                        top: -47px
-                        left: 58%
+                        top: 0%
+                        left: 57%
 
                     &:nth-child(3)
-                        top: -91px
-                        left: 45%
+                        top: 6%
+                        left: 40%
 
                     &:nth-child(4)
-                        top: -132px
-                        left: 35%
+                        top: 18%
+                        left: 26%
 
                     &:nth-child(5)
-                        top: -170px
-                        left: 25%
+                        top: 33%
+                        left: 13%
 
                     &:nth-child(6)
-                        top: -206px
-                        left: 17%
+                        top: 46%
+                        left: 5%
 
                     &:nth-child(7)
-                        top: -240px
-                        left: 10%
+                        top: 58%
+                        left: 0%
 
                     &:nth-child(8)
-                        top: -265px
-                        left: 3%
+                        top: 68%
+                        left: -4%
 
                     &:nth-child(9)
-                        top: -286px
-                        left: -2%
+                        top: 78%
+                        left: -8%
+
+                    &:nth-child(10)
+                        top: -5%
+                        left: 68%
 
     .dots
         width: 100%
-        height: 100%
+        margin-top: -4vw
         display: grid
         grid-template-columns: repeat($dots-columns, 1fr)
+        border: 1px solid red
 
         .dot
             width: $dot-size
             height: $dot-size
             background-color: blue
             border-radius: 100%
-            opacity: 0.3
+            opacity: 0.1
+            margin: 0.17vw 0
 
             &.over
                 opacity: 1
