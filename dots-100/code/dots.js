@@ -1,5 +1,6 @@
 const dotsWrapper = document.querySelector('.dots')
 const maxDots = 850
+const requiredDots = 317
 
 class Dots {
 
@@ -7,9 +8,7 @@ class Dots {
    * Create dots grid
    */
   createDots() {
-    console.log('Creating dots')
     for (let i = 0; i < maxDots; i++) {
-      console.log('Creating dot')
       const dot = document.createElement('div')
       dot.classList.add('dot')
       dotsWrapper.appendChild(dot)
@@ -26,34 +25,36 @@ class Dots {
    */
   isOverValidDiv(mainElement, validDivs) {
     // Get the bounding rectangle of the main element
-    const mainRect = mainElement.getBoundingClientRect();
-  
+    const mainRect = mainElement.getBoundingClientRect()
+
     // Helper function to check overlap
     const isOverlapping = (rect1, rect2) => {
-        return !(
-            rect1.right < rect2.left || 
-            rect1.left > rect2.right || 
-            rect1.bottom < rect2.top || 
-            rect1.top > rect2.bottom
-        );
-    };
-  
+      return !(
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom
+      )
+    }
+
     // Check if it's overlapping any valid div
     for (let validDiv of validDivs) {
-        const validRect = validDiv.getBoundingClientRect();
-        if (isOverlapping(mainRect, validRect)) {
-            return true; // It's over a valid div and no invalid divs
-        }
+      const validRect = validDiv.getBoundingClientRect()
+      if (isOverlapping(mainRect, validRect)) {
+        return true // It's over a valid div and no invalid divs
+      }
     }
-  
+
     // Default: not over any valid div
-    return false;
+    return false
   }
 
   /**
    * show initial dots
    */
-  showValidDots () {
+  showValidDots() {
+
+    // Draw dots over number
     const dots = document.querySelectorAll('.dot')
     const validDivs = document.querySelectorAll('.over')
     const invalidDivs = document.querySelectorAll('.not-over')
@@ -63,6 +64,33 @@ class Dots {
         dot.classList.add('over')
       }
     }
+
+    // Calculate missing or extra dots
+    const createdDots = document.querySelectorAll('.dot.over')
+    const allDots = document.querySelectorAll('.dot')
+    const dotsDiff = requiredDots - createdDots.length
+    const dotsDiffAbs = Math.abs(dotsDiff)
+    console.log({ createdDots, dotsDiff })
+
+    const fixPoints = {
+      "add": [782, 783, 812, 813, 90, 120, 150, 180],
+      "remove": [0, 5, 6, 7, 8]
+    }
+
+    // Fix missing points
+    for (let dotInex = 0; dotInex < dotsDiffAbs; dotInex++) {
+      if (dotsDiff > 0) {
+        const dot = allDots[fixPoints["add"][dotInex]]
+        dot.classList.add('over')
+      } else if (dotsDiff < 0) {
+        const dot = createdDots[fixPoints["remove"][dotInex]]
+        dot.classList.remove('over')
+      }
+    }
+
+    // Debug info
+    const finalDots = document.querySelectorAll('.dot.over')
+    console.log({ createdDots, requiredDots, finalDots })
   }
 }
 
@@ -75,7 +103,3 @@ dotsManager.createDots()
 
 // Draw initial valid dots
 dotsManager.showValidDots()
-
-const dotsNumber = document.querySelectorAll('.dot.over').length
-console.log('Dots over valid divs:', dotsNumber)
-
