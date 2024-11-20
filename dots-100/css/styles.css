@@ -9,6 +9,7 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: black;
+  font-family: "Dancing Script", cursive;
 }
 
 img {
@@ -153,4 +154,17 @@ img {
 .number-wrapper .dots .dot.active {
   background-color: white;
   opacity: 1;
+}
+
+marquee {
+  width: 100vw;
+  color: white;
+  font-size: 3vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: "Dancing Script", cursive;
+}
+marquee span {
+  margin: 0 1vw;
 }/*# sourceMappingURL=styles.css.map */

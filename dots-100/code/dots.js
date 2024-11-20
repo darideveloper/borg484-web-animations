@@ -5,6 +5,7 @@ class Dots {
     this.dotsWrapper = document.querySelector('.dots')
     this.maxDots = 850
     this.requiredDots = 317
+    this.marquee = document.querySelector('marquee')
   }
 
   /**
@@ -95,13 +96,18 @@ class Dots {
     console.log({ createdDots, "requiredDots": this.requiredDots, dotsDiff, finalDots })
   }
 
-  addDonation() {
+  addDonation(companyName) {
+
+    // Activate next dot
     const inactiveDots = document.querySelectorAll('.dot.over:not(.active)')
     console.log({ inactiveDots })
     const firstInactiveDot = inactiveDots[0]
     if (firstInactiveDot) {
       firstInactiveDot.classList.add('active')
     }
+
+    // Update marquee
+    this.marquee.innerHTML += `<span>${companyName}</span>`
   }
 }
 
@@ -114,6 +120,82 @@ dotsManager.createDots()
 dotsManager.draw100()
 
 // Add donations
-setInterval(() => {
-  dotsManager.addDonation("Test Company 1")
+setTimeout(() => {
+  dotsManager.addDonation("Test Company A")
 }, 1000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company B")
+}, 2000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company C")
+}, 3000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company D")
+}, 5000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company E")
+}, 8000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company F")
+}, 8000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company G")
+}, 9000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company H")
+}, 9500)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company I")
+}, 10000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company J")
+}, 11000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company K")
+}, 12000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company L")
+}, 13000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company M")
+}, 13500)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company N")
+}, 15000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company O")
+}, 15500)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company P")
+}, 18000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company Q")
+}, 20000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company H")
+}, 23000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company I")
+}, 25000)
+
+setTimeout(() => {
+  dotsManager.addDonation("Test Company J")
+}, 28000)
