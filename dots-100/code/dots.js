@@ -1,17 +1,20 @@
-const dotsWrapper = document.querySelector('.dots')
-const maxDots = 850
-const requiredDots = 317
 
 class Dots {
+  
+  constructor() {
+    this.dotsWrapper = document.querySelector('.dots')
+    this.maxDots = 850
+    this.requiredDots = 317
+  }
 
   /**
    * Create dots grid
    */
   createDots() {
-    for (let i = 0; i < maxDots; i++) {
+    for (let i = 0; i < this.maxDots; i++) {
       const dot = document.createElement('div')
       dot.classList.add('dot')
-      dotsWrapper.appendChild(dot)
+      this.dotsWrapper.appendChild(dot)
     }
   }
 
@@ -52,7 +55,7 @@ class Dots {
   /**
    * show initial dots
    */
-  showValidDots() {
+  draw100() {
 
     // Draw dots over number
     const dots = document.querySelectorAll('.dot')
@@ -68,9 +71,8 @@ class Dots {
     // Calculate missing or extra dots
     const createdDots = document.querySelectorAll('.dot.over')
     const allDots = document.querySelectorAll('.dot')
-    const dotsDiff = requiredDots - createdDots.length
+    const dotsDiff = this.requiredDots - createdDots.length
     const dotsDiffAbs = Math.abs(dotsDiff)
-    console.log({ createdDots, dotsDiff })
 
     const fixPoints = {
       "add": [782, 783, 812, 813, 90, 120, 150, 180],
@@ -90,7 +92,16 @@ class Dots {
 
     // Debug info
     const finalDots = document.querySelectorAll('.dot.over')
-    console.log({ createdDots, requiredDots, finalDots })
+    console.log({ createdDots, "requiredDots": this.requiredDots, dotsDiff, finalDots })
+  }
+
+  addDonation() {
+    const inactiveDots = document.querySelectorAll('.dot.over:not(.active)')
+    console.log({ inactiveDots })
+    const firstInactiveDot = inactiveDots[0]
+    if (firstInactiveDot) {
+      firstInactiveDot.classList.add('active')
+    }
   }
 }
 
@@ -100,6 +111,9 @@ class Dots {
 // Create dots grid
 const dotsManager = new Dots()
 dotsManager.createDots()
+dotsManager.draw100()
 
-// Draw initial valid dots
-dotsManager.showValidDots()
+// Add donations
+setInterval(() => {
+  dotsManager.addDonation("Test Company 1")
+}, 1000)

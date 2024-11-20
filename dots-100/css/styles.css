@@ -8,6 +8,7 @@ body {
   width: 100vh;
   height: 100vh;
   overflow: hidden;
+  background-color: black;
 }
 
 img {
@@ -137,16 +138,19 @@ img {
   margin-top: -4vw;
   display: grid;
   grid-template-columns: repeat(30, 1fr);
-  border: 1px solid red;
 }
 .number-wrapper .dots .dot {
   width: 1vw;
   height: 1vw;
-  background-color: blue;
+  background-color: grey;
   border-radius: 100%;
-  opacity: 0.1;
+  opacity: 0;
   margin: 0.17vw 0;
 }
 .number-wrapper .dots .dot.over {
+  opacity: 0.3;
+}
+.number-wrapper .dots .dot.active {
+  background-color: white;
   opacity: 1;
 }/*# sourceMappingURL=styles.css.map */
