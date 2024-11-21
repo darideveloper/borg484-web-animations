@@ -149,11 +149,12 @@ img {
   margin: 0.17vw 0;
 }
 .number-wrapper .dots .dot.over {
-  opacity: 0.3;
+  opacity: 0.1;
+  color: white;
 }
 .number-wrapper .dots .dot.active {
-  background-color: white;
   opacity: 1;
+  background-color: #8b734b;
 }
 
 marquee {
