@@ -106,13 +106,13 @@ class Dots {
       firstInactiveDot.classList.add('active')
     }
 
-    // Update marquee
-    this.marquee.innerHTML += `<div>
+    // Insert new donation in marquee at start
+    this.marquee.innerHTML = `<div>
       <div class="content">
         <img src="${imageSrc}" alt="logo of ${companyName}" />
         <span>${companyName}</span>
       </div>
-    </div>`
+    </div>` + this.marquee.innerHTML
   }
 }
 
