@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vh;
+      height: 100vh;
+      overflow: hidden;
+      background-color: black;
+      font-family: "Dancing Script", cursive;
+    }
+
+    .number-wrapper {
+      width: 70vw;
+      height: 70vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .number-wrapper .one .top {
+      width: 7.5vw;
+      height: 3.2vw;
+      background-color: blue;
+      position: absolute;
+      top: 1.2vw;
+      left: 1.7vw;
+      opacity: 0;
+    }
+
+    .number-wrapper .one .line {
+      width: 3.7vw;
+      height: 27vw;
+      background-color: blue;
+      position: absolute;
+      top: 4vw;
+      left: 5.5vw;
+      opacity: 0;
+    }
+
+    .number-wrapper .cero {
+      width: 29vw;
+      height: 29vw;
+      position: absolute;
+      top: 1vw;
+      opacity: 0.5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .number-wrapper .cero:nth-child(2) {
+      left: 12vw;
+    }
+
+    .number-wrapper .cero:nth-child(3) {
+      left: 30vw;
+    }
+
+    .number-wrapper .cero .top .corner:nth-child(1) {
+      transform: rotateZ(0deg);
+    }
+
+    .number-wrapper .cero .top .corner:nth-child(2) {
+      transform: rotateZ(180deg) scale(-1, 1);
+    }
+
+    .number-wrapper .cero .bottom .corner:nth-child(1) {
+      transform: rotateZ(180deg) scale(1, -1);
+    }
+
+    .number-wrapper .cero .bottom .corner:nth-child(2) {
+      transform: rotateZ(0deg) scale(-1, -1);
+    }
+
+    .number-wrapper .cero .top,
+    .number-wrapper .cero .bottom {
+      width: 50%;
+      height: 100%;
+    }
+
+    .number-wrapper .cero .top .corner,
+    .number-wrapper .cero .bottom .corner {
+      width: 100%;
+      height: 50%;
+      position: relative;
+    }
+
+    .number-wrapper .cero .top .corner .squere,
+    .number-wrapper .cero .bottom .corner .squere {
+      width: 25%;
+      height: 25%;
+      position: absolute;
+      background-color: blue;
+      opacity: 0;
+      position: absolute;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(1),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(1) {
+      top: -8%;
+      left: 78%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(2),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(2) {
+      top: 0%;
+      left: 57%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(3),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(3) {
+      top: 6%;
+      left: 40%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(4),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(4) {
+      top: 18%;
+      left: 26%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(5),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(5) {
+      top: 33%;
+      left: 13%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(6),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(6) {
+      top: 46%;
+      left: 5%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(7),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(7) {
+      top: 58%;
+      left: 0%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(8),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(8) {
+      top: 68%;
+      left: -4%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(9),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(9) {
+      top: 78%;
+      left: -8%;
+    }
+
+    .number-wrapper .cero .top .corner .squere:nth-child(10),
+    .number-wrapper .cero .bottom .corner .squere:nth-child(10) {
+      top: -5%;
+      left: 68%;
+    }
+
+    .number-wrapper .dots {
+      width: 100%;
+      margin-top: -4vw;
+      display: grid;
+      grid-template-columns: repeat(30, 1fr);
+    }
+
+    .number-wrapper .dots .dot {
+      width: 1vw;
+      height: 1vw;
+      background-color: grey;
+      border-radius: 100%;
+      opacity: 0;
+      margin: 0.17vw 0;
+    }
+
+    .number-wrapper .dots .dot.over {
+      opacity: 0.1;
+      color: white;
+    }
+
+    .number-wrapper .dots .dot.active {
+      opacity: 1;
+      background-color: #8b734b;
+    }
+
+    marquee {
+      width: 100vw;
+      color: white;
+      font-size: 3vw;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-family: "Dancing Script", cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    marquee div {
+      display: inline-block;
+      margin: 0 1vw;
+    }
+
+    marquee div .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    marquee div .content img {
+      height: 4vw;
+      width: auto;
+      margin-right: 0.5vw;
+    }
+
+    /*# sourceMappingURL=styles.css.map */
+  </style>
+
+</head>
+
+<body>
+
+  <!-- 100 with dots -->
+  <div class="number-wrapper">
+
+    <div class="one">
+      <div class="top over"></div>
+      <div class="line over"></div>
+    </div>
+
+    <div class="cero">
+      <div class="top">
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cero">
+      <div class="top">
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+        <div class="corner">
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+          <div class="squere over"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dots"></div>
+
+  </div>
+
+  <!-- Companies -->
+  <marquee>
+  </marquee>
+
+
+  <script>
+
+    class Dots {
+
+      constructor() {
+        this.dotsWrapper = document.querySelector('.dots')
+        this.maxDots = 850
+        this.requiredDots = 317
+        this.marquee = document.querySelector('marquee')
+      }
+
+      /**
+       * Create dots grid
+       */
+      createDots() {
+        for (let i = 0; i < this.maxDots; i++) {
+          const dot = document.createElement('div')
+          dot.classList.add('dot')
+          this.dotsWrapper.appendChild(dot)
+        }
+      }
+
+      /**
+       * 
+       * Validate if an element is over a specific group of valid divs
+       * 
+       * @param {node} mainElement - element to check
+       * @param {array[node]} validDivs - divs that are valid to be over
+       * @returns {boolean} - true if it's over a valid div, false otherwise
+       */
+      isOverValidDiv(mainElement, validDivs) {
+        // Get the bounding rectangle of the main element
+        const mainRect = mainElement.getBoundingClientRect()
+
+        // Helper function to check overlap
+        const isOverlapping = (rect1, rect2) => {
+          return !(
+            rect1.right < rect2.left ||
+            rect1.left > rect2.right ||
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom
+          )
+        }
+
+        // Check if it's overlapping any valid div
+        for (let validDiv of validDivs) {
+          const validRect = validDiv.getBoundingClientRect()
+          if (isOverlapping(mainRect, validRect)) {
+            return true // It's over a valid div and no invalid divs
+          }
+        }
+
+        // Default: not over any valid div
+        return false
+      }
+
+      /**
+       * show initial dots
+       */
+      draw100() {
+
+        // Draw dots over number
+        const dots = document.querySelectorAll('.dot')
+        const validDivs = document.querySelectorAll('.over')
+        const invalidDivs = document.querySelectorAll('.not-over')
+        for (const dot of dots) {
+          const dotOver = this.isOverValidDiv(dot, validDivs, invalidDivs)
+          if (dotOver) {
+            dot.classList.add('over')
+          }
+        }
+
+        // Calculate missing or extra dots
+        const createdDots = document.querySelectorAll('.dot.over')
+        const allDots = document.querySelectorAll('.dot')
+        const dotsDiff = this.requiredDots - createdDots.length
+        const dotsDiffAbs = Math.abs(dotsDiff)
+
+        const fixPoints = {
+          "add": [782, 783, 812, 813, 90, 120, 150, 180],
+          "remove": [0, 5, 6, 7, 8]
+        }
+
+        // Fix missing points
+        for (let dotInex = 0; dotInex < dotsDiffAbs; dotInex++) {
+          if (dotsDiff > 0) {
+            const dot = allDots[fixPoints["add"][dotInex]]
+            dot.classList.add('over')
+          } else if (dotsDiff < 0) {
+            const dot = createdDots[fixPoints["remove"][dotInex]]
+            dot.classList.remove('over')
+          }
+        }
+
+        // Debug info
+        const finalDots = document.querySelectorAll('.dot.over')
+        console.log({ createdDots, "requiredDots": this.requiredDots, dotsDiff, finalDots })
+      }
+
+      addDonation(companyName, imageSrc) {
+
+        // Activate next dot
+        const inactiveDots = document.querySelectorAll('.dot.over:not(.active)')
+        console.log({ inactiveDots })
+        const firstInactiveDot = inactiveDots[0]
+        if (firstInactiveDot) {
+          firstInactiveDot.classList.add('active')
+        }
+
+        // Update marquee
+        this.marquee.innerHTML += `<div>
+      <div class="content">
+        <img src="${imageSrc}" alt="logo of ${companyName}" />
+        <span>${companyName}</span>
+      </div>
+    </div>`
+      }
+    }
+
+    // Create dots grid
+    const dotsManager = new Dots()
+    dotsManager.createDots()
+    dotsManager.draw100()
+
+    // ======================== EDIT THIS ========================
+    // Add donations
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company A", "./imgs/logo.png")
+    }, 1000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company B", "./imgs/logo.png")
+    }, 2000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company C", "./imgs/logo.png")
+    }, 3000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company D", "./imgs/logo.png")
+    }, 5000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company E", "./imgs/logo.png")
+    }, 8000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company F", "./imgs/logo.png")
+    }, 8000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company G", "./imgs/logo.png")
+    }, 9000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company H", "./imgs/logo.png")
+    }, 9500)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company I", "./imgs/logo.png")
+    }, 10000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company J", "./imgs/logo.png")
+    }, 11000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company K", "./imgs/logo.png")
+    }, 12000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company L", "./imgs/logo.png")
+    }, 13000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company M", "./imgs/logo.png")
+    }, 13500)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company N", "./imgs/logo.png")
+    }, 15000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company O", "./imgs/logo.png")
+    }, 15500)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company P", "./imgs/logo.png")
+    }, 18000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company Q", "./imgs/logo.png")
+    }, 20000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company H", "./imgs/logo.png")
+    }, 23000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company I", "./imgs/logo.png")
+    }, 25000)
+
+    setTimeout(() => {
+      dotsManager.addDonation("Test Company J", "./imgs/logo.png")
+    }, 28000)
+  </script>
+</body>
+
+</html>

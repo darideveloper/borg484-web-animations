@@ -124,6 +124,7 @@ const dotsManager = new Dots()
 dotsManager.createDots()
 dotsManager.draw100()
 
+// ======================== EDIT THIS ========================
 // Add donations
 setTimeout(() => {
   dotsManager.addDonation("Test Company A", "./imgs/logo.png")
