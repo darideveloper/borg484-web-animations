@@ -1,7 +1,10 @@
+html
+    scroll-behavior: smooth
+
 body
     margin: 0
     padding: 0
-    
+
 .bricks
     width: 100vw
     height: 100vh
@@ -18,15 +21,38 @@ body
 
         .brick
             display: block
-            padding: 2vw 4vw
             display: flex
             justify-content: center
             align-items: center
             font-size: 2vw
+            padding: 2vw 3vw
             margin: 0.2vw
-            background-image: url('../images/texture.webp')
-            background-size: cover
-            background-repeat: no-repeat
-            background-position: center
             border-radius: 0.5vw
             font-weight: bold
+            transition: all 0.3s ease
+            position: relative
+            overflow: hidden
+
+            &.opacity-0
+                opacity: 0
+
+            .bg
+                content: ''
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                background-image: url('../images/texture.webp')
+                background-size: cover
+                background-repeat: no-repeat
+                background-position: center
+                z-index: -1
+
+            span
+                display: block
+                white-space: nowrap
+                text-overflow: ellipsis
+
+::-webkit-scrollbar
+    display: none
