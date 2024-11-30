@@ -18,7 +18,6 @@ body {
   width: auto;
 }
 .bricks .row .brick {
-  border: 1px solid red;
   display: block;
   padding: 2vw 4vw;
   display: flex;
@@ -26,4 +25,10 @@ body {
   align-items: center;
   font-size: 2vw;
   margin: 0.2vw;
+  background-image: url("../images/texture.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0.5vw;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */
