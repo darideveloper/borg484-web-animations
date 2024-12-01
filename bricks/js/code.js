@@ -1,5 +1,15 @@
 class BricksManager {
-  constructor() {
+
+  constructor(rowsNum = 5) {
+    this.bricksWrapper = document.querySelector('.bricks')
+
+    // Create rows
+    for (let i = 0; i < rowsNum; i++) {
+      const rowElem = document.createElement('div')
+      rowElem.classList.add('row')
+      this.bricksWrapper.appendChild(rowElem)
+    }
+
   }
 
   /**
@@ -61,8 +71,6 @@ class BricksManager {
     setTimeout(() => {
       newBrickElem.classList.remove('opacity-0')
     }, 100)
-
-
   }
 }
 
