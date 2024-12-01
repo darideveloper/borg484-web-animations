@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .bricks {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .bricks .row {
+      height: 15vh;
+      min-width: 1vw;
+      display: flex;
+      width: auto;
+    }
+
+    .bricks .row .brick {
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2vw;
+      padding: 2vw 3vw;
+      margin: 0.2vw;
+      border-radius: 0.5vw;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bricks .row .brick.opacity-0 {
+      opacity: 0;
+    }
+
+    .bricks .row .brick .bg {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/texture.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1;
+    }
+
+    .bricks .row .brick span {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /*# sourceMappingURL=styles.css.map */
+  </style>
+</head>
+
+<body>
+
+  <div class="bricks">
+  </div>
+
+  <script>
+    class BricksManager {
+
+      constructor(rowsNum = 5) {
+        this.bricksWrapper = document.querySelector('.bricks')
+
+        // Create rows
+        for (let i = 0; i < rowsNum; i++) {
+          const rowElem = document.createElement('div')
+          rowElem.classList.add('row')
+          this.bricksWrapper.appendChild(rowElem)
+        }
+
+      }
+
+      /**
+       * Calculate row with less width and return it
+       * 
+       * @returns {Node} - row with less width
+       */
+      getNextRow() {
+        this.rows = document.querySelectorAll('.row')
+        let smallerRow = null
+        let smallerWidth = 0
+        for (let row of this.rows) {
+          let width = row.offsetWidth
+          if (smallerRow === null || width < smallerWidth) {
+            smallerRow = row
+            smallerWidth = width
+          }
+        }
+
+        return smallerRow
+      }
+
+      /**
+       * Create new brick donation
+       * 
+       * @param {string} name - donation name
+       */
+      async addDonation(name) {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+
+        // Add new brick to the row with less width
+        const newRow = this.getNextRow()
+
+        const newBrickElem = document.createElement('div')
+        newBrickElem.classList.add('brick')
+        newBrickElem.classList.add('name-wrapper')
+        newBrickElem.classList.add('opacity-0')
+
+        const nameElem = document.createElement('span')
+        nameElem.innerHTML = name
+        newBrickElem.appendChild(nameElem)
+
+        const bgElem = document.createElement('span')
+        bgElem.classList.add('bg')
+        newBrickElem.appendChild(bgElem)
+
+        newRow.appendChild(newBrickElem)
+
+        // Scroll to right
+        window.scrollTo(document.body.scrollWidth, 0)
+
+        // Set random opacity to ::before element
+        const opacityMin = 0.4
+        const opacityMax = 0.9
+        const opacity = Math.random() * (opacityMax - opacityMin) + opacityMin
+        bgElem.style.opacity = opacity
+
+        // Remove transparence from bricks
+        setTimeout(() => {
+          newBrickElem.classList.remove('opacity-0')
+        }, 100)
+      }
+    }
+
+    async function main() {
+      // Start bricks manager
+      const bricksManager = new BricksManager()
+
+      // ---------------------------
+      // EDIT THIS PART TO ADD DONATIONS
+      // ---------------------------
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+      await bricksManager.addDonation("John Doe 1")
+      await bricksManager.addDonation("Sample Long Name")
+      await bricksManager.addDonation("Another Sample Long Name")
+    }
+
+    // Run main function
+    main()
+  </script>
+</body>
+
+</html>
